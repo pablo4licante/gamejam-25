@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceh1gtstwdudh"]
+
+[ext_resource type="Script" path="res://escenas/managers/main.gd" id="1_byav3"]
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("viewport1", "viewport2")]
+script = ExtResource("1_byav3")
+viewport1 = NodePath("CanvasLayer/Panel/SubViewportContainer2/SubViewport")
+viewport2 = NodePath("CanvasLayer/Panel/SubViewportContainer3/SubViewport")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_right = 550.0
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/Panel/SubViewportContainer2"]
+disable_3d = true
+handle_input_locally = false
+size = Vector2i(550, 648)
+render_target_update_mode = 4
+
+[node name="SubViewportContainer3" type="SubViewportContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -550.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/Panel/SubViewportContainer3"]
+disable_3d = true
+handle_input_locally = false
+size = Vector2i(550, 648)
+render_target_update_mode = 4

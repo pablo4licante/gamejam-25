@@ -1,0 +1,12 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1737750705
+icon.svg::CompressedTexture2D::5296138610561357235::1737747750::1737747814::1::::<><>::
+::res://escenas/::1737750373
+::res://escenas/managers/::1737750763
+interfaz_puntuacion.gd::GDScript::-1::1737750753::0::1::::<>Node2D<>::
+interfaz_puntuacion.tscn::PackedScene::388283208696272265::1737750763::0::1::::<><>::res://escenas/managers/interfaz_puntuacion.gd
+main.gd::GDScript::-1::1737750756::0::1::::<>Node2D<>::
+main.tscn::PackedScene::5069637769435053333::1737750705::0::1::::<><>::res://escenas/managers/main.gd
+::res://escenas/niveles/::1737750783
+logica_juego.gd::GDScript::-1::1737750784::0::1::::<>Node2D<>::
+test.tscn::PackedScene::4950580036058330979::1737750766::0::1::::<><>::uid://fsc75xg4enkr::::res://escenas/managers/interfaz_puntuacion.tscn
