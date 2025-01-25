@@ -18,3 +18,5 @@ texture = ExtResource("2_egcjy")
 [node name="GeneradorPinchos" parent="." instance=ExtResource("2_2qsws")]
 
 [node name="personaje_1" parent="." instance=ExtResource("3_wngn0")]
+position = Vector2(528, 775)
+scale = Vector2(1.7, 1.7)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bb36pno1bfkv0"]
 
 [ext_resource type="Script" path="res://escenas/entidades/personaje_1.gd" id="1_58krt"]
-[ext_resource type="Texture2D" uid="uid://bnrmpb61hr8lv" path="res://assets/sprites/PompaAzul.png" id="2_yqj2h"]
+[ext_resource type="Texture2D" uid="uid://dvcxxtlt186y0" path="res://assets/sprites/pompa.PNG" id="2_qf167"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x0ot2"]
 radius = 44.2832
@@ -14,9 +14,9 @@ position = Vector2(539, 535)
 script = ExtResource("1_58krt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1.5, 3)
-scale = Vector2(0.0483398, 0.0488281)
-texture = ExtResource("2_yqj2h")
+position = Vector2(-0.499984, 0.979809)
+scale = Vector2(0.0775, 0.0782829)
+texture = ExtResource("2_qf167")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 1)
