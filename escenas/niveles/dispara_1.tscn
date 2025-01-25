@@ -2,11 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://ciqljjbjkqo2m" path="res://escenas/entidades/objetivo_burbuja.tscn" id="1_g6lxu"]
 [ext_resource type="Script" path="res://escenas/niveles/dispara_1.gd" id="1_ro2gb"]
-
-[ext_resource type="PackedScene" uid="uid://wls1xt3tgwv" path="res://escenas/managers/bridge.tscn" id="2_og4dl"]
+[ext_resource type="PackedScene" path="res://escenas/managers/bridge.tscn" id="2_og4dl"]
 [ext_resource type="PackedScene" uid="uid://bgqybgesl5d4q" path="res://escenas/entidades/cursor_dispara.tscn" id="2_yigsh"]
 [ext_resource type="Texture2D" uid="uid://v3qwqt5xhgck" path="res://assets/fondos/fondo_explota_pompas.jpg" id="5_h3b8k"]
-
 
 [node name="Dispara1" type="Node"]
 script = ExtResource("1_ro2gb")
