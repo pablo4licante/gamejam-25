@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7ct7icvcgfkk"]
+
+[ext_resource type="Script" path="res://menu/script/trans.gd" id="1_oql4b"]
+
+[sub_resource type="Animation" id="Animation_6p24g"]
+resource_name = "TransAnimation"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4w7tt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jngxg"]
+_data = {
+"RESET": SubResource("Animation_4w7tt"),
+"TransAnimation": SubResource("Animation_6p24g")
+}
+
+[node name="trans" type="CanvasLayer"]
+script = ExtResource("1_oql4b")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 2047.0
+offset_bottom = 1097.0
+color = Color(0, 0, 0, 1)
+
+[node name="trans_anim" type="AnimationPlayer" parent="ColorRect"]
+libraries = {
+"": SubResource("AnimationLibrary_jngxg")
+}

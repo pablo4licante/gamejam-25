@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="GameJam25"
-run/main_scene="res://escenas/managers/main.tscn"
+run/main_scene="res://menu/src_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Trans="*res://menu/trans.tscn"
 
 [display]
 

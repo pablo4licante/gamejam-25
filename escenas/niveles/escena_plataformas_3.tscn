@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://escenas/niveles/escena_plataformas_1.gd" id="1_8uool"]
 [ext_resource type="Texture2D" uid="uid://ni7yjftytsuk" path="res://assets/fondos/fondo_atrapa_bandera.jpg" id="2_e7acr"]
-[ext_resource type="PackedScene" path="res://escenas/managers/bridge.tscn" id="2_vyskl"]
+[ext_resource type="PackedScene" uid="uid://wls1xt3tgwv" path="res://escenas/managers/bridge.tscn" id="2_vyskl"]
 [ext_resource type="Texture2D" uid="uid://cyhdqtfg0xq7d" path="res://assets/sprites/tile_0009.png" id="3_5176p"]
 [ext_resource type="PackedScene" uid="uid://r0fl5l5sychu" path="res://escenas/entidades/jugador_plataformas.tscn" id="4_xgfom"]
 [ext_resource type="PackedScene" uid="uid://c1nn4hj3wbvb" path="res://escenas/entidades/plataforma_burbuja.tscn" id="5_ea4my"]

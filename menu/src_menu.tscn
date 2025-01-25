@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://b13n4xvr2ka2r"]
+
+[ext_resource type="Script" path="res://menu/script/button_play.gd" id="1_5mvi7"]
+[ext_resource type="Script" path="res://menu/script/button_exit.gd" id="2_s6cea"]
+[ext_resource type="Script" path="res://menu/script/button_options.gd" id="3_xjdjr"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer_botones" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.0
+offset_top = -176.5
+offset_right = 147.0
+offset_bottom = 176.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title-Menu" type="Label" parent="VBoxContainer_botones"]
+layout_mode = 2
+text = "Game jam"
+horizontal_alignment = 1
+
+[node name="Button_play" type="Button" parent="VBoxContainer_botones"]
+layout_mode = 2
+text = "PLAY"
+script = ExtResource("1_5mvi7")
+
+[node name="Button_exit" type="Button" parent="VBoxContainer_botones"]
+layout_mode = 2
+text = "EXIT"
+script = ExtResource("2_s6cea")
+
+[node name="Button_options" type="Button" parent="VBoxContainer_botones"]
+layout_mode = 2
+text = "OPTIONS"
+script = ExtResource("3_xjdjr")
+
+[connection signal="pressed" from="VBoxContainer_botones/Button_exit" to="VBoxContainer_botones/Button_exit" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer_botones/Button_options" to="VBoxContainer_botones/Button_options" method="_on_pressed"]

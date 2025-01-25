@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://csajnuhojn4mp"]
+
+[ext_resource type="Script" path="res://menu/script/button_atras.gd" id="1_hfhtf"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = 4.0
+offset_right = -9.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer_botones" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.0
+offset_top = -176.5
+offset_right = 147.0
+offset_bottom = 176.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title-Menu_options" type="Label" parent="VBoxContainer_botones"]
+layout_mode = 2
+text = "OPTIONS"
+horizontal_alignment = 1
+
+[node name="Button_volume" type="Button" parent="VBoxContainer_botones"]
+layout_mode = 2
+text = "VOLUME"
+
+[node name="Button_resolution" type="Button" parent="VBoxContainer_botones"]
+layout_mode = 2
+text = "RESOLUTION"
+
+[node name="Button_atras" type="Button" parent="VBoxContainer_botones"]
+layout_mode = 2
+text = "BACK
+"
+script = ExtResource("1_hfhtf")
+
+[connection signal="pressed" from="VBoxContainer_botones/Button_resolution" to="VBoxContainer_botones/Button_resolution" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer_botones/Button_atras" to="VBoxContainer_botones/Button_atras" method="_on_pressed"]
