@@ -16,6 +16,8 @@ extends Node2D
 
 @export var ui_transicion : Node2D
 
+@export var music_player: AudioStreamPlayer2D
+
 @export var audio_player: AudioStreamPlayer2D
 @export var sounds : Array[AudioStream]
 
@@ -144,7 +146,7 @@ func actualizar_vidas() -> void:
 func cambiar_vidas() -> void: 
 	if puente_juego1 == null or puente_juego2 == null:
 		return
- 
+ 	
 	match nivel_tipo_victoria:
 		0: # Por puntos mas altos = victoria
 			match puente_juego1.tipo_interfaz:
@@ -202,7 +204,7 @@ func buscar_bridge(node) -> Node2D:
 func cargar_nivel(nombre) -> void: 
 	var path = "res://escenas/niveles/"+nombre+".tscn" 
 	var status = ResourceLoader.load_threaded_request(path) 
-	print("Cargando... " + error_string(status))  
+	print("Cargando... " + error_string(status)) 
 	if status == Error.OK: 
 		var scene = ResourceLoader.load_threaded_get(path)
 		var game_scene = scene.instantiate() 
@@ -269,6 +271,7 @@ func cargar_nivel(nombre) -> void:
 func seleccionar_nivel() -> String:
 	var keys = niveles.keys()
 
+	music_player.pitch_scale += (0.1/TIEMPO_JUEGO)
 	if keys.size() > 1:  
 		keys.erase(nivel_ultimo)
 		
@@ -281,7 +284,8 @@ func _ready():
 	viewport_juego2.get_parent().set_stretch(true)
 	viewport_compartido.get_parent().set_stretch(true)
 	contador_carga = TIEMPO_TRANSICION
-	
+	music_player = $MusicStreamPlayer2D
+	music_player.play()
 	for key in sound_links:
 		sound_links[key] = sounds[sound_links[key]]
 
