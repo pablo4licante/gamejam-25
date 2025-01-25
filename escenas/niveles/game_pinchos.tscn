@@ -10,7 +10,7 @@
 script = ExtResource("1_vylca")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(568, 528)
+position = Vector2(803.525, 538.485)
 texture = ExtResource("2_egcjy")
 
 [node name="Bridge" parent="." instance=ExtResource("2_dd8nk")]
@@ -18,4 +18,7 @@ texture = ExtResource("2_egcjy")
 [node name="GeneradorPinchos" parent="." instance=ExtResource("2_2qsws")]
 
 [node name="personaje_1" parent="." instance=ExtResource("3_wngn0")]
-position = Vector2(608, 846)
+
+position = Vector2(528, 775)
+scale = Vector2(1.7, 1.7)
+

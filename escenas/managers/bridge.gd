@@ -14,6 +14,9 @@ var jugador = 0
 	"action": [0.0, false, false, false],
 }
 
+var in_game: bool = false
+var tiempo_de_juego: float
+
 var sounds
 var audio_player: AudioStreamPlayer2D
 

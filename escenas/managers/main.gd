@@ -45,8 +45,8 @@ var nivel_seleccionado = ""
 var nivel_ultimo = ""
 
 var niveles = {			# Tipo Victoria
-	#"test2": [0],
-	#"test": [0],
+	"test2": [0],
+	"test": [0],
 	"dispara_1": [1],
 	"game_pinchos": [2],
 	"game_chicle": [0],
@@ -261,8 +261,15 @@ func cargar_nivel(nombre) -> void:
 			puente_juego1.audio_player = audio_player
 			puente_juego2.audio_player = audio_player
 			
+			puente_juego1.in_game = true
+			puente_juego2.in_game = true
+			
 			puente_juego1.sounds = sound_links
 			puente_juego2.sounds = sound_links
+			
+			
+			puente_juego1.tiempo_de_juego = TIEMPO_JUEGO
+			puente_juego2.tiempo_de_juego = TIEMPO_JUEGO
 
 			puente_juego1.jugador = 1
 			puente_juego2.jugador = 2
@@ -315,6 +322,7 @@ var contador_buff = 0.5
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+					
 	if empezado:
 		if contador_juego > 0.0:
 			contador_juego -= 1 * delta   
@@ -326,7 +334,7 @@ func _process(delta: float) -> void:
 
 			# Reducir el tiempo
 			TIEMPO_JUEGO *= 0.9
-			TIEMPO_TRANSICION *= 0.9
+			TIEMPO_TRANSICION *= 0.965
 			 
 			ui_contador_juego.visible = false
 			empezado = false
@@ -334,6 +342,11 @@ func _process(delta: float) -> void:
 			contador_buff = 0.5
 			nivel_actual = ""
 			nivel_seleccionado = "" 
+			
+			if puente_juego1 != null or puente_juego2 != null:
+				if puente_juego1.tipo_interfaz == 0:
+					puente_juego1.in_game = false
+					puente_juego2.in_game = false
    
 		actualizar_controles(1) 
 		actualizar_controles(2)
@@ -342,7 +355,6 @@ func _process(delta: float) -> void:
 
 		if vidas_1 == 0 or vidas_2 == 0:
 			ui_resultado.visible = true
-
 			if vidas_1 > vidas_2:
 				ui_resultado.text = "El jugador 1 ha ganado!";
 			elif vidas_2 > vidas_1: 

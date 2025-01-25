@@ -13,7 +13,8 @@ var time = 0
 func _ready():
 	# Guarda la posición inicial en Y
 	start_y = position.y
-	area_2d.body_entered.connect(reventar)
+	if bridge.in_game:
+		area_2d.body_entered.connect(reventar)
 	
 
 func _physics_process(_delta: float) -> void:
