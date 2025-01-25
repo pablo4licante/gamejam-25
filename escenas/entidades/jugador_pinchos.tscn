@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://kle5we2o5xj4"]
+
+[ext_resource type="Script" path="res://escenas/entidades/personaje_1.gd" id="1_58krt"]
+[ext_resource type="Texture2D" uid="uid://bnrmpb61hr8lv" path="res://assets/sprites/PompaAzul.png" id="2_yqj2h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x0ot2"]
+radius = 44.2832
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34naf"]
+size = Vector2(92, 54)
+
+[node name="personaje_1" type="CharacterBody2D"]
+position = Vector2(539, 535)
+script = ExtResource("1_58krt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.5, 3)
+scale = Vector2(0.0483398, 0.0488281)
+texture = ExtResource("2_yqj2h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
+shape = SubResource("CircleShape2D_x0ot2")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2, -29)
+shape = SubResource("RectangleShape2D_34naf")
