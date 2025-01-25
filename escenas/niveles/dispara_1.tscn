@@ -10,31 +10,34 @@
 script = ExtResource("1_ro2gb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(433, -10)
+position = Vector2(500, 103)
 scale = Vector2(2, 2)
 texture = ExtResource("5_h3b8k")
 
 [node name="Bridge" parent="." instance=ExtResource("2_og4dl")]
 
 [node name="Cursor_dispara" parent="." instance=ExtResource("2_yigsh")]
-position = Vector2(250, 469)
+position = Vector2(313, 342)
 
 [node name="Burbujas" type="Node2D" parent="."]
 
 [node name="ObjetivoBurbuja" parent="Burbujas" instance=ExtResource("1_g6lxu")]
-position = Vector2(60, 133)
+position = Vector2(97, 258)
 
 [node name="ObjetivoBurbuja2" parent="Burbujas" instance=ExtResource("1_g6lxu")]
-position = Vector2(144, 60)
+position = Vector2(115, 418)
+
+[node name="ObjetivoBurbuja6" parent="Burbujas" instance=ExtResource("1_g6lxu")]
+position = Vector2(254, 573)
 
 [node name="ObjetivoBurbuja3" parent="Burbujas" instance=ExtResource("1_g6lxu")]
-position = Vector2(262, 187)
+position = Vector2(270, 139)
 
 [node name="ObjetivoBurbuja4" parent="Burbujas" instance=ExtResource("1_g6lxu")]
-position = Vector2(453, 231)
+position = Vector2(457, 266)
 
 [node name="ObjetivoBurbuja5" parent="Burbujas" instance=ExtResource("1_g6lxu")]
-position = Vector2(401, 71)
+position = Vector2(484, 514)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 112.0
@@ -44,5 +47,5 @@ offset_bottom = 354.0
 theme_override_font_sizes/font_size = 64
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(248, 232)
+position = Vector2(315, 345)
 zoom = Vector2(1.25, 1.25)
