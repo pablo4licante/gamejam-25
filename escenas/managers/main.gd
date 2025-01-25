@@ -241,7 +241,7 @@ func seleccionar_nivel() -> String:
 	return random
  
 func _ready():
-	viewport_juego1.get_parent().set_stretch(true)
+	viewport_juego1.get_parent().set_stretch(true) 
 	viewport_juego2.get_parent().set_stretch(true)
 	viewport_compartido.get_parent().set_stretch(true)
 	contador_carga = TIEMPO_TRANSICION
