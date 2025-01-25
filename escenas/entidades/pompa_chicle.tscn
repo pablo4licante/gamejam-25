@@ -8,5 +8,6 @@ position = Vector2(575, 375)
 script = ExtResource("1_ub7do")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.690196)
 scale = Vector2(0.01, 0.01)
 texture = ExtResource("1_vyxla")

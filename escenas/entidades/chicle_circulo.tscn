@@ -1,20 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://ig7pobn0gfsv"]
+[gd_scene load_steps=6 format=3 uid="uid://ig7pobn0gfsv"]
 
+[ext_resource type="Script" path="res://escenas/entidades/chicle_boca.gd" id="1_dw425"]
+[ext_resource type="Texture2D" uid="uid://sb6uwneua7ul" path="res://assets/sprites/boca_cerrada.png" id="1_iwxg0"]
 [ext_resource type="Texture2D" uid="uid://bckkid7nk1iib" path="res://assets/sprites/dotted_circle.png" id="1_jikoe"]
-[ext_resource type="Texture2D" uid="uid://hl7ff4ysv6ip" path="res://assets/sprites/mouth.png" id="2_uxxpv"]
+[ext_resource type="Texture2D" uid="uid://6n2cxp1f04jf" path="res://assets/sprites/boca_soplando.png" id="2_0rslr"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dscop"]
 blend_mode = 1
 
 [node name="Circulo" type="Node2D"]
 position = Vector2(575, 375)
+script = ExtResource("1_dw425")
+
+[node name="SpriteBocaC" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_iwxg0")
+
+[node name="SpriteBocaA" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(2, 19)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_0rslr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.580392)
 material = SubResource("CanvasItemMaterial_dscop")
 texture = ExtResource("1_jikoe")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(0, -29)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_uxxpv")

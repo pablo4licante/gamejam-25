@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hl7ff4ysv6ip"
-path="res://.godot/imported/mouth.png-1af76599b17c21e7d1d65ce019f080c3.ctex"
+uid="uid://6n2cxp1f04jf"
+path="res://.godot/imported/boca_soplando.png-d69457b72ee591ddcfa4110e6565ee6e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/mouth.png"
-dest_files=["res://.godot/imported/mouth.png-1af76599b17c21e7d1d65ce019f080c3.ctex"]
+source_file="res://assets/sprites/boca_soplando.png"
+dest_files=["res://.godot/imported/boca_soplando.png-d69457b72ee591ddcfa4110e6565ee6e.ctex"]
 
 [params]
 
