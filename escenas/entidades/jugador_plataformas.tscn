@@ -1,43 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://r0fl5l5sychu"]
+[gd_scene load_steps=5 format=3 uid="uid://r0fl5l5sychu"]
 
 [ext_resource type="Script" path="res://escenas/entidades/jugador_plataformas.gd" id="1_i5kn6"]
-[ext_resource type="Texture2D" uid="uid://cdeexsn73c6nx" path="res://assets/sprites/personaje_estatico_azul.png" id="2_awlev"]
-[ext_resource type="Texture2D" uid="uid://c3ga2oajcjb4t" path="res://assets/sprites/personaje_salto_azul.png" id="3_ko406"]
-[ext_resource type="Texture2D" uid="uid://ckycbnh56hg78" path="res://assets/sprites/personaje_paso1_azul.png" id="3_ryj40"]
-[ext_resource type="Texture2D" uid="uid://cl4o35nqxdg1b" path="res://assets/sprites/personaje_paso2_azul.png" id="4_iyscj"]
+[ext_resource type="SpriteFrames" uid="uid://d2r4hvuwv2vi8" path="res://assets/sprites/jugador_plataformas_2.tres" id="2_3p3e2"]
+[ext_resource type="SpriteFrames" uid="uid://bwhcmyi2cy7f1" path="res://assets/sprites/jugador_plataformas_1.tres" id="2_vc1or"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t83pe"]
 radius = 40.0
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_wk1t5"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_awlev")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 10.0,
-"texture": ExtResource("3_ko406")
-}],
-"loop": true,
-"name": &"jump",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_ryj40")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_iyscj")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 5.0
-}]
 
 [node name="JugadorPlataformas" type="CharacterBody2D"]
 collision_mask = 6
@@ -50,6 +18,11 @@ shape = SubResource("CircleShape2D_t83pe")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 4
 scale = Vector2(0.05, 0.05)
-sprite_frames = SubResource("SpriteFrames_wk1t5")
-animation = &"jump"
-frame_progress = 0.376925
+sprite_frames = ExtResource("2_vc1or")
+animation = &"idle"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+texture_filter = 4
+scale = Vector2(0.05, 0.05)
+sprite_frames = ExtResource("2_3p3e2")
+animation = &"idle"
