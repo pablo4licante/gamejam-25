@@ -1,53 +1,69 @@
-[gd_scene load_steps=2 format=3 uid="uid://ceh1gtstwdudh"]
+[gd_scene load_steps=7 format=3 uid="uid://ceh1gtstwdudh"]
 
 [ext_resource type="Script" path="res://escenas/managers/main.gd" id="1_byav3"]
+[ext_resource type="Texture2D" uid="uid://n77cfiy6jkvg" path="res://assets/sprites/corazon.png" id="2_2g6pr"]
 
-[node name="Node2D" type="Node2D" node_paths=PackedStringArray("viewport_juego1", "viewport_juego2", "viewport_compartido")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2nuhl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nd4ce"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lwxc3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nr1ry"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("viewport_juego1", "viewport_juego2", "viewport_compartido", "ui_contador_carga", "ui_contador_juego", "ui_panel_juego", "ui_panel_vidas", "ui_corazon", "ui_vidas1", "ui_vidas2", "ui_resultado")]
 script = ExtResource("1_byav3")
-viewport_juego1 = NodePath("CanvasLayer/Panel/ContenedorJuego1/SubViewport")
-viewport_juego2 = NodePath("CanvasLayer/Panel/ContenedorJuego2/SubViewport")
-viewport_compartido = NodePath("CanvasLayer/Panel/ContenedorCompartido/SubViewport")
+viewport_juego1 = NodePath("CanvasLayer/PanelJuego/ContenedorJuego1/SubViewport")
+viewport_juego2 = NodePath("CanvasLayer/PanelJuego/ContenedorJuego2/SubViewport")
+viewport_compartido = NodePath("CanvasLayer/PanelJuego/ContenedorCompartido/SubViewport")
+ui_contador_carga = NodePath("CanvasLayer/PanelHUD/ContadorTransicion")
+ui_contador_juego = NodePath("CanvasLayer/PanelHUD/ContadorJuego")
+ui_panel_juego = NodePath("CanvasLayer/PanelJuego")
+ui_panel_vidas = NodePath("CanvasLayer/PanelVidas")
+ui_corazon = NodePath("CanvasLayer/PanelVidas/Corazon")
+ui_vidas1 = NodePath("CanvasLayer/PanelVidas/Panel/Vidas1")
+ui_vidas2 = NodePath("CanvasLayer/PanelVidas/Panel2/Vidas2")
+ui_resultado = NodePath("CanvasLayer/PanelHUD/Resultado")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="PanelJuego" type="Panel" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ContenedorJuego1" type="SubViewportContainer" parent="CanvasLayer/Panel"]
-visible = false
+[node name="ContenedorJuego1" type="SubViewportContainer" parent="CanvasLayer/PanelJuego"]
 layout_mode = 1
 anchors_preset = -1
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_right = 550.0
 
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/Panel/ContenedorJuego1"]
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/PanelJuego/ContenedorJuego1"]
 disable_3d = true
 handle_input_locally = false
 size = Vector2i(550, 648)
 render_target_update_mode = 0
 
-[node name="ContenedorJuego2" type="SubViewportContainer" parent="CanvasLayer/Panel"]
-visible = false
+[node name="ContenedorJuego2" type="SubViewportContainer" parent="CanvasLayer/PanelJuego"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.0
+anchor_left = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -550.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/Panel/ContenedorJuego2"]
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/PanelJuego/ContenedorJuego2"]
 disable_3d = true
 handle_input_locally = false
 size = Vector2i(550, 648)
 render_target_update_mode = 0
 
-[node name="ContenedorCompartido" type="SubViewportContainer" parent="CanvasLayer/Panel"]
+[node name="ContenedorCompartido" type="SubViewportContainer" parent="CanvasLayer/PanelJuego"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -56,8 +72,161 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/Panel/ContenedorCompartido"]
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/PanelJuego/ContenedorCompartido"]
 disable_3d = true
 handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 0
+
+[node name="PanelVidas" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Corazon" type="TextureRect" parent="CanvasLayer/PanelVidas"]
+visible = false
+layout_mode = 2
+offset_left = 268.0
+offset_top = 304.0
+offset_right = 308.0
+offset_bottom = 344.0
+texture = ExtResource("2_2g6pr")
+expand_mode = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PanelVidas"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2nuhl")
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelVidas/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -82.0
+offset_top = 50.0
+offset_right = 82.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "Jugador 1"
+
+[node name="Vidas1" type="HBoxContainer" parent="CanvasLayer/PanelVidas/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/PanelVidas"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nd4ce")
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelVidas/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -82.0
+offset_top = 50.0
+offset_right = 82.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "Jugador 2
+"
+
+[node name="Vidas2" type="HBoxContainer" parent="CanvasLayer/PanelVidas/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelHUD" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_lwxc3")
+
+[node name="ContadorJuego" type="ProgressBar" parent="CanvasLayer/PanelHUD"]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -60.0
+offset_right = 200.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_nr1ry")
+value = 50.0
+show_percentage = false
+
+[node name="ContadorTransicion" type="Label" parent="CanvasLayer/PanelHUD"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -44.0
+offset_right = 20.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 64
+text = "1"
+
+[node name="Resultado" type="Label" parent="CanvasLayer/PanelHUD"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -25.0
+offset_right = 82.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "Resultado"
+horizontal_alignment = 1

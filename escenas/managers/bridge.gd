@@ -4,6 +4,7 @@ var tipo_interfaz = 0
 
 @export var finished = false
 @export var puntuacion = 0 
+@export var dificultad = 1 
 @export var action_map = {
 	"up": [0.0, false],
 	"down": [0.0, false],

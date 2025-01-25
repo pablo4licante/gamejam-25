@@ -23,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lb4gy")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer/Panel"]
-position = Vector2(297.13, 186)
-scale = Vector2(178.5, 110.5)
+[node name="Cursor" type="MeshInstance2D" parent="CanvasLayer/Panel"]
+position = Vector2(576, 324)
+scale = Vector2(100, 100)
 mesh = SubResource("QuadMesh_whkrm")
