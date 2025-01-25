@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dctmj078qwk42"]
+
+[ext_resource type="PackedScene" uid="uid://wls1xt3tgwv" path="res://escenas/managers/bridge.tscn" id="1_5migs"]
+[ext_resource type="PackedScene" uid="uid://c0qmjx3bhin0f" path="res://escenas/entidades/pompa_chicle.tscn" id="1_6glwd"]
+[ext_resource type="PackedScene" uid="uid://b03fq1yaqwc8e" path="res://escenas/entidades/chicle_circulo.tscn" id="2_ubr66"]
+
+[node name="Juego" type="Node2D"]
+
+[node name="Bridge" parent="." instance=ExtResource("1_5migs")]
+
+[node name="Pompa" parent="." instance=ExtResource("1_6glwd")]
+
+[node name="Circulo" parent="." instance=ExtResource("2_ubr66")]
+scale = Vector2(0.95, 0.95)

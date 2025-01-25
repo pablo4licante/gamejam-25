@@ -1,5 +1,6 @@
 extends CharacterBody2D
-@onready var area_2d: Area2D = $Area2D
+@onready var area_2d: Area2D = $Area2D 
+@onready var bridge = $"../Bridge"
 
 const SPEED = 300.0
 var acceleration = 300.0
@@ -21,7 +22,7 @@ func _physics_process(_delta: float) -> void:
 
 	position.y = start_y + sin(time / 1000.0 * float_speed) * float_amplitude
 
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction = bridge.get_strength("right") - bridge.get_strength("left")
 	if previous_direction != direction:
 		previous_direction = direction
 		acceleration = 300
@@ -36,5 +37,5 @@ func _physics_process(_delta: float) -> void:
 
 
 func reventar(_a):
-	print("Muero")
+	bridge.puntuacion = -100  
 	queue_free()

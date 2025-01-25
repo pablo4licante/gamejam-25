@@ -26,7 +26,9 @@ var niveles = {			# Tipo Victoria
 	#"test2": [0],
 	#"test": [0],
 	"dispara_1": [1],
-	#"escena_plataformas_1": [1]
+	"game_pinchos": [2],
+	"game_chicle": [0],
+	"escena_plataformas_1": [1]
 }
 var nivel_tipo_victoria = 0
 
@@ -67,7 +69,19 @@ func actualizar_controles(jugador) -> void:
 		var cont = str(jugador) 
 
 		match puente.tipo_interfaz:
-			0:
+			0: 
+				puente.action_map["up"][3] = Input.is_action_just_released(cont+"_up") 
+				puente.action_map["down"][3] = Input.is_action_just_released(cont+"_down") 
+				puente.action_map["left"][3] = Input.is_action_just_released(cont+"_left") 
+				puente.action_map["right"][3] = Input.is_action_just_released(cont+"_right") 
+				puente.action_map["action"][3] = Input.is_action_just_released(cont+"_action")
+
+				puente.action_map["up"][2] = Input.is_action_just_pressed(cont+"_up") 
+				puente.action_map["down"][2] = Input.is_action_just_pressed(cont+"_down") 
+				puente.action_map["left"][2] = Input.is_action_just_pressed(cont+"_left") 
+				puente.action_map["right"][2] = Input.is_action_just_pressed(cont+"_right") 
+				puente.action_map["action"][2] = Input.is_action_just_pressed(cont+"_action")
+
 				puente.action_map["up"][1] = Input.is_action_pressed(cont+"_up") 
 				puente.action_map["down"][1] = Input.is_action_pressed(cont+"_down") 
 				puente.action_map["left"][1] = Input.is_action_pressed(cont+"_left") 
@@ -115,7 +129,7 @@ func cambiar_vidas() -> void:
 		return
  
 	match nivel_tipo_victoria:
-		0:
+		0: # Por puntos mas altos = victoria
 			match puente_juego1.tipo_interfaz:
 				0:
 					if puente_juego1.puntuacion > puente_juego2.puntuacion:
@@ -131,37 +145,32 @@ func cambiar_vidas() -> void:
 					if puente_juego1.puntuacion2 > puente_juego1.puntuacion1:
 						vidas_1 -= 1
 						print("Pierde 1")
-		1:
+		1: # Llegar a una meta = victoria
 			if not puente_juego1.finished:
 				vidas_1 -= 1
 				print("Pierde 1")
 			if not puente_juego2.finished:
 				vidas_2 -= 1
 				print("Pierde 2")
+		2: # Sobrevivir obstaculos
+			match puente_juego1.tipo_interfaz:
+				0:
+					if puente_juego1.puntuacion < 0:
+						vidas_1 -= 1
+						print("Pierde 1")
+					if puente_juego2.puntuacion < 0:
+						vidas_2 -= 1
+						print("Pierde 2")
+				1:
+					if puente_juego1.puntuacion1 < 0:
+						vidas_1 -= 1
+						print("Pierde 1")
+					if puente_juego1.puntuacion2 < 0:
+						vidas_2 -= 1
+						print("Pierde 2")
 
 
 
-
-func cuantificar_puntos() -> void:
-	if puente_juego1 == null or puente_juego2 == null:
-		return
-
-	match puente_juego1.tipo_interfaz:
-		0:
-			if puente_juego1.puntuacion > puntos_juego1_actual:
-				puntuacion_1 += (puente_juego1.puntuacion - puntos_juego1_actual)
-
-			if puente_juego2.puntuacion > puntos_juego2_actual:
-				puntuacion_2 += (puente_juego2.puntuacion - puntos_juego2_actual)
-		1:
-			if puente_juego1.puntuacion1 > puntos_juego1_actual:
-				puntuacion_1 += (puente_juego1.puntuacion1 - puntos_juego1_actual)
-
-			if puente_juego2.puntuacion2 > puntos_juego2_actual:
-				puntuacion_2 += (puente_juego2.puntuacion2 - puntos_juego2_actual)
-	 
-	pass
- 
 func buscar_bridge(node) -> Node2D:
 	if node.name == "Bridge" or node.name == "BridgeDouble":
 		return node

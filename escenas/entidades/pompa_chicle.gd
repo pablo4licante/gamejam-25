@@ -1,4 +1,6 @@
 extends Node2D
+ 
+@onready var bridge = $"../Bridge"
 
 # Factor por el cual aumentará la escala
 var scale_factor: float = 1.0
@@ -19,22 +21,21 @@ func _process(delta: float) -> void:
 		scale_factor = 1.0
 		
 	delay += delta
-	print(i)
+	
 		
-	if Input.is_action_just_pressed("ui_accept") && i == 0:
+	if bridge.just_pressed("action") && i == 0:
 		times_pressed += 1
 		scale_multiplier = L / (1 + exp(-k * -times_pressed))
-		print(scale)
 		scale_factor += 0.02 + (scale_factor-0.9)*scale_multiplier 
 		i = 3
 		delay = 0
 	if (i > 0): i -= 1
 	
-	if Input.is_action_just_released("ui_accept"):
+	if bridge.just_released("action"):
 		puntuation = 0
 		puntuation += tension - scale_multiplier
 		puntuation -= scale_multiplier - off
-		print("puntuation: " , floor(puntuation/6 * 1000), "%") 
+		bridge.puntuacion = floor(puntuation/6 * 1000)
 	
 	if scale[0] >= 28:
 		queue_free();

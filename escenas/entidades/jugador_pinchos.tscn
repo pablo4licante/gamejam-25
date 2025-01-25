@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://kle5we2o5xj4"]
+[gd_scene load_steps=5 format=3 uid="uid://bb36pno1bfkv0"]
 
 [ext_resource type="Script" path="res://escenas/entidades/personaje_1.gd" id="1_58krt"]
 [ext_resource type="Texture2D" uid="uid://bnrmpb61hr8lv" path="res://assets/sprites/PompaAzul.png" id="2_yqj2h"]
