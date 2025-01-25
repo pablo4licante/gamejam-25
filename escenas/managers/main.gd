@@ -36,6 +36,7 @@ var sound_links = {
 
 var TIEMPO_JUEGO = 10.0
 var TIEMPO_TRANSICION = 6.0
+var TIEMPO_TRANSICION_O = 6.0
 
 var nivel_actual = "" 
 var nivel_seleccionado = ""
@@ -289,6 +290,9 @@ func _ready():
 	for key in sound_links:
 		sound_links[key] = sounds[sound_links[key]]
 
+var loading_next = false
+var contador_buff = 0.5
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if empezado:
@@ -306,6 +310,7 @@ func _process(delta: float) -> void:
 			ui_contador_juego.visible = false
 			empezado = false
 			contador_carga = TIEMPO_TRANSICION
+			contador_buff = 0.5
 			nivel_actual = ""
 			nivel_seleccionado = "" 
    
@@ -325,24 +330,35 @@ func _process(delta: float) -> void:
 				ui_resultado.text = "Empate!";
 
 		else: 
+			contador_buff -= 1 * delta 
 			contador_carga -= 1 * delta 
-			if contador_carga < 4: 
-				ui_transicion.play()
-				ui_transicion.visible = true
+			
+			actualizar_vidas()
+			if contador_buff <= 0 and contador_carga < 4:
+				if not loading_next: 
+					print(TIEMPO_TRANSICION_O/TIEMPO_TRANSICION)
+					ui_transicion.speed(TIEMPO_TRANSICION_O/TIEMPO_TRANSICION)
+					ui_transicion.play()
+					loading_next = true
+				 
+				if loading_next:
+					if ui_transicion.playing():
+						ui_panel_juego.visible = false
+						ui_panel_vidas.visible = true
+						ui_transicion.visible = true
+					else:
+						contador_carga = 0
+						loading_next = false 
+						ui_panel_juego.visible = true
+						ui_panel_vidas.visible = false
+						nivel_seleccionado = seleccionar_nivel()
+						nivel_ultimo = nivel_seleccionado
+						cargar_nivel(nivel_seleccionado)
+						print("Nuevo nivel seleccionado: ", nivel_seleccionado)
 			else:
-				ui_transicion.visible = false
-
-			if contador_carga > 0:
-				actualizar_vidas()
 				ui_panel_juego.visible = false
 				ui_panel_vidas.visible = true
-			else:
-				ui_panel_juego.visible = true
-				ui_panel_vidas.visible = false
-				nivel_seleccionado = seleccionar_nivel()
-				nivel_ultimo = nivel_seleccionado
-				cargar_nivel(nivel_seleccionado)
-				print("Nuevo nivel seleccionado: ", nivel_seleccionado)
+				ui_transicion.visible = false
  
 	if empezado or nivel_actual == nivel_seleccionado:
 		return 

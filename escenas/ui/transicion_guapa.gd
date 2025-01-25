@@ -2,6 +2,12 @@ extends Node2D
 
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
 
+func speed(mult) -> void:
+	anim_player.speed_scale = mult
+
+func playing() -> bool: 
+	return anim_player.current_animation_position < 4
+
 func play() -> void:
 	anim_player.play("count")
 
