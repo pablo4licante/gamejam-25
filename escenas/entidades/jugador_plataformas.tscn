@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://r0fl5l5sychu"]
+
+[ext_resource type="Script" path="res://escenas/entidades/jugador_plataformas.gd" id="1_i5kn6"]
+[ext_resource type="Texture2D" uid="uid://dsd8p2ifsciuh" path="res://assets/sprites/tile_0085.png" id="2_p0y15"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t83pe"]
+radius = 43.566
+
+[node name="JugadorPlataformas" type="CharacterBody2D"]
+collision_mask = 6
+script = ExtResource("1_i5kn6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+scale = Vector2(5.36, 5.36)
+texture = ExtResource("2_p0y15")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_t83pe")

@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0oqkkj608r8g"]
+
+[ext_resource type="PackedScene" uid="uid://r0fl5l5sychu" path="res://escenas/entidades/jugador_plataformas.tscn" id="1_xfa0f"]
+[ext_resource type="Script" path="res://escenas/entidades/escena_plataformas_1.gd" id="1_yrlp3"]
+[ext_resource type="PackedScene" uid="uid://c1nn4hj3wbvb" path="res://escenas/entidades/plataforma_burbuja.tscn" id="2_d7bcf"]
+[ext_resource type="Texture2D" uid="uid://cyhdqtfg0xq7d" path="res://assets/sprites/tile_0009.png" id="3_wtu25"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ervy8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_65nee"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fh77o"]
+size = Vector2(417, 221)
+
+[node name="EscenaPlataformas1" type="Node"]
+script = ExtResource("1_yrlp3")
+
+[node name="Destiny" type="Node2D" parent="."]
+position = Vector2(1090, 446)
+
+[node name="Sprite2D" type="Sprite2D" parent="Destiny"]
+texture_filter = 1
+scale = Vector2(5.06071, 8.42428)
+texture = ExtResource("3_wtu25")
+
+[node name="Area2D" type="Area2D" parent="Destiny"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Destiny/Area2D"]
+scale = Vector2(4.06419, 6.73675)
+shape = SubResource("RectangleShape2D_ervy8")
+
+[node name="Node2D" type="StaticBody2D" parent="."]
+position = Vector2(99, 620)
+collision_layer = 7
+physics_material_override = SubResource("PhysicsMaterial_65nee")
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -110.0
+offset_right = 208.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.453164, 0.905678, 0.490577, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
+shape = SubResource("RectangleShape2D_fh77o")
+
+[node name="Node2D2" type="StaticBody2D" parent="."]
+position = Vector2(987, 620)
+collision_layer = 7
+physics_material_override = SubResource("PhysicsMaterial_65nee")
+
+[node name="ColorRect" type="ColorRect" parent="Node2D2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -110.0
+offset_right = 208.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.453164, 0.905678, 0.490577, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2"]
+shape = SubResource("RectangleShape2D_fh77o")
+
+[node name="JugadorPlataformas" parent="." instance=ExtResource("1_xfa0f")]
+position = Vector2(916, 446)
+
+[node name="PlataformaBurbuja" parent="." instance=ExtResource("2_d7bcf")]
+position = Vector2(615, 519)
+
+[node name="PlataformaBurbuja2" parent="." instance=ExtResource("2_d7bcf")]
+position = Vector2(470, 519)
