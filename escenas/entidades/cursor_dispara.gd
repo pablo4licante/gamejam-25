@@ -11,7 +11,7 @@ var colliding_bodies : Array[Node2D] = []
 
 @onready var bridge = $"../Bridge"
 
-func _input(ev):
+func _input(_ev):
 	if bridge.is_pressed("action"):
 		check_bubble()
 		
@@ -20,7 +20,7 @@ func _ready():
 	area_2d.body_exited.connect(on_body_exited)
 
 
-func _process(delta):
+func _process(_delta):
 	var x_movement = bridge.get_strength("right") - bridge.get_strength("left")
 	var y_movement = bridge.get_strength("down") - bridge.get_strength("up")
 	velocity.x = x_movement * WALK_SPEED 

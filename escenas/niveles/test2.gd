@@ -7,7 +7,7 @@ func _ready() -> void:
 	pass # Replace with function body.
  
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void: 
+func _process(_delta: float) -> void: 
 	if bridge.is_pressed("up", 1):
 		get_node("CanvasLayer/Panel/MeshInstance2D").position.y += 1
 		print("moviendo jugador 1")

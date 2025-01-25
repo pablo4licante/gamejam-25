@@ -1,0 +1,116 @@
+[gd_scene load_steps=9 format=3 uid="uid://dbesg3xjduas7"]
+
+[ext_resource type="Script" path="res://escenas/niveles/escena_plataformas_1.gd" id="1_8uool"]
+[ext_resource type="PackedScene" path="res://escenas/managers/bridge.tscn" id="2_vyskl"]
+[ext_resource type="Texture2D" uid="uid://cyhdqtfg0xq7d" path="res://assets/sprites/tile_0009.png" id="3_5176p"]
+[ext_resource type="PackedScene" uid="uid://r0fl5l5sychu" path="res://escenas/entidades/jugador_plataformas.tscn" id="4_xgfom"]
+[ext_resource type="PackedScene" uid="uid://c1nn4hj3wbvb" path="res://escenas/entidades/plataforma_burbuja.tscn" id="5_ea4my"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ervy8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_65nee"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fh77o"]
+size = Vector2(417, 221)
+
+[node name="EscenaPlataformas3" type="Node"]
+script = ExtResource("1_8uool")
+
+[node name="Bridge" parent="." instance=ExtResource("2_vyskl")]
+position = Vector2(-185, 599)
+
+[node name="Destiny" type="Node2D" parent="."]
+position = Vector2(-183, 309)
+
+[node name="Sprite2D" type="Sprite2D" parent="Destiny"]
+texture_filter = 1
+scale = Vector2(5.06071, 8.42428)
+texture = ExtResource("3_5176p")
+
+[node name="Area2D" type="Area2D" parent="Destiny"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Destiny/Area2D"]
+scale = Vector2(4.06419, 6.73675)
+shape = SubResource("RectangleShape2D_ervy8")
+
+[node name="Node2D" type="StaticBody2D" parent="."]
+position = Vector2(-120, 1158)
+collision_layer = 7
+physics_material_override = SubResource("PhysicsMaterial_65nee")
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -110.0
+offset_right = 208.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.453164, 0.905678, 0.490577, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
+shape = SubResource("RectangleShape2D_fh77o")
+
+[node name="Node2D2" type="StaticBody2D" parent="."]
+position = Vector2(-100, 487)
+collision_layer = 7
+physics_material_override = SubResource("PhysicsMaterial_65nee")
+
+[node name="ColorRect" type="ColorRect" parent="Node2D2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -110.0
+offset_right = 208.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.453164, 0.905678, 0.490577, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2"]
+shape = SubResource("RectangleShape2D_fh77o")
+
+[node name="JugadorPlataformas" parent="." instance=ExtResource("4_xgfom")]
+position = Vector2(24, 998)
+
+[node name="PlataformaBurbuja" parent="." instance=ExtResource("5_ea4my")]
+position = Vector2(438, 798)
+
+[node name="PlataformaBurbuja4" parent="." instance=ExtResource("5_ea4my")]
+position = Vector2(445, 402)
+
+[node name="PlataformaBurbuja5" parent="." instance=ExtResource("5_ea4my")]
+position = Vector2(280, 271)
+
+[node name="PlataformaBurbuja2" parent="." instance=ExtResource("5_ea4my")]
+position = Vector2(277, 984)
+
+[node name="PlataformaBurbuja3" parent="." instance=ExtResource("5_ea4my")]
+position = Vector2(283, 594)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 38.0
+offset_top = 68.0
+offset_right = 328.0
+offset_bottom = 156.0
+theme_override_font_sizes/font_size = 64
+text = "¡Ganaste!"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-323, -37)
+anchor_mode = 0
+zoom = Vector2(0.5, 0.5)
