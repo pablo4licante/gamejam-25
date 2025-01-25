@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpxfom4m5bjte"]
+
+[ext_resource type="Script" path="res://escenas/entidades/pompa_chicle.gd" id="1_ub7do"]
+[ext_resource type="Texture2D" uid="uid://cghn5yb0mintt" path="res://assets/sprites/PompaChicle.png" id="1_vyxla"]
+
+[node name="Pompa" type="Node2D"]
+position = Vector2(575, 375)
+script = ExtResource("1_ub7do")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.690196)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("1_vyxla")
