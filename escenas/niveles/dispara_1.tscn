@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://vj0golyr06lc"]
+
+[ext_resource type="PackedScene" uid="uid://ciqljjbjkqo2m" path="res://escenas/entidades/objetivo_burbuja.tscn" id="1_g6lxu"]
+[ext_resource type="Script" path="res://escenas/niveles/dispara_1.gd" id="1_ro2gb"]
+[ext_resource type="PackedScene" uid="uid://bodn7uskalwok" path="res://escenas/entidades/cursor_dispara.tscn" id="2_yigsh"]
+
+[node name="Dispara1" type="Node"]
+script = ExtResource("1_ro2gb")
+
+[node name="Cursor_dispara" parent="." instance=ExtResource("2_yigsh")]
+position = Vector2(250, 469)
+
+[node name="Burbujas" type="Node2D" parent="."]
+
+[node name="ObjetivoBurbuja" parent="Burbujas" instance=ExtResource("1_g6lxu")]
+position = Vector2(60, 133)
+
+[node name="ObjetivoBurbuja2" parent="Burbujas" instance=ExtResource("1_g6lxu")]
+position = Vector2(144, 60)
+
+[node name="ObjetivoBurbuja3" parent="Burbujas" instance=ExtResource("1_g6lxu")]
+position = Vector2(262, 187)
+
+[node name="ObjetivoBurbuja4" parent="Burbujas" instance=ExtResource("1_g6lxu")]
+position = Vector2(453, 231)
+
+[node name="ObjetivoBurbuja5" parent="Burbujas" instance=ExtResource("1_g6lxu")]
+position = Vector2(401, 71)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 112.0
+offset_top = 266.0
+offset_right = 402.0
+offset_bottom = 354.0
+theme_override_font_sizes/font_size = 64

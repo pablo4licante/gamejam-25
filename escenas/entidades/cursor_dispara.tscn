@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bodn7uskalwok"]
+
+[ext_resource type="Script" path="res://escenas/entidades/cursor_dispara.gd" id="1_idjdx"]
+[ext_resource type="Texture2D" uid="uid://dsd8p2ifsciuh" path="res://assets/sprites/tile_0085.png" id="2_nqcl0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t83pe"]
+radius = 43.566
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x73tc"]
+radius = 44.0
+
+[node name="Cursor_dispara" type="CharacterBody2D"]
+collision_mask = 6
+script = ExtResource("1_idjdx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.447059)
+texture_filter = 3
+scale = Vector2(5.36, 5.36)
+texture = ExtResource("2_nqcl0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_t83pe")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_x73tc")
