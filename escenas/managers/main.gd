@@ -5,7 +5,7 @@ extends Node2D
 @export var viewport_compartido : Viewport
   
 var nivel_actual = ""
-var nivel_seleccionado = "test2"
+var nivel_seleccionado = "test"
 
 var puntuacion_1 = 0
 var puntuacion_2 = 0
@@ -82,7 +82,8 @@ func cargar_nivel(nombre) -> void:
 	if status == Error.OK: 
 		var scene = ResourceLoader.load_threaded_get(path)
 		var game_scene = scene.instantiate() 
-		puente_juego1 = game_scene.get_node("Bridge") 
+ 
+		puente_juego1 = game_scene.get_node_or_null("Bridge") 
 		if puente_juego1 == null: 
 			puente_juego1 = game_scene.get_node("BridgeDouble")
 
