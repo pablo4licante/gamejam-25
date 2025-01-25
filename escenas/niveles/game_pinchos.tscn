@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://6ushmaeiinej"]
+
+[ext_resource type="Script" path="res://escenas/niveles/game_pinchos.gd" id="1_vylca"]
+[ext_resource type="PackedScene" uid="uid://b6vj408ndkq37" path="res://escenas/entidades/generador_pinchos.tscn" id="2_2qsws"]
+[ext_resource type="PackedScene" uid="uid://kle5we2o5xj4" path="res://escenas/entidades/jugador_pinchos.tscn" id="3_wngn0"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_vylca")
+
+[node name="GeneradorPinchos" parent="." instance=ExtResource("2_2qsws")]
+
+[node name="personaje_1" parent="." instance=ExtResource("3_wngn0")]
