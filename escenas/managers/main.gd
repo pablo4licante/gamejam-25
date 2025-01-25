@@ -5,7 +5,7 @@ extends Node2D
 @export var viewport_compartido : Viewport
   
 var nivel_actual = ""
-var nivel_seleccionado = "test"
+var nivel_seleccionado = "escena_plataformas_1"
 
 var puntuacion_1 = 0
 var puntuacion_2 = 0
@@ -38,17 +38,29 @@ func actualizar_controles(jugador) -> void:
 
 		match puente.tipo_interfaz:
 			0:
-				puente.action_map["up"] = Input.is_action_pressed(cont+"_up") 
-				puente.action_map["down"] = Input.is_action_pressed(cont+"_down") 
-				puente.action_map["left"] = Input.is_action_pressed(cont+"_left") 
-				puente.action_map["right"] = Input.is_action_pressed(cont+"_right") 
-				puente.action_map["action"] = Input.is_action_pressed(cont+"_action")  
+				puente.action_map["up"][1] = Input.is_action_pressed(cont+"_up") 
+				puente.action_map["down"][1] = Input.is_action_pressed(cont+"_down") 
+				puente.action_map["left"][1] = Input.is_action_pressed(cont+"_left") 
+				puente.action_map["right"][1] = Input.is_action_pressed(cont+"_right") 
+				puente.action_map["action"][1] = Input.is_action_pressed(cont+"_action")  
+ 
+				puente.action_map["up"][0] = Input.get_action_strength(cont+"_up") 
+				puente.action_map["down"][0] = Input.get_action_strength(cont+"_down") 
+				puente.action_map["left"][0] = Input.get_action_strength(cont+"_left") 
+				puente.action_map["right"][0] = Input.get_action_strength(cont+"_right") 
+				puente.action_map["action"][0] = Input.get_action_strength(cont+"_action")  
 			1: 
-				puente.action_map[jugador]["up"] = Input.is_action_pressed(cont+"_up") 
-				puente.action_map[jugador]["down"] = Input.is_action_pressed(cont+"_down") 
-				puente.action_map[jugador]["left"] = Input.is_action_pressed(cont+"_left") 
-				puente.action_map[jugador]["right"] = Input.is_action_pressed(cont+"_right") 
-				puente.action_map[jugador]["action"] = Input.is_action_pressed(cont+"_action")  
+				puente.action_map[jugador]["up"][1] = Input.is_action_pressed(cont+"_up") 
+				puente.action_map[jugador]["down"][1] = Input.is_action_pressed(cont+"_down") 
+				puente.action_map[jugador]["left"][1] = Input.is_action_pressed(cont+"_left") 
+				puente.action_map[jugador]["right"][1] = Input.is_action_pressed(cont+"_right") 
+				puente.action_map[jugador]["action"][1] = Input.is_action_pressed(cont+"_action")  
+ 
+				puente.action_map[jugador]["up"][0] = Input.get_action_strength(cont+"_up") 
+				puente.action_map[jugador]["down"][0] = Input.get_action_strength(cont+"_down") 
+				puente.action_map[jugador]["left"][0] = Input.get_action_strength(cont+"_left") 
+				puente.action_map[jugador]["right"][0] = Input.get_action_strength(cont+"_right") 
+				puente.action_map[jugador]["action"][0] = Input.get_action_strength(cont+"_action")
 
 func cuantificar_puntos() -> void:
 	if puente_juego1 == null or puente_juego2 == null:
@@ -83,7 +95,7 @@ func cargar_nivel(nombre) -> void:
 		var scene = ResourceLoader.load_threaded_get(path)
 		var game_scene = scene.instantiate() 
  
-		puente_juego1 = game_scene.get_node_or_null("Bridge") 
+		puente_juego1 = game_scene.get_node("Bridge") 
 		if puente_juego1 == null: 
 			puente_juego1 = game_scene.get_node("BridgeDouble")
 
