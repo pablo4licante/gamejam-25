@@ -5,10 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://cnb6wh0xdprs6" path="res://assets/sprites/chincheta_verde.png" id="3_0khuj"]
 [ext_resource type="Texture2D" uid="uid://bml5xfevmcscn" path="res://assets/sprites/chincheta_rosa.png" id="4_7injd"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4bas"]
-size = Vector2(52, 74)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4biil"]
+radius = 15.7143
+height = 65.7143
 
 [node name="Pincho" type="CharacterBody2D"]
+scale = Vector2(1.4, 1.4)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_kyva4")
@@ -17,10 +19,11 @@ pincho_verde = ExtResource("3_0khuj")
 pincho_rosa = ExtResource("4_7injd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(362, 256)
+position = Vector2(-1, 0)
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("2_hfax8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(362, 255)
-shape = SubResource("RectangleShape2D_c4bas")
+position = Vector2(-0.714286, -2.14286)
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_4biil")
