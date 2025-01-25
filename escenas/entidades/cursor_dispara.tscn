@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bodn7uskalwok"]
 
 [ext_resource type="Script" path="res://escenas/entidades/cursor_dispara.gd" id="1_idjdx"]
-[ext_resource type="Texture2D" uid="uid://dsd8p2ifsciuh" path="res://assets/sprites/tile_0085.png" id="2_nqcl0"]
+[ext_resource type="Texture2D" uid="uid://peu1mxbofm7o" path="res://assets/sprites/cursor_azul.png" id="2_y38vy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t83pe"]
 radius = 43.566
@@ -14,10 +14,9 @@ collision_mask = 6
 script = ExtResource("1_idjdx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.447059)
 texture_filter = 3
-scale = Vector2(5.36, 5.36)
-texture = ExtResource("2_nqcl0")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_y38vy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

@@ -1,20 +1,25 @@
 [gd_scene load_steps=9 format=3 uid="uid://d1qdveij1okpp"]
 
 [ext_resource type="Script" path="res://escenas/niveles/escena_plataformas_1.gd" id="1_hmvut"]
+[ext_resource type="Texture2D" uid="uid://ni7yjftytsuk" path="res://assets/fondos/fondo_atrapa_bandera.jpg" id="2_e7vav"]
 [ext_resource type="PackedScene" path="res://escenas/managers/bridge.tscn" id="2_k00ni"]
-[ext_resource type="Texture2D" uid="uid://cyhdqtfg0xq7d" path="res://assets/sprites/tile_0009.png" id="3_avalc"]
+[ext_resource type="Texture2D" uid="uid://b7v1kiki3841u" path="res://assets/sprites/bandera.png" id="3_ddmog"]
 [ext_resource type="PackedScene" uid="uid://r0fl5l5sychu" path="res://escenas/entidades/jugador_plataformas.tscn" id="4_02xmo"]
 [ext_resource type="PackedScene" uid="uid://c1nn4hj3wbvb" path="res://escenas/entidades/plataforma_burbuja.tscn" id="5_hjpym"]
+[ext_resource type="PackedScene" uid="uid://bepv1i4s7pgar" path="res://escenas/entidades/plataforma_larga.tscn" id="6_5n1hn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ervy8"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_65nee"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fh77o"]
-size = Vector2(417, 221)
-
 [node name="EscenaPlataformas2" type="Node"]
 script = ExtResource("1_hmvut")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 1, 1, 1)
+offset_left = -287.0
+offset_top = -284.0
+offset_right = 935.0
+offset_bottom = 1037.0
+texture = ExtResource("2_e7vav")
 
 [node name="Bridge" parent="." instance=ExtResource("2_k00ni")]
 position = Vector2(-152, 99)
@@ -24,8 +29,8 @@ position = Vector2(-150, -46)
 
 [node name="Sprite2D" type="Sprite2D" parent="Destiny"]
 texture_filter = 1
-scale = Vector2(5.06071, 8.42428)
-texture = ExtResource("3_avalc")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_ddmog")
 
 [node name="Area2D" type="Area2D" parent="Destiny"]
 collision_layer = 2
@@ -33,81 +38,6 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Destiny/Area2D"]
 scale = Vector2(4.06419, 6.73675)
 shape = SubResource("RectangleShape2D_ervy8")
-
-[node name="Node2D" type="StaticBody2D" parent="."]
-position = Vector2(-201, 843)
-collision_layer = 7
-physics_material_override = SubResource("PhysicsMaterial_65nee")
-
-[node name="ColorRect" type="ColorRect" parent="Node2D"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -208.0
-offset_top = -110.0
-offset_right = 208.0
-offset_bottom = 109.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.453164, 0.905678, 0.490577, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
-shape = SubResource("RectangleShape2D_fh77o")
-
-[node name="Node2D2" type="StaticBody2D" parent="."]
-position = Vector2(-226, 126)
-collision_layer = 7
-physics_material_override = SubResource("PhysicsMaterial_65nee")
-
-[node name="ColorRect" type="ColorRect" parent="Node2D2"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -208.0
-offset_top = -110.0
-offset_right = 208.0
-offset_bottom = 109.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.453164, 0.905678, 0.490577, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2"]
-shape = SubResource("RectangleShape2D_fh77o")
-
-[node name="Node2D3" type="StaticBody2D" parent="."]
-position = Vector2(718, 450)
-collision_layer = 7
-physics_material_override = SubResource("PhysicsMaterial_65nee")
-
-[node name="ColorRect" type="ColorRect" parent="Node2D3"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -208.0
-offset_top = -110.0
-offset_right = 208.0
-offset_bottom = 109.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.453164, 0.905678, 0.490577, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D3"]
-shape = SubResource("RectangleShape2D_fh77o")
 
 [node name="JugadorPlataformas" parent="." instance=ExtResource("4_02xmo")]
 position = Vector2(-57, 683)
@@ -140,3 +70,12 @@ position = Vector2(-282, -275)
 scale = Vector2(-1.67065, -9.07751)
 anchor_mode = 0
 zoom = Vector2(0.5, 0.5)
+
+[node name="PlataformaLarga" parent="." instance=ExtResource("6_5n1hn")]
+position = Vector2(-161, 766)
+
+[node name="PlataformaLarga2" parent="." instance=ExtResource("6_5n1hn")]
+position = Vector2(675, 383)
+
+[node name="PlataformaLarga3" parent="." instance=ExtResource("6_5n1hn")]
+position = Vector2(-216, 57)

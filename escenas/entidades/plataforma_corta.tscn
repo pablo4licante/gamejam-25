@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1l8kcqyq7x5g"]
+
+[ext_resource type="Texture2D" uid="uid://j0xrwi0psspm" path="res://assets/sprites/bloque_corto.png" id="1_853m8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8ho6"]
+size = Vector2(208.27, 514.944)
+
+[node name="PlataformaLarga" type="StaticBody2D"]
+collision_layer = 7
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_853m8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7.5, 10.7761)
+scale = Vector2(0.849859, 0.171762)
+shape = SubResource("RectangleShape2D_i8ho6")

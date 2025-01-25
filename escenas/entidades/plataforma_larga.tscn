@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bepv1i4s7pgar"]
+
+[ext_resource type="Texture2D" uid="uid://cj8vkvghdexk2" path="res://assets/sprites/bloque_largo.png" id="1_deq28"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8ho6"]
+size = Vector2(417, 447.688)
+
+[node name="PlataformaLarga" type="StaticBody2D"]
+collision_layer = 7
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_deq28")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+scale = Vector2(0.849859, 0.171762)
+shape = SubResource("RectangleShape2D_i8ho6")
