@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bb36pno1bfkv0"]
+[gd_scene load_steps=6 format=3 uid="uid://bb36pno1bfkv0"]
 
 [ext_resource type="Script" path="res://escenas/entidades/personaje_1.gd" id="1_58krt"]
-[ext_resource type="Texture2D" uid="uid://dvcxxtlt186y0" path="res://assets/sprites/pompa.PNG" id="2_qf167"]
+[ext_resource type="Texture2D" uid="uid://bj1i45f2dkrq8" path="res://assets/sprites/Pompa_copia.png" id="2_8senu"]
+[ext_resource type="Texture2D" uid="uid://c3ga2oajcjb4t" path="res://assets/sprites/personaje_salto_azul.png" id="2_fhmbo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x0ot2"]
 radius = 44.2832
@@ -12,13 +13,19 @@ radius = 42.0119
 [node name="personaje_1" type="CharacterBody2D"]
 script = ExtResource("1_58krt")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-0.499984, 0.979809)
-scale = Vector2(0.0775, 0.0782829)
-texture = ExtResource("2_qf167")
+[node name="SpriteMonigote" type="Sprite2D" parent="."]
+scale = Vector2(0.045, 0.045)
+texture = ExtResource("2_fhmbo")
+flip_h = true
+
+[node name="SpriteBurbuja" type="Sprite2D" parent="."]
+position = Vector2(-2, 2)
+scale = Vector2(0.0772124, 0.0787566)
+texture = ExtResource("2_8senu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 1)
+visible = false
+position = Vector2(-2, 2)
 shape = SubResource("CircleShape2D_x0ot2")
 disabled = true
 
