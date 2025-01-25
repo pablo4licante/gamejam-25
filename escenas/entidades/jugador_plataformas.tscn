@@ -52,4 +52,4 @@ texture_filter = 4
 scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_wk1t5")
 animation = &"jump"
-frame_progress = 0.97236
+frame_progress = 0.376925

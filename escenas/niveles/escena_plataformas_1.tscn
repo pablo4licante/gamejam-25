@@ -18,9 +18,10 @@ size = Vector2(457, 102.5)
 [node name="EscenaPlataformas1" type="Node"]
 script = ExtResource("1_yrlp3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(288, 252)
-scale = Vector2(3, 3)
+[node name="Fondo" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(1474, -821)
+scale = Vector2(10, 10)
 texture = ExtResource("2_j5nac")
 
 [node name="Bridge" parent="." instance=ExtResource("2_q6grq")]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ceh1gtstwdudh"]
+[gd_scene load_steps=8 format=3 uid="uid://ceh1gtstwdudh"]
 
 [ext_resource type="Script" path="res://escenas/managers/main.gd" id="1_byav3"]
 [ext_resource type="Texture2D" uid="uid://n77cfiy6jkvg" path="res://assets/sprites/corazon.png" id="2_2g6pr"]
+[ext_resource type="Texture2D" uid="uid://bi5y7t11g8rqk" path="res://assets/ui/marco_juego_2.png" id="2_wm7y4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2nuhl"]
 
@@ -81,6 +82,15 @@ disable_3d = true
 handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelJuego"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wm7y4")
 
 [node name="PanelVidas" type="Panel" parent="CanvasLayer"]
 anchors_preset = 15

@@ -4,18 +4,16 @@
 [ext_resource type="Script" path="res://escenas/niveles/dispara_1.gd" id="1_ro2gb"]
 
 [ext_resource type="PackedScene" uid="uid://wls1xt3tgwv" path="res://escenas/managers/bridge.tscn" id="2_og4dl"]
-[ext_resource type="PackedScene" path="res://escenas/entidades/cursor_dispara.tscn" id="2_yigsh"]
+[ext_resource type="PackedScene" uid="uid://bgqybgesl5d4q" path="res://escenas/entidades/cursor_dispara.tscn" id="2_yigsh"]
 [ext_resource type="Texture2D" uid="uid://v3qwqt5xhgck" path="res://assets/fondos/fondo_explota_pompas.jpg" id="5_h3b8k"]
 
 
 [node name="Dispara1" type="Node"]
 script = ExtResource("1_ro2gb")
 
-[node name="Fondo" type="TextureRect" parent="."]
-offset_left = -274.0
-offset_top = -220.0
-offset_right = 803.0
-offset_bottom = 763.0
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(433, -10)
+scale = Vector2(2, 2)
 texture = ExtResource("5_h3b8k")
 
 [node name="Bridge" parent="." instance=ExtResource("2_og4dl")]
@@ -46,3 +44,7 @@ offset_top = 266.0
 offset_right = 402.0
 offset_bottom = 354.0
 theme_override_font_sizes/font_size = 64
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(248, 232)
+zoom = Vector2(1.25, 1.25)
