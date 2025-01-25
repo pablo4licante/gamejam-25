@@ -15,7 +15,7 @@ extends Node2D
 
 @export var ui_resultado : Label
   
-var TIEMPO_JUEGO = 5.0
+var TIEMPO_JUEGO = 10.0
 var TIEMPO_TRANSICION = 3.0
 
 var nivel_actual = "" 
@@ -247,6 +247,8 @@ func seleccionar_nivel() -> String:
 	var keys = niveles.keys()
 	var random = keys[randi() % keys.size()]
 
+	print("Comparando ", random, " con ", nivel_ultimo, " = ", str(random == nivel_ultimo))
+
 	if random == nivel_ultimo:
 		return seleccionar_nivel()
 
@@ -312,8 +314,8 @@ func _process(delta: float) -> void:
 	if empezado or nivel_actual == nivel_seleccionado:
 		return
 
-	cargar_nivel(nivel_seleccionado)
 	nivel_ultimo = nivel_seleccionado
+	cargar_nivel(nivel_seleccionado)
 
 	
 	 
