@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbbsnbxvnfywp"]
+
+[ext_resource type="VideoStream" path="res://menu/UI/intro_2.ogv" id="1_3od8g"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer"]
+texture_filter = 3
+anchors_preset = -1
+anchor_right = 1.002
+anchor_bottom = 1.01
+offset_right = -0.0961914
+offset_bottom = 0.199951
+stream = ExtResource("1_3od8g")
+autoplay = true
+loop = true

@@ -1,16 +1,58 @@
-[gd_scene load_steps=4 format=3 uid="uid://b13n4xvr2ka2r"]
+[gd_scene load_steps=11 format=3 uid="uid://b13n4xvr2ka2r"]
 
 [ext_resource type="Script" path="res://menu/script/button_play.gd" id="1_5mvi7"]
+[ext_resource type="FontFile" uid="uid://qicc4vvx1k2c" path="res://menu/fonts/Wedges.ttf" id="1_haafw"]
+[ext_resource type="VideoStream" path="res://menu/UI/interfaz_animada_sin_botones.ogv" id="1_kfrcb"]
 [ext_resource type="Script" path="res://menu/script/button_exit.gd" id="2_s6cea"]
+[ext_resource type="Script" path="res://menu/pompastic_lb.gd" id="3_3on6g"]
+[ext_resource type="Texture2D" uid="uid://3g88ljqye5i1" path="res://menu/UI/boton.png" id="3_pmu4n"]
 [ext_resource type="Script" path="res://menu/script/button_options.gd" id="3_xjdjr"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_or572"]
+resource_name = "blanco_butt"
+light_mode = 1
+
+[sub_resource type="Theme" id="Theme_3j7aj"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nip5o"]
+light_mode = 1
+
 [node name="Menu" type="Control"]
+material = SubResource("CanvasItemMaterial_or572")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.998
+offset_right = -1.0
+offset_bottom = 0.159912
+stream = ExtResource("1_kfrcb")
+autoplay = true
+expand = true
+loop = true
+
+[node name="POMPASTIC-LB" type="Label" parent="."]
+visible = false
+self_modulate = Color(1, 0.309804, 1, 1)
+layout_mode = 0
+offset_left = 833.0
+offset_top = 62.0
+offset_right = 1926.0
+offset_bottom = 373.0
+rotation = 0.453985
+theme_override_constants/line_spacing = 40
+theme_override_constants/shadow_offset_x = 8
+theme_override_fonts/font = ExtResource("1_haafw")
+theme_override_font_sizes/font_size = 200
+text = "POMPASTIC"
+script = ExtResource("3_3on6g")
 
 [node name="VBoxContainer_botones" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -19,32 +61,75 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -147.0
-offset_top = -176.5
-offset_right = 147.0
-offset_bottom = 176.5
+offset_left = -907.0
+offset_top = -113.0
+offset_right = -363.0
+offset_bottom = 519.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Title-Menu" type="Label" parent="VBoxContainer_botones"]
+visible = false
+modulate = Color(0.705882, 1, 1, 1)
 layout_mode = 2
+theme_override_constants/line_spacing = 25
+theme_override_font_sizes/font_size = 60
 text = "Game jam"
 horizontal_alignment = 1
 
 [node name="Button_play" type="Button" parent="VBoxContainer_botones"]
+self_modulate = Color(0.686275, 0.886275, 0.345098, 1)
+light_mask = 4
+visibility_layer = 4
 layout_mode = 2
+theme = SubResource("Theme_3j7aj")
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("1_haafw")
+theme_override_font_sizes/font_size = 100
 text = "PLAY"
+flat = true
 script = ExtResource("1_5mvi7")
 
+[node name="F_Buton" type="Sprite2D" parent="VBoxContainer_botones/Button_play"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_nip5o")
+position = Vector2(273, 76)
+scale = Vector2(1.0054, 0.760677)
+texture = ExtResource("3_pmu4n")
+
 [node name="Button_exit" type="Button" parent="VBoxContainer_botones"]
+self_modulate = Color(1, 0.509804, 0.988235, 1)
 layout_mode = 2
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("1_haafw")
+theme_override_font_sizes/font_size = 100
 text = "EXIT"
+flat = true
 script = ExtResource("2_s6cea")
 
+[node name="F_Buton" type="Sprite2D" parent="VBoxContainer_botones/Button_exit"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_nip5o")
+position = Vector2(273, 76)
+scale = Vector2(1.0054, 0.760677)
+texture = ExtResource("3_pmu4n")
+
 [node name="Button_options" type="Button" parent="VBoxContainer_botones"]
+self_modulate = Color(1, 1, 0.27451, 1)
 layout_mode = 2
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("1_haafw")
+theme_override_font_sizes/font_size = 100
 text = "OPTIONS"
+flat = true
 script = ExtResource("3_xjdjr")
+
+[node name="F_Buton" type="Sprite2D" parent="VBoxContainer_botones/Button_options"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_nip5o")
+position = Vector2(273, 76)
+scale = Vector2(1.0054, 0.760677)
+texture = ExtResource("3_pmu4n")
 
 [connection signal="pressed" from="VBoxContainer_botones/Button_exit" to="VBoxContainer_botones/Button_exit" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer_botones/Button_options" to="VBoxContainer_botones/Button_options" method="_on_pressed"]

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://csajnuhojn4mp"]
+[gd_scene load_steps=4 format=3 uid="uid://csajnuhojn4mp"]
 
+[ext_resource type="VideoStream" path="res://menu/UI/interfaz_animada_sin_botones.ogv" id="1_gyifa"]
 [ext_resource type="Script" path="res://menu/script/button_atras.gd" id="1_hfhtf"]
+[ext_resource type="FontFile" uid="uid://qicc4vvx1k2c" path="res://menu/fonts/Wedges.ttf" id="2_ues3o"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -14,6 +16,19 @@ offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.998
+offset_left = 10.0
+offset_right = 11.0
+offset_bottom = 10.1599
+stream = ExtResource("1_gyifa")
+autoplay = true
+expand = true
+loop = true
+
 [node name="VBoxContainer_botones" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -21,30 +36,37 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -147.0
-offset_top = -176.5
-offset_right = 147.0
-offset_bottom = 176.5
+offset_left = -907.0
+offset_top = -113.0
+offset_right = -363.0
+offset_bottom = 519.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title-Menu_options" type="Label" parent="VBoxContainer_botones"]
-layout_mode = 2
-text = "OPTIONS"
-horizontal_alignment = 1
-
 [node name="Button_volume" type="Button" parent="VBoxContainer_botones"]
 layout_mode = 2
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("2_ues3o")
+theme_override_font_sizes/font_size = 100
 text = "VOLUME"
+flat = true
 
 [node name="Button_resolution" type="Button" parent="VBoxContainer_botones"]
 layout_mode = 2
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("2_ues3o")
+theme_override_font_sizes/font_size = 100
 text = "RESOLUTION"
+flat = true
 
 [node name="Button_atras" type="Button" parent="VBoxContainer_botones"]
 layout_mode = 2
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("2_ues3o")
+theme_override_font_sizes/font_size = 100
 text = "BACK
 "
+flat = true
 script = ExtResource("1_hfhtf")
 
 [connection signal="pressed" from="VBoxContainer_botones/Button_resolution" to="VBoxContainer_botones/Button_resolution" method="_on_pressed"]
