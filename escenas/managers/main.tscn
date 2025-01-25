@@ -12,7 +12,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nr1ry"]
 bg_color = Color(1, 1, 1, 1)
 
-[node name="Node2D" type="Node2D" node_paths=PackedStringArray("viewport_juego1", "viewport_juego2", "viewport_compartido", "ui_contador_carga", "ui_contador_juego", "ui_panel_juego", "ui_panel_vidas", "ui_corazon", "ui_vidas1", "ui_vidas2")]
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("viewport_juego1", "viewport_juego2", "viewport_compartido", "ui_contador_carga", "ui_contador_juego", "ui_panel_juego", "ui_panel_vidas", "ui_corazon", "ui_vidas1", "ui_vidas2", "ui_resultado")]
 script = ExtResource("1_byav3")
 viewport_juego1 = NodePath("CanvasLayer/PanelJuego/ContenedorJuego1/SubViewport")
 viewport_juego2 = NodePath("CanvasLayer/PanelJuego/ContenedorJuego2/SubViewport")
@@ -24,6 +24,7 @@ ui_panel_vidas = NodePath("CanvasLayer/PanelVidas")
 ui_corazon = NodePath("CanvasLayer/PanelVidas/Corazon")
 ui_vidas1 = NodePath("CanvasLayer/PanelVidas/Panel/Vidas1")
 ui_vidas2 = NodePath("CanvasLayer/PanelVidas/Panel2/Vidas2")
+ui_resultado = NodePath("CanvasLayer/PanelHUD/Resultado")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -167,8 +168,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelHUD" type="Panel" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_lwxc3")
 
 [node name="ContadorJuego" type="ProgressBar" parent="CanvasLayer/PanelHUD"]
@@ -180,10 +184,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 306.0
-offset_top = 568.0
-offset_right = 806.0
-offset_bottom = 588.0
+offset_left = -200.0
+offset_top = -60.0
+offset_right = 200.0
+offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -199,12 +203,30 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 536.0
-offset_top = 260.0
-offset_right = 576.0
-offset_bottom = 348.0
+offset_left = -20.0
+offset_top = -44.0
+offset_right = 20.0
+offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 64
 text = "1"
+
+[node name="Resultado" type="Label" parent="CanvasLayer/PanelHUD"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -25.0
+offset_right = 82.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "Resultado"
+horizontal_alignment = 1

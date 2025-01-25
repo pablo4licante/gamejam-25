@@ -12,9 +12,11 @@ extends Node2D
 @export var ui_corazon : TextureRect
 @export var ui_vidas1 : BoxContainer
 @export var ui_vidas2 : BoxContainer
+
+@export var ui_resultado : Label
   
-const TIEMPO_JUEGO = 10
-const TIEMPO_TRANSICION = 3
+var TIEMPO_JUEGO = 5.0
+var TIEMPO_TRANSICION = 3.0
 
 var nivel_actual = "" 
 var nivel_seleccionado = ""
@@ -23,7 +25,7 @@ var nivel_ultimo = ""
 var niveles = {			# Tipo Victoria
 	"test2": [0],
 	#"test": [0],
-	"escena_plataformas_1": [0]
+	"escena_plataformas_1": [1]
 }
 var nivel_tipo_victoria = 0
 
@@ -116,19 +118,25 @@ func cambiar_vidas() -> void:
 			match puente_juego1.tipo_interfaz:
 				0:
 					if puente_juego1.puntuacion > puente_juego2.puntuacion:
-						vidas_2 -= 1
+						vidas_2 -= 1 
+						print("Pierde 2")
 					if puente_juego2.puntuacion > puente_juego1.puntuacion:
-						vidas_1 -= 1
+						vidas_1 -= 1 
+						print("Pierde 1")
 				1:
 					if puente_juego1.puntuacion1 > puente_juego1.puntuacion2:
 						vidas_2 -= 1
+						print("Pierde 2")
 					if puente_juego1.puntuacion2 > puente_juego1.puntuacion1:
 						vidas_1 -= 1
+						print("Pierde 1")
 		1:
 			if not puente_juego1.finished:
 				vidas_1 -= 1
+				print("Pierde 1")
 			if not puente_juego2.finished:
 				vidas_2 -= 1
+				print("Pierde 2")
 
 
 
@@ -248,6 +256,11 @@ func _process(delta: float) -> void:
 			ui_contador_juego.visible = true
 		else: 
 			cambiar_vidas()
+
+			# Reducir el tiempo
+			TIEMPO_JUEGO *= 0.9
+			TIEMPO_TRANSICION *= 0.9
+			 
 			ui_contador_juego.visible = false
 			empezado = false
 			contador_carga = TIEMPO_TRANSICION
@@ -258,20 +271,32 @@ func _process(delta: float) -> void:
 		actualizar_controles(2)
 
 	else: 
-		contador_carga -= 1 * delta 
-		if contador_carga > 0:
-			actualizar_vidas()
-			ui_panel_juego.visible = false
-			ui_panel_vidas.visible = true
-			ui_contador_carga.visible = true
-			ui_contador_carga.text = str(round(contador_carga))
-		else:
-			ui_panel_juego.visible = true
-			ui_panel_vidas.visible = false
-			ui_contador_carga.visible = false
-			nivel_seleccionado = seleccionar_nivel()
-			cargar_nivel(nivel_seleccionado)
-			print("Nuevo nivel seleccionado: ", nivel_seleccionado)
+
+		if vidas_1 == 0 or vidas_2 == 0:
+			ui_resultado.visible = true
+
+			if vidas_1 > vidas_2:
+				ui_resultado.text = "El jugador 1 ha ganado!";
+			elif vidas_2 > vidas_1: 
+				ui_resultado.text = "El jugador 2 ha ganado!";
+			else: 
+				ui_resultado.text = "Empate!";
+
+		else: 
+			contador_carga -= 1 * delta 
+			if contador_carga > 0:
+				actualizar_vidas()
+				ui_panel_juego.visible = false
+				ui_panel_vidas.visible = true
+				ui_contador_carga.visible = true
+				ui_contador_carga.text = str(round(contador_carga))
+			else:
+				ui_panel_juego.visible = true
+				ui_panel_vidas.visible = false
+				ui_contador_carga.visible = false
+				nivel_seleccionado = seleccionar_nivel()
+				cargar_nivel(nivel_seleccionado)
+				print("Nuevo nivel seleccionado: ", nivel_seleccionado)
  
 	if empezado or nivel_actual == nivel_seleccionado:
 		return
