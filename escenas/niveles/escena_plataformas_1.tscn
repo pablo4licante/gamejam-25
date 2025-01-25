@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0oqkkj608r8g"]
+[gd_scene load_steps=9 format=3 uid="uid://c0oqkkj608r8g"]
 
 [ext_resource type="PackedScene" uid="uid://r0fl5l5sychu" path="res://escenas/entidades/jugador_plataformas.tscn" id="1_xfa0f"]
-[ext_resource type="Script" path="res://escenas/entidades/escena_plataformas_1.gd" id="1_yrlp3"]
+[ext_resource type="Script" path="res://escenas/niveles/escena_plataformas_1.gd" id="1_yrlp3"]
 [ext_resource type="PackedScene" uid="uid://c1nn4hj3wbvb" path="res://escenas/entidades/plataforma_burbuja.tscn" id="2_d7bcf"]
+[ext_resource type="PackedScene" uid="uid://wls1xt3tgwv" path="res://escenas/managers/bridge.tscn" id="2_q6grq"]
 [ext_resource type="Texture2D" uid="uid://cyhdqtfg0xq7d" path="res://assets/sprites/tile_0009.png" id="3_wtu25"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ervy8"]
@@ -14,6 +15,8 @@ size = Vector2(417, 221)
 
 [node name="EscenaPlataformas1" type="Node"]
 script = ExtResource("1_yrlp3")
+
+[node name="Bridge" parent="." instance=ExtResource("2_q6grq")]
 
 [node name="Destiny" type="Node2D" parent="."]
 position = Vector2(1090, 446)
