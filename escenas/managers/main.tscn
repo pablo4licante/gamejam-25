@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ceh1gtstwdudh"]
+[gd_scene load_steps=32 format=3 uid="uid://ceh1gtstwdudh"]
 
 [ext_resource type="Script" path="res://escenas/managers/main.gd" id="1_byav3"]
 [ext_resource type="Texture2D" uid="uid://n77cfiy6jkvg" path="res://assets/sprites/corazon.png" id="2_2g6pr"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://dn71mihoh8w8v" path="res://assets/sprites/animacion_perder_vida/corazon-7.png" id="21_qgq57"]
 [ext_resource type="Texture2D" uid="uid://qdnvydefdwbu" path="res://assets/sprites/animacion_perder_vida/corazon-8.png" id="22_8qct6"]
 [ext_resource type="Texture2D" uid="uid://bfjvjl7qim2vw" path="res://assets/sprites/animacion_perder_vida/corazon-9.png" id="23_lre2r"]
+[ext_resource type="PackedScene" uid="uid://cvhxnysvvgnnl" path="res://escenas/ui/fin_de_juego.tscn" id="24_by3al"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2nuhl"]
 
@@ -38,7 +39,7 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_srt52"]
 polyphony = 100
 
-[node name="Node2D" type="Node2D" node_paths=PackedStringArray("viewport_juego1", "viewport_juego2", "viewport_compartido", "ui_contador_juego", "ui_panel_juego", "ui_panel_vidas", "ui_corazon", "ui_corazon_destroy", "ui_vidas1", "ui_vidas2", "ui_resultado", "ui_transicion", "music_player", "audio_player")]
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("viewport_juego1", "viewport_juego2", "viewport_compartido", "ui_contador_juego", "ui_panel_juego", "ui_panel_vidas", "ui_corazon", "ui_corazon_destroy", "ui_vidas1", "ui_vidas2", "ui_resultado", "ui_transicion", "ui_final", "music_player", "audio_player")]
 z_index = 1
 script = ExtResource("1_byav3")
 viewport_juego1 = NodePath("CanvasLayer/PanelJuego/ContenedorJuego1/SubViewport")
@@ -53,6 +54,7 @@ ui_vidas1 = NodePath("CanvasLayer/PanelVidas/Panel/Vidas1")
 ui_vidas2 = NodePath("CanvasLayer/PanelVidas/Panel2/Vidas2")
 ui_resultado = NodePath("CanvasLayer/PanelHUD/Resultado")
 ui_transicion = NodePath("TransicionGuapa")
+ui_final = NodePath("TransicionFinal")
 music_player = NodePath("MusicStreamPlayer2D")
 audio_player = NodePath("AudioStreamPlayer2D")
 sounds = Array[AudioStream]([ExtResource("2_3ro0p"), ExtResource("3_hj8pf"), ExtResource("4_5pqir"), ExtResource("5_0c4n4"), ExtResource("6_fss5v"), ExtResource("7_w6tfw"), ExtResource("8_v6a23"), ExtResource("9_wnqji"), ExtResource("10_ftlh4"), ExtResource("11_mf8h3")])
@@ -272,6 +274,8 @@ horizontal_alignment = 1
 stream = SubResource("AudioStreamPolyphonic_srt52")
 max_polyphony = 100
 playback_type = 1
+
+[node name="TransicionFinal" parent="." instance=ExtResource("24_by3al")]
 
 [node name="TransicionGuapa" parent="." instance=ExtResource("12_h8klh")]
 z_index = 10
