@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://oox4rj1ai250" path="res://escenas/managers/bridge_double.tscn" id="2_ndpf2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lb4gy"]
-bg_color = Color(0.961892, 0.302104, 0.688684, 1)
+bg_color = Color(0.499061, 0.569803, 0.928236, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_whkrm"]
 

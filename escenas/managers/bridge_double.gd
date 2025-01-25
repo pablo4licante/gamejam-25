@@ -5,7 +5,8 @@ var tipo_interfaz = 1
 @export var finished = false
 @export var puntuacion1 = 0
 @export var puntuacion2 = 0
- 
+@export var dificultad = 1 
+
 @export var action_map = { 
 	1: {
 		"up": [0.0, false],
@@ -39,7 +40,7 @@ func is_pressed(key, player) -> bool:
 	return false
   
 func get_strength(key, player) -> float:
-    var map
+	var map
 	if action_map.has(player):
 		map = action_map[player]  
 	else:

@@ -1,12 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://ceh1gtstwdudh"]
+[gd_scene load_steps=3 format=3 uid="uid://ceh1gtstwdudh"]
 
 [ext_resource type="Script" path="res://escenas/managers/main.gd" id="1_byav3"]
 
-[node name="Node2D" type="Node2D" node_paths=PackedStringArray("viewport_juego1", "viewport_juego2", "viewport_compartido")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nr1ry"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("viewport_juego1", "viewport_juego2", "viewport_compartido", "ui_contador_carga", "ui_contador_juego")]
 script = ExtResource("1_byav3")
 viewport_juego1 = NodePath("CanvasLayer/Panel/ContenedorJuego1/SubViewport")
 viewport_juego2 = NodePath("CanvasLayer/Panel/ContenedorJuego2/SubViewport")
 viewport_compartido = NodePath("CanvasLayer/Panel/ContenedorCompartido/SubViewport")
+ui_contador_carga = NodePath("CanvasLayer/Panel/ContadorTransicion")
+ui_contador_juego = NodePath("CanvasLayer/Panel/ContadorJuego")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -21,8 +26,8 @@ grow_vertical = 2
 visible = false
 layout_mode = 1
 anchors_preset = -1
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_right = 550.0
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/Panel/ContenedorJuego1"]
 disable_3d = true
@@ -34,10 +39,9 @@ render_target_update_mode = 0
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.0
+anchor_left = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -550.0
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -61,3 +65,40 @@ disable_3d = true
 handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 0
+
+[node name="ContadorJuego" type="ProgressBar" parent="CanvasLayer/Panel"]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -40.0
+offset_right = 250.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_nr1ry")
+value = 50.0
+show_percentage = false
+
+[node name="ContadorTransicion" type="Label" parent="CanvasLayer/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "1"
