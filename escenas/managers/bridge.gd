@@ -1,6 +1,7 @@
 extends Node2D
 
 var tipo_interfaz = 0
+var jugador = 0
 
 @export var finished = false
 @export var puntuacion = 0 

@@ -24,11 +24,9 @@ var nivel_ultimo = ""
 
 var niveles = {			# Tipo Victoria
 	#"test2": [0],
-	##"test": [0],
+	#"test": [0],
 	"dispara_1": [1],
 	#"escena_plataformas_1": [1]
-	#"escena_plataformas_2": [1]
-	#"escena_plataformas_3": [1]
 }
 var nivel_tipo_victoria = 0
 
@@ -212,6 +210,9 @@ func cargar_nivel(nombre) -> void:
 			puente_juego2 = buscar_bridge(game_scene2)
 			puntos_juego2_actual = 0
 
+			puente_juego1.jugador = 1
+			puente_juego2.jugador = 2
+
 			# Agregar pantalla de juego
 			viewport_juego1.add_child(game_scene)
 			viewport_juego2.add_child(game_scene2) 
@@ -243,7 +244,7 @@ func seleccionar_nivel() -> String:
 	return random
  
 func _ready():
-	viewport_juego1.get_parent().set_stretch(true)
+	viewport_juego1.get_parent().set_stretch(true) 
 	viewport_juego2.get_parent().set_stretch(true)
 	viewport_compartido.get_parent().set_stretch(true)
 	contador_carga = TIEMPO_TRANSICION
