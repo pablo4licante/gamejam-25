@@ -1,6 +1,8 @@
 extends Node2D
 
-@export var puntuacion = 0
+var tipo_interfaz = 0
+
+@export var puntuacion = 0 
 @export var action_map = {
 	"up": false,
 	"down": false,
@@ -9,11 +11,11 @@ extends Node2D
 	"action": false,
 }
 
-func is_pressed(name) -> bool:
-    if action_map.has(name): 
-        return action_map[name]
+func is_pressed(key) -> bool:
+    if action_map.has(key): 
+        return action_map[key]
     else:
-        printerr("is_pressed: No se ha podido encontrar el control " + name)
+        printerr("is_pressed: No se ha podido encontrar el control " + key)
 
     return false
  

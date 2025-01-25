@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcn6fkh56v55a"]
+
+[ext_resource type="Script" path="res://escenas/niveles/test2.gd" id="1_jpidt"]
+[ext_resource type="PackedScene" uid="uid://oox4rj1ai250" path="res://escenas/managers/bridge_double.tscn" id="2_ndpf2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lb4gy"]
+bg_color = Color(0.961892, 0.302104, 0.688684, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_whkrm"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_jpidt")
+
+[node name="BridgeDouble" parent="." instance=ExtResource("2_ndpf2")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lb4gy")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer/Panel"]
+position = Vector2(300, 186)
+scale = Vector2(178.5, 110.5)
+mesh = SubResource("QuadMesh_whkrm")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="CanvasLayer/Panel"]
+position = Vector2(800, 186)
+scale = Vector2(178.5, 110.5)
+mesh = SubResource("QuadMesh_whkrm")
