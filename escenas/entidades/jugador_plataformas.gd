@@ -5,8 +5,21 @@ const JUMP_POWER = -900
 const WALK_SPEED = 450
 const ACCELETARION_SMOOTHING = 20
 
-@onready var bridge = $"../Bridge"
-@onready var sprite = $AnimatedSprite2D
+ 
+@onready var sprite_1 : AnimatedSprite2D = $AnimatedSprite2D 
+@onready var sprite_2 : AnimatedSprite2D = $AnimatedSprite2D2 
+@onready var sprite : AnimatedSprite2D = null
+
+@onready var bridge = $"../Bridge" 
+
+func _ready():
+	match bridge.jugador:
+		1:
+			sprite = sprite_1
+			sprite_2.visible = false
+		2:
+			sprite = sprite_2
+			sprite_1.visible = false
 
 func _process(_delta):
 	velocity.y += GRAVITY * _delta
