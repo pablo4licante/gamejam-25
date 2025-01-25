@@ -9,6 +9,8 @@ extends Node2D
 @export var ui_panel_vidas : Panel
 
 @export var ui_corazon : TextureRect
+@export var ui_corazon_destroy : TextureRect
+
 @export var ui_vidas1 : BoxContainer
 @export var ui_vidas2 : BoxContainer
 
@@ -131,6 +133,9 @@ func borrar_hijos(nodo) -> void:
 		for child in nodo.get_children():
 			nodo.remove_child(child)
 
+var vidas_1_old = 5
+var vidas_2_old = 5
+
 func actualizar_vidas() -> void:
 	borrar_hijos(ui_vidas1)
 	borrar_hijos(ui_vidas2)
@@ -139,10 +144,24 @@ func actualizar_vidas() -> void:
 		var v = ui_corazon.duplicate()
 		v.visible = true
 		ui_vidas1.add_child(v)
+ 
 	for i in range(vidas_2):
 		var v = ui_corazon.duplicate()
 		v.visible = true
 		ui_vidas2.add_child(v)
+
+	if vidas_1_old != vidas_1:
+		var v = ui_corazon_destroy.duplicate()
+		v.visible = true
+		ui_vidas1.add_child(v)
+  
+	if vidas_2_old != vidas_2:
+		var v = ui_corazon_destroy.duplicate()
+		v.visible = true
+		ui_vidas2.add_child(v)
+	 
+	vidas_2_old = vidas_2
+	vidas_1_old = vidas_1
 
 func cambiar_vidas() -> void: 
 	if puente_juego1 == null or puente_juego2 == null:
@@ -287,7 +306,8 @@ func seleccionar_nivel() -> String:
 	return random
 	
  
-func _ready():
+func _ready(): 
+	actualizar_vidas()
 	viewport_juego1.get_parent().set_stretch(true) 
 	viewport_juego2.get_parent().set_stretch(true)
 	viewport_compartido.get_parent().set_stretch(true)
@@ -310,6 +330,7 @@ func _process(delta: float) -> void:
 			ui_contador_juego.visible = true
 		else: 
 			cambiar_vidas()
+			actualizar_vidas()
 
 			# Reducir el tiempo
 			TIEMPO_JUEGO *= 0.9
@@ -344,8 +365,7 @@ func _process(delta: float) -> void:
 		else: 
 			contador_buff -= 1 * delta 
 			contador_carga -= 1 * delta 
-			
-			actualizar_vidas()
+			 
 			if contador_buff <= 0 and contador_carga < 4:
 				if not loading_next: 
 					print(TIEMPO_TRANSICION_O/TIEMPO_TRANSICION)
