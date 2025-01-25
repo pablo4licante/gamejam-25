@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ig7pobn0gfsv"]
+
+[ext_resource type="Texture2D" uid="uid://bckkid7nk1iib" path="res://assets/sprites/dotted_circle.png" id="1_jikoe"]
+[ext_resource type="Texture2D" uid="uid://hl7ff4ysv6ip" path="res://assets/sprites/mouth.png" id="2_uxxpv"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dscop"]
+blend_mode = 1
+
+[node name="Circulo" type="Node2D"]
+position = Vector2(575, 375)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_dscop")
+texture = ExtResource("1_jikoe")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -29)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_uxxpv")
