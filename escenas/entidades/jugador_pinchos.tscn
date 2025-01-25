@@ -10,7 +10,6 @@ radius = 44.2832
 size = Vector2(92, 54)
 
 [node name="personaje_1" type="CharacterBody2D"]
-position = Vector2(539, 535)
 script = ExtResource("1_58krt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

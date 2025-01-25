@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6vj408ndkq37"]
+[gd_scene load_steps=3 format=3 uid="uid://cmgll7ywymvs7"]
 
 [ext_resource type="Script" path="res://escenas/entidades/generador_pinchos.gd" id="1_nseon"]
-[ext_resource type="PackedScene" uid="uid://uov2t77p047f" path="res://escenas/entidades/pincho.tscn" id="2_n8tgr"]
+[ext_resource type="PackedScene" uid="uid://b5qh2navsdakw" path="res://escenas/entidades/pincho.tscn" id="2_n8tgr"]
 
 [node name="GeneradorPinchos" type="Node2D"]
 script = ExtResource("1_nseon")

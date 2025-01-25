@@ -17,10 +17,8 @@ pincho_verde = ExtResource("3_0khuj")
 pincho_rosa = ExtResource("4_7injd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(362, 256)
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("2_hfax8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(362, 255)
 shape = SubResource("RectangleShape2D_c4bas")
