@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://escenas/niveles/escena_plataformas_1.gd" id="1_hmvut"]
 [ext_resource type="Texture2D" uid="uid://ni7yjftytsuk" path="res://assets/fondos/fondo_atrapa_bandera.jpg" id="2_e7vav"]
-[ext_resource type="PackedScene" path="res://escenas/managers/bridge.tscn" id="2_k00ni"]
+[ext_resource type="PackedScene" uid="uid://wls1xt3tgwv" path="res://escenas/managers/bridge.tscn" id="2_k00ni"]
 [ext_resource type="Texture2D" uid="uid://b7v1kiki3841u" path="res://assets/sprites/bandera.png" id="3_ddmog"]
 [ext_resource type="PackedScene" uid="uid://r0fl5l5sychu" path="res://escenas/entidades/jugador_plataformas.tscn" id="4_02xmo"]
 [ext_resource type="PackedScene" uid="uid://c1nn4hj3wbvb" path="res://escenas/entidades/plataforma_burbuja.tscn" id="5_hjpym"]
-[ext_resource type="PackedScene" uid="uid://bepv1i4s7pgar" path="res://escenas/entidades/plataforma_larga.tscn" id="6_5n1hn"]
+[ext_resource type="PackedScene" path="res://escenas/entidades/plataforma_larga.tscn" id="6_5n1hn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ervy8"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ig7pobn0gfsv"]
+[gd_scene load_steps=6 format=3 uid="uid://b03fq1yaqwc8e"]
 
 [ext_resource type="Script" path="res://escenas/entidades/chicle_boca.gd" id="1_dw425"]
 [ext_resource type="Texture2D" uid="uid://sb6uwneua7ul" path="res://assets/sprites/boca_cerrada.png" id="1_iwxg0"]

@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://uov2t77p047f"]
+[gd_scene load_steps=6 format=3 uid="uid://b5qh2navsdakw"]
 
 [ext_resource type="Script" path="res://escenas/entidades/pincho.gd" id="1_kyva4"]
-[ext_resource type="Texture2D" uid="uid://bnrmpb61hr8lv" path="res://assets/sprites/PompaAzul.png" id="2_387lx"]
+[ext_resource type="Texture2D" uid="uid://br4j4338y4vcb" path="res://assets/sprites/chincheta_azul.png" id="2_hfax8"]
+[ext_resource type="Texture2D" uid="uid://cnb6wh0xdprs6" path="res://assets/sprites/chincheta_verde.png" id="3_0khuj"]
+[ext_resource type="Texture2D" uid="uid://bml5xfevmcscn" path="res://assets/sprites/chincheta_rosa.png" id="4_7injd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4bas"]
 size = Vector2(52, 74)
@@ -10,11 +12,14 @@ size = Vector2(52, 74)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_kyva4")
+pincho_azul = ExtResource("2_hfax8")
+pincho_verde = ExtResource("3_0khuj")
+pincho_rosa = ExtResource("4_7injd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(361.5, 271.5)
-scale = Vector2(0.01, 0.01)
-texture = ExtResource("2_387lx")
+position = Vector2(362, 256)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("2_hfax8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(362, 255)

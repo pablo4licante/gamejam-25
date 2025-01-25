@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dctmj078qwk42"]
+
+[ext_resource type="PackedScene" uid="uid://wls1xt3tgwv" path="res://escenas/managers/bridge.tscn" id="1_5migs"]
+[ext_resource type="PackedScene" uid="uid://c0qmjx3bhin0f" path="res://escenas/entidades/pompa_chicle.tscn" id="1_6glwd"]
+[ext_resource type="Texture2D" uid="uid://cpvqmlxc33bhl" path="res://assets/fondos/fondo_hincha_pompas.JPG" id="1_l3i5u"]
+[ext_resource type="PackedScene" uid="uid://b03fq1yaqwc8e" path="res://escenas/entidades/chicle_circulo.tscn" id="2_ubr66"]
+
+[node name="Juego" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(557, 370)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_l3i5u")
+
+[node name="Bridge" parent="." instance=ExtResource("1_5migs")]
+
+[node name="Pompa" parent="." instance=ExtResource("1_6glwd")]
+
+[node name="Circulo" parent="." instance=ExtResource("2_ubr66")]
+scale = Vector2(0.95, 0.95)
