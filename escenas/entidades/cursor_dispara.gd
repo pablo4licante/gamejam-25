@@ -9,10 +9,10 @@ var colliding_bodies : Array[Node2D] = []
 
 @onready var area_2d = $Area2D as Area2D
 
-#@onready var bridge = $"../Bridge"
+@onready var bridge = $"../Bridge"
 
 func _input(ev):
-	if Input.is_action_pressed("1_action"):
+	if bridge.is_pressed("action"):
 		check_bubble()
 		
 func _ready():
@@ -21,8 +21,8 @@ func _ready():
 
 
 func _process(delta):
-	var x_movement = Input.get_action_strength("1_right") - Input.get_action_strength("1_left")
-	var y_movement = Input.get_action_strength("1_down") - Input.get_action_strength("1_up")
+	var x_movement = bridge.get_strength("right") - bridge.get_strength("left")
+	var y_movement = bridge.get_strength("down") - bridge.get_strength("up")
 	velocity.x = x_movement * WALK_SPEED 
 	velocity.y = y_movement * WALK_SPEED 
 	move_and_slide()
@@ -34,7 +34,6 @@ func on_body_exited(body):
 	colliding_bodies.erase(body)
 
 func check_bubble():
-	print("miro")
 	if colliding_bodies.size() > 0:
 		colliding_bodies[0].queue_free()
 		burbuja_died.emit()

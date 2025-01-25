@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://vj0golyr06lc"]
+[gd_scene load_steps=5 format=3 uid="uid://8k7jikydyfan"]
 
-[ext_resource type="PackedScene" uid="uid://ciqljjbjkqo2m" path="res://escenas/entidades/objetivo_burbuja.tscn" id="1_g6lxu"]
+[ext_resource type="PackedScene" path="res://escenas/entidades/objetivo_burbuja.tscn" id="1_g6lxu"]
 [ext_resource type="Script" path="res://escenas/niveles/dispara_1.gd" id="1_ro2gb"]
-[ext_resource type="PackedScene" uid="uid://bodn7uskalwok" path="res://escenas/entidades/cursor_dispara.tscn" id="2_yigsh"]
+[ext_resource type="PackedScene" uid="uid://wls1xt3tgwv" path="res://escenas/managers/bridge.tscn" id="2_og4dl"]
+[ext_resource type="PackedScene" path="res://escenas/entidades/cursor_dispara.tscn" id="2_yigsh"]
 
 [node name="Dispara1" type="Node"]
 script = ExtResource("1_ro2gb")
+
+[node name="Bridge" parent="." instance=ExtResource("2_og4dl")]
 
 [node name="Cursor_dispara" parent="." instance=ExtResource("2_yigsh")]
 position = Vector2(250, 469)

@@ -2,7 +2,9 @@ extends Node
 
 @onready var burbujas = $Burbujas
 @onready var cursor_dispara = $Cursor_dispara
+
 @onready var label = $Label
+@onready var bridge = $Bridge
 
 func _ready():
 	cursor_dispara.burbuja_died.connect(on_burbuja_died)
@@ -13,4 +15,4 @@ func on_burbuja_died():
 		print("HAS GANADO")
 		label.text = "¡Ganaste!"
 		cursor_dispara.queue_free() #quitar
-		pass #bridge.finished = true
+		bridge.finished = true

@@ -25,6 +25,7 @@ var nivel_ultimo = ""
 var niveles = {			# Tipo Victoria
 	"test2": [0],
 	#"test": [0],
+	"dispara_1": [1],
 	"escena_plataformas_1": [1]
 }
 var nivel_tipo_victoria = 0
@@ -162,8 +163,6 @@ func cuantificar_puntos() -> void:
 	pass
  
 func buscar_bridge(node) -> Node2D:
-	print(node.name)
-
 	if node.name == "Bridge" or node.name == "BridgeDouble":
 		return node
 	else:

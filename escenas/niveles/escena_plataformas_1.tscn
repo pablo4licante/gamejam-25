@@ -92,7 +92,6 @@ position = Vector2(321, 339)
 [node name="PlataformaBurbuja2" parent="." instance=ExtResource("2_d7bcf")]
 position = Vector2(227, 429)
 
-
 [node name="Label" type="Label" parent="."]
 offset_left = 104.0
 offset_top = 75.0
@@ -105,4 +104,3 @@ text = "¡Ganaste!"
 position = Vector2(-323, -37)
 anchor_mode = 0
 zoom = Vector2(0.5, 0.5)
-
