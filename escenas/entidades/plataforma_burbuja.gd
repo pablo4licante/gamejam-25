@@ -1,6 +1,6 @@
 extends Node2D
 
-const JUMP_POWER = -1200
+const JUMP_POWER = -1000
 
 func _ready():
 	$Area2D.body_entered.connect(on_body_entered)

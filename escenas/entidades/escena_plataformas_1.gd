@@ -7,3 +7,4 @@ func _ready():
 	
 func on_body_entered(_a):
 	print("HAS GANADO")
+	
