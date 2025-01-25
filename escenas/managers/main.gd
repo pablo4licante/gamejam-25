@@ -2,8 +2,7 @@ extends Node2D
 
 @export var viewport_juego1 : Viewport
 @export var viewport_juego2 : Viewport
-@export var viewport_compartido : Viewport
-@export var ui_contador_carga : Label
+@export var viewport_compartido : Viewport 
 @export var ui_contador_juego : Range
  
 @export var ui_panel_juego : Panel
@@ -333,12 +332,9 @@ func _process(delta: float) -> void:
 				actualizar_vidas()
 				ui_panel_juego.visible = false
 				ui_panel_vidas.visible = true
-				ui_contador_carga.visible = true
-				ui_contador_carga.text = str(round(contador_carga))
 			else:
 				ui_panel_juego.visible = true
 				ui_panel_vidas.visible = false
-				ui_contador_carga.visible = false
 				nivel_seleccionado = seleccionar_nivel()
 				nivel_ultimo = nivel_seleccionado
 				cargar_nivel(nivel_seleccionado)
