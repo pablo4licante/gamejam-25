@@ -16,6 +16,8 @@ extends Node2D
 
 @export var ui_transicion : Node2D
 
+@export var music_player: AudioStreamPlayer2D
+
 @export var audio_player: AudioStreamPlayer2D
 @export var sounds : Array[AudioStream]
 
@@ -34,6 +36,7 @@ var sound_links = {
 
 var TIEMPO_JUEGO = 10.0
 var TIEMPO_TRANSICION = 6.0
+var TIEMPO_TRANSICION_O = 6.0
 
 var nivel_actual = "" 
 var nivel_seleccionado = ""
@@ -144,7 +147,7 @@ func actualizar_vidas() -> void:
 func cambiar_vidas() -> void: 
 	if puente_juego1 == null or puente_juego2 == null:
 		return
- 
+ 	
 	match nivel_tipo_victoria:
 		0: # Por puntos mas altos = victoria
 			match puente_juego1.tipo_interfaz:
@@ -202,7 +205,7 @@ func buscar_bridge(node) -> Node2D:
 func cargar_nivel(nombre) -> void: 
 	var path = "res://escenas/niveles/"+nombre+".tscn" 
 	var status = ResourceLoader.load_threaded_request(path) 
-	print("Cargando... " + error_string(status))  
+	print("Cargando... " + error_string(status)) 
 	if status == Error.OK: 
 		var scene = ResourceLoader.load_threaded_get(path)
 		var game_scene = scene.instantiate() 
@@ -269,6 +272,7 @@ func cargar_nivel(nombre) -> void:
 func seleccionar_nivel() -> String:
 	var keys = niveles.keys()
 
+	music_player.pitch_scale += (0.1/TIEMPO_JUEGO)
 	if keys.size() > 1:  
 		keys.erase(nivel_ultimo)
 		
@@ -281,9 +285,13 @@ func _ready():
 	viewport_juego2.get_parent().set_stretch(true)
 	viewport_compartido.get_parent().set_stretch(true)
 	contador_carga = TIEMPO_TRANSICION
-	
+	music_player = $MusicStreamPlayer2D
+	music_player.play()
 	for key in sound_links:
 		sound_links[key] = sounds[sound_links[key]]
+
+var loading_next = false
+var contador_buff = 0.5
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -302,6 +310,7 @@ func _process(delta: float) -> void:
 			ui_contador_juego.visible = false
 			empezado = false
 			contador_carga = TIEMPO_TRANSICION
+			contador_buff = 0.5
 			nivel_actual = ""
 			nivel_seleccionado = "" 
    
@@ -321,24 +330,35 @@ func _process(delta: float) -> void:
 				ui_resultado.text = "Empate!";
 
 		else: 
+			contador_buff -= 1 * delta 
 			contador_carga -= 1 * delta 
-			if contador_carga < 4: 
-				ui_transicion.play()
-				ui_transicion.visible = true
+			
+			actualizar_vidas()
+			if contador_buff <= 0 and contador_carga < 4:
+				if not loading_next: 
+					print(TIEMPO_TRANSICION_O/TIEMPO_TRANSICION)
+					ui_transicion.speed(TIEMPO_TRANSICION_O/TIEMPO_TRANSICION)
+					ui_transicion.play()
+					loading_next = true
+				 
+				if loading_next:
+					if ui_transicion.playing():
+						ui_panel_juego.visible = false
+						ui_panel_vidas.visible = true
+						ui_transicion.visible = true
+					else:
+						contador_carga = 0
+						loading_next = false 
+						ui_panel_juego.visible = true
+						ui_panel_vidas.visible = false
+						nivel_seleccionado = seleccionar_nivel()
+						nivel_ultimo = nivel_seleccionado
+						cargar_nivel(nivel_seleccionado)
+						print("Nuevo nivel seleccionado: ", nivel_seleccionado)
 			else:
-				ui_transicion.visible = false
-
-			if contador_carga > 0:
-				actualizar_vidas()
 				ui_panel_juego.visible = false
 				ui_panel_vidas.visible = true
-			else:
-				ui_panel_juego.visible = true
-				ui_panel_vidas.visible = false
-				nivel_seleccionado = seleccionar_nivel()
-				nivel_ultimo = nivel_seleccionado
-				cargar_nivel(nivel_seleccionado)
-				print("Nuevo nivel seleccionado: ", nivel_seleccionado)
+				ui_transicion.visible = false
  
 	if empezado or nivel_actual == nivel_seleccionado:
 		return 
