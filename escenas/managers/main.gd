@@ -15,8 +15,9 @@ extends Node2D
 
 @export var ui_resultado : Label
 
-@export var audio_player: AudioStreamPlayer2D
+@export var ui_transicion : Node2D
 
+@export var audio_player: AudioStreamPlayer2D
 @export var sounds : Array[AudioStream]
 
 var sound_links = { 
@@ -33,7 +34,7 @@ var sound_links = {
 }
 
 var TIEMPO_JUEGO = 10.0
-var TIEMPO_TRANSICION = 3.0
+var TIEMPO_TRANSICION = 6.0
 
 var nivel_actual = "" 
 var nivel_seleccionado = ""
@@ -322,6 +323,12 @@ func _process(delta: float) -> void:
 
 		else: 
 			contador_carga -= 1 * delta 
+			if contador_carga < 4: 
+				ui_transicion.play()
+				ui_transicion.visible = true
+			else:
+				ui_transicion.visible = false
+
 			if contador_carga > 0:
 				actualizar_vidas()
 				ui_panel_juego.visible = false

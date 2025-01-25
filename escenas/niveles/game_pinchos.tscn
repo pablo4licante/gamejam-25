@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dxa23r2j1peh5"]
 
 [ext_resource type="Script" path="res://escenas/niveles/game_pinchos.gd" id="1_vylca"]
-[ext_resource type="PackedScene" uid="uid://b6vj408ndkq37" path="res://escenas/entidades/generador_pinchos.tscn" id="2_2qsws"]
+[ext_resource type="PackedScene" path="res://escenas/entidades/generador_pinchos.tscn" id="2_2qsws"]
 [ext_resource type="PackedScene" uid="uid://wls1xt3tgwv" path="res://escenas/managers/bridge.tscn" id="2_dd8nk"]
 [ext_resource type="Texture2D" uid="uid://c38fg051qoi8y" path="res://assets/fondos/fondo_esquiva_chinchetas.jpg" id="2_egcjy"]
 [ext_resource type="PackedScene" uid="uid://bb36pno1bfkv0" path="res://escenas/entidades/jugador_pinchos.tscn" id="3_wngn0"]
