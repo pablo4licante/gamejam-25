@@ -1,0 +1,12 @@
+res://main.tscn
+res://test.tscn
+res://main.gd
+res://escenas/managers/main.tscn
+res://escenas/niveles/test.tscn
+res://escenas/managers/interfaz_puntuacion.gd
+res://escenas/managers/main.gd
+res://escenas/managers/interfaz_puntuacion.tscn
+res://escenas/niveles/logica_juego.gd
+res://escenas/niveles/test.gd
+res://escenas/managers/bridge.tscn
+res://escenas/managers/bridge.gd

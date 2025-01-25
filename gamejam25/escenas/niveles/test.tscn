@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccsdlhmubo58j"]
+
+[ext_resource type="Script" path="res://escenas/niveles/test.gd" id="2_0d6by"]
+[ext_resource type="PackedScene" uid="uid://wls1xt3tgwv" path="res://escenas/managers/bridge.tscn" id="2_vchj7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lb4gy"]
+bg_color = Color(0.961892, 0.302104, 0.688684, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_whkrm"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("2_0d6by")
+
+[node name="Bridge" parent="." instance=ExtResource("2_vchj7")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lb4gy")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer/Panel"]
+position = Vector2(297.13, 186)
+scale = Vector2(178.5, 110.5)
+mesh = SubResource("QuadMesh_whkrm")
