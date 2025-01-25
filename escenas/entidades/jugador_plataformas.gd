@@ -24,6 +24,7 @@ func _process(_delta):
 	
 	if bridge.is_pressed("up") && is_on_floor():
 		velocity.y = JUMP_POWER
+		bridge.play_sound("saltar")
 		sprite.play("jump")
 
 

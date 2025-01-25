@@ -6,6 +6,8 @@ extends Node2D
 @export var spawn_area_width: float = 800.0 # Ancho del área de spawn
 @export var spawn_height: float = -250.0 # Altura inicial de los pinchos (fuera de la pantalla)
 
+@onready var bridge = $"../Bridge"
+
 var timer = 0.0
 
 func _process(delta: float) -> void:
@@ -17,7 +19,7 @@ func _process(delta: float) -> void:
 func spawn_spike() -> void:
 	# Instanciar un nuevo pincho
 	var spike = spike_scene.instantiate()
-	
+	bridge.play_sound("chincheta")
 	# Posicionar el pincho en una posición aleatoria dentro del área de spawn
 	var random_x = randf_range(0, spawn_area_width)
 	spike.position = Vector2(random_x, spawn_height)

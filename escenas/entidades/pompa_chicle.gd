@@ -35,10 +35,12 @@ func _process(delta: float) -> void:
 		puntuation = 0
 		puntuation += tension - scale_multiplier
 		puntuation -= scale_multiplier - off
+		bridge.play_sound("hinchar")
 		bridge.puntuacion = floor(puntuation/6 * 1000)
 	
 	if scale[0] >= 28:
 		bridge.puntuacion = 0
+		bridge.play_sound("explosion")
 		queue_free();
 		
 	delay += 1

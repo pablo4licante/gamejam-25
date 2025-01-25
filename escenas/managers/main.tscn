@@ -1,8 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://ceh1gtstwdudh"]
+[gd_scene load_steps=19 format=3 uid="uid://ceh1gtstwdudh"]
 
 [ext_resource type="Script" path="res://escenas/managers/main.gd" id="1_byav3"]
 [ext_resource type="Texture2D" uid="uid://n77cfiy6jkvg" path="res://assets/sprites/corazon.png" id="2_2g6pr"]
+[ext_resource type="AudioStream" uid="uid://b8ak0pxxl5bmq" path="res://assets/sonidos/Acierto.wav" id="2_3ro0p"]
 [ext_resource type="Texture2D" uid="uid://bi5y7t11g8rqk" path="res://assets/ui/marco_juego_2.png" id="2_wm7y4"]
+[ext_resource type="AudioStream" uid="uid://cyrese82cb4pf" path="res://assets/sonidos/Button.wav" id="3_hj8pf"]
+[ext_resource type="AudioStream" uid="uid://bpdobnhnu251l" path="res://assets/sonidos/Chincheta.mp3" id="4_5pqir"]
+[ext_resource type="AudioStream" uid="uid://b31onl3pdpgqu" path="res://assets/sonidos/C_Murio.wav" id="5_0c4n4"]
+[ext_resource type="AudioStream" uid="uid://bi48g4bme4yq7" path="res://assets/sonidos/Disparo.mp3" id="6_fss5v"]
+[ext_resource type="AudioStream" uid="uid://ycnfpcj4deh4" path="res://assets/sonidos/Error.mp3" id="7_w6tfw"]
+[ext_resource type="AudioStream" uid="uid://usun0maamx66" path="res://assets/sonidos/Explosion.mp3" id="8_v6a23"]
+[ext_resource type="AudioStream" uid="uid://dxov2ev4fkauk" path="res://assets/sonidos/Hinchar.wav" id="9_wnqji"]
+[ext_resource type="AudioStream" uid="uid://bah8hx5jflnfc" path="res://assets/sonidos/LlegarMeta.wav" id="10_ftlh4"]
+[ext_resource type="AudioStream" uid="uid://daoeyn0wssl27" path="res://assets/sonidos/Salto.wav" id="11_mf8h3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2nuhl"]
 
@@ -13,7 +23,10 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nr1ry"]
 bg_color = Color(1, 1, 1, 1)
 
-[node name="Node2D" type="Node2D" node_paths=PackedStringArray("viewport_juego1", "viewport_juego2", "viewport_compartido", "ui_contador_carga", "ui_contador_juego", "ui_panel_juego", "ui_panel_vidas", "ui_corazon", "ui_vidas1", "ui_vidas2", "ui_resultado")]
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_srt52"]
+polyphony = 100
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("viewport_juego1", "viewport_juego2", "viewport_compartido", "ui_contador_carga", "ui_contador_juego", "ui_panel_juego", "ui_panel_vidas", "ui_corazon", "ui_vidas1", "ui_vidas2", "ui_resultado", "audio_player")]
 script = ExtResource("1_byav3")
 viewport_juego1 = NodePath("CanvasLayer/PanelJuego/ContenedorJuego1/SubViewport")
 viewport_juego2 = NodePath("CanvasLayer/PanelJuego/ContenedorJuego2/SubViewport")
@@ -26,6 +39,8 @@ ui_corazon = NodePath("CanvasLayer/PanelVidas/Corazon")
 ui_vidas1 = NodePath("CanvasLayer/PanelVidas/Panel/Vidas1")
 ui_vidas2 = NodePath("CanvasLayer/PanelVidas/Panel2/Vidas2")
 ui_resultado = NodePath("CanvasLayer/PanelHUD/Resultado")
+audio_player = NodePath("AudioStreamPlayer2D")
+sounds = Array[AudioStream]([ExtResource("2_3ro0p"), ExtResource("3_hj8pf"), ExtResource("4_5pqir"), ExtResource("5_0c4n4"), ExtResource("6_fss5v"), ExtResource("7_w6tfw"), ExtResource("8_v6a23"), ExtResource("9_wnqji"), ExtResource("10_ftlh4"), ExtResource("11_mf8h3")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -241,3 +256,8 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 70
 text = "Resultado"
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamPolyphonic_srt52")
+max_polyphony = 100
+playback_type = 1

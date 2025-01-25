@@ -14,6 +14,19 @@ var jugador = 0
 	"action": [0.0, false, false, false],
 }
 
+var sounds
+var audio_player: AudioStreamPlayer2D
+
+func play_sound(name) -> void:
+	if audio_player != null: 
+		audio_player.play()
+		var poly = audio_player.get_stream_playback()
+		if sounds.has(name): 
+			poly.play_stream(sounds[name], 0, 1, 1, 1, "SFX")
+		else: 
+			printerr("play_sound: No se ha podido encontrar el archivo para " + name)
+	
+
 func just_released(key) -> bool:
 	if action_map.has(key): 
 		return action_map[key][3]

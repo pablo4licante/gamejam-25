@@ -14,7 +14,24 @@ extends Node2D
 @export var ui_vidas2 : BoxContainer
 
 @export var ui_resultado : Label
-  
+
+@export var audio_player: AudioStreamPlayer2D
+
+@export var sounds : Array[AudioStream]
+
+var sound_links = { 
+	"acierto": 0,
+	"boton": 1,
+	"chincheta": 2,
+	"morir": 3,
+	"disparo": 4,
+	"error": 5,
+	"explosion": 6,
+	"hinchar": 7,
+	"meta": 8,
+	"saltar": 9
+}
+
 var TIEMPO_JUEGO = 10.0
 var TIEMPO_TRANSICION = 3.0
 
@@ -218,6 +235,12 @@ func cargar_nivel(nombre) -> void:
 			var game_scene2 = scene.instantiate()
 			puente_juego2 = buscar_bridge(game_scene2)
 			puntos_juego2_actual = 0
+			
+			puente_juego1.audio_player = audio_player
+			puente_juego2.audio_player = audio_player
+			
+			puente_juego1.sounds = sound_links
+			puente_juego2.sounds = sound_links
 
 			puente_juego1.jugador = 1
 			puente_juego2.jugador = 2
@@ -245,18 +268,22 @@ func cargar_nivel(nombre) -> void:
 
 func seleccionar_nivel() -> String:
 	var keys = niveles.keys()
-	var random = keys[randi() % keys.size()]
- 
-	if random == nivel_ultimo:
-		return seleccionar_nivel()
 
+	if keys.size() > 1:  
+		keys.erase(nivel_ultimo)
+		
+	var random = keys[randi() % keys.size()] 
 	return random
+	
  
 func _ready():
 	viewport_juego1.get_parent().set_stretch(true) 
 	viewport_juego2.get_parent().set_stretch(true)
 	viewport_compartido.get_parent().set_stretch(true)
 	contador_carga = TIEMPO_TRANSICION
+	
+	for key in sound_links:
+		sound_links[key] = sounds[sound_links[key]]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

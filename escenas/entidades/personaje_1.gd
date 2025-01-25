@@ -37,5 +37,6 @@ func _physics_process(_delta: float) -> void:
 
 
 func reventar(_a):
+	bridge.play_sound("explosion")
 	bridge.puntuacion = -100  
 	queue_free()
