@@ -6,8 +6,11 @@ const WALK_SPEED = 450
 const ACCELETARION_SMOOTHING = 20
 
 var colliding_bodies : Array[Node2D] = []
+@export var cursor_azul : Texture2D
+@export var cursor_naranja : Texture2D
 
 @onready var area_2d = $Area2D as Area2D
+@onready var sprite_2d = $Sprite2D as Sprite2D
 
 @onready var bridge = $"../Bridge"
 
@@ -18,6 +21,12 @@ func _input(ev):
 func _ready():
 	area_2d.body_entered.connect(on_body_entered)
 	area_2d.body_exited.connect(on_body_exited)
+	 
+	match bridge.jugador:
+		1:
+			sprite_2d.texture = cursor_azul
+		2:
+			sprite_2d.texture = cursor_naranja
 
 
 func _process(delta):
