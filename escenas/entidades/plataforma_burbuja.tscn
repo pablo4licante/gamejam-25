@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1nn4hj3wbvb"]
 
-[ext_resource type="Texture2D" uid="uid://bnrmpb61hr8lv" path="res://assets/sprites/PompaAzul.png" id="1_c0lml"]
 [ext_resource type="Script" path="res://escenas/entidades/plataforma_burbuja.gd" id="1_p4r38"]
+[ext_resource type="Texture2D" uid="uid://do13g2yyag2mc" path="res://assets/sprites/pompa.PNG" id="2_382lk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57bf0"]
 size = Vector2(43.2047, 10)
@@ -11,12 +11,12 @@ script = ExtResource("1_p4r38")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.0219988, 0.0219988)
-texture = ExtResource("1_c0lml")
+texture = ExtResource("2_382lk")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -18)
+position = Vector2(1, -3)
 scale = Vector2(0.972117, 1.42612)
 shape = SubResource("RectangleShape2D_57bf0")

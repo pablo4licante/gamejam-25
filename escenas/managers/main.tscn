@@ -29,7 +29,7 @@ ui_resultado = NodePath("CanvasLayer/PanelHUD/Resultado")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PanelJuego" type="Panel" parent="CanvasLayer"]
-visible = false
+texture_filter = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -37,18 +37,21 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ContenedorJuego1" type="SubViewportContainer" parent="CanvasLayer/PanelJuego"]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 1.0
+stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/PanelJuego/ContenedorJuego1"]
 disable_3d = true
 handle_input_locally = false
-size = Vector2i(550, 648)
-render_target_update_mode = 0
+size = Vector2i(1024, 1080)
+render_target_update_mode = 4
 
 [node name="ContenedorJuego2" type="SubViewportContainer" parent="CanvasLayer/PanelJuego"]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -56,12 +59,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
+stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/PanelJuego/ContenedorJuego2"]
 disable_3d = true
 handle_input_locally = false
-size = Vector2i(550, 648)
-render_target_update_mode = 0
+size = Vector2i(1024, 1080)
+render_target_update_mode = 4
 
 [node name="ContenedorCompartido" type="SubViewportContainer" parent="CanvasLayer/PanelJuego"]
 visible = false
@@ -87,13 +91,14 @@ grow_vertical = 2
 
 [node name="Corazon" type="TextureRect" parent="CanvasLayer/PanelVidas"]
 visible = false
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 offset_left = 268.0
 offset_top = 304.0
-offset_right = 308.0
+offset_right = 408.0
 offset_bottom = 344.0
 texture = ExtResource("2_2g6pr")
-expand_mode = 2
+expand_mode = 5
 
 [node name="Panel" type="Panel" parent="CanvasLayer/PanelVidas"]
 layout_mode = 1
@@ -113,7 +118,7 @@ offset_top = 50.0
 offset_right = 82.0
 offset_bottom = 50.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 70
 text = "Jugador 1"
 
 [node name="Vidas1" type="HBoxContainer" parent="CanvasLayer/PanelVidas/Panel"]
@@ -123,10 +128,6 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -149,7 +150,7 @@ offset_top = 50.0
 offset_right = 82.0
 offset_bottom = 50.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 70
 text = "Jugador 2
 "
 
@@ -162,8 +163,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
 offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -210,7 +211,7 @@ offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 70
 text = "1"
 
 [node name="Resultado" type="Label" parent="CanvasLayer/PanelHUD"]
@@ -227,6 +228,6 @@ offset_right = 82.0
 offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 70
 text = "Resultado"
 horizontal_alignment = 1
