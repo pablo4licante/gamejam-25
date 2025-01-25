@@ -38,6 +38,7 @@ func _process(delta: float) -> void:
 		bridge.puntuacion = floor(puntuation/6 * 1000)
 	
 	if scale[0] >= 28:
+		bridge.puntuacion = 0
 		queue_free();
 		
 	delay += 1

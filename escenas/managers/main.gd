@@ -246,9 +246,7 @@ func cargar_nivel(nombre) -> void:
 func seleccionar_nivel() -> String:
 	var keys = niveles.keys()
 	var random = keys[randi() % keys.size()]
-
-	print("Comparando ", random, " con ", nivel_ultimo, " = ", str(random == nivel_ultimo))
-
+ 
 	if random == nivel_ultimo:
 		return seleccionar_nivel()
 
@@ -308,13 +306,13 @@ func _process(delta: float) -> void:
 				ui_panel_vidas.visible = false
 				ui_contador_carga.visible = false
 				nivel_seleccionado = seleccionar_nivel()
+				nivel_ultimo = nivel_seleccionado
 				cargar_nivel(nivel_seleccionado)
 				print("Nuevo nivel seleccionado: ", nivel_seleccionado)
  
 	if empezado or nivel_actual == nivel_seleccionado:
-		return
+		return 
 
-	nivel_ultimo = nivel_seleccionado
 	cargar_nivel(nivel_seleccionado)
 
 	
