@@ -43,12 +43,12 @@ var nivel_seleccionado = ""
 var nivel_ultimo = ""
 
 var niveles = {			# Tipo Victoria
-	"test2": [0],
-	"test": [0],
-	"dispara_1": [1],
-	"game_pinchos": [2],
+	#"test2": [0],
+	#"test": [0],
+	#"dispara_1": [1],
+	#"game_pinchos": [2],
 	"game_chicle": [0],
-	"escena_plataformas_1": [1]
+	#"escena_plataformas_1": [1]
 }
 var nivel_tipo_victoria = 0
 

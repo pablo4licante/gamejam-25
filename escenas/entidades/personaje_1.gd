@@ -2,7 +2,7 @@ extends CharacterBody2D
 @onready var area_2d: Area2D = $Area2D 
 @onready var bridge = $"../Bridge"
 
-const SPEED = 300.0
+const SPEED = 400.0
 var acceleration = 300.0
 var previous_direction = 0 
 
