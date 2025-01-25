@@ -14,6 +14,7 @@ script = ExtResource("1_jpidt")
 [node name="BridgeDouble" parent="." instance=ExtResource("2_ndpf2")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 anchors_preset = 15

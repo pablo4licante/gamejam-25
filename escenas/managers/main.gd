@@ -5,6 +5,13 @@ extends Node2D
 @export var viewport_compartido : Viewport
 @export var ui_contador_carga : Label
 @export var ui_contador_juego : Range
+ 
+@export var ui_panel_juego : Panel
+@export var ui_panel_vidas : Panel
+
+@export var ui_corazon : TextureRect
+@export var ui_vidas1 : BoxContainer
+@export var ui_vidas2 : BoxContainer
   
 const TIEMPO_JUEGO = 10
 const TIEMPO_TRANSICION = 3
@@ -15,7 +22,7 @@ var nivel_ultimo = ""
 
 var niveles = {			# Tipo Victoria
 	"test2": [0],
-	"test": [0],
+	#"test": [0],
 	"escena_plataformas_1": [0]
 }
 var nivel_tipo_victoria = 0
@@ -23,6 +30,9 @@ var nivel_tipo_victoria = 0
 var empezado = false
 var contador_carga = 0.0
 var contador_juego = 0.0
+
+var vidas_1 = 5
+var vidas_2 = 5
 
 var puntuacion_1 = 0
 var puntuacion_2 = 0
@@ -79,29 +89,49 @@ func actualizar_controles(jugador) -> void:
 				puente.action_map[jugador]["right"][0] = Input.get_action_strength(cont+"_right") 
 				puente.action_map[jugador]["action"][0] = Input.get_action_strength(cont+"_action")
 
-func comparar_puntos() -> void:
-	if not puente_juego1.finished:
-		return
+func borrar_hijos(nodo) -> void:
+	if nodo.get_child_count() > 0: 
+		for child in nodo.get_children():
+			nodo.remove_child(child)
 
+func actualizar_vidas() -> void:
+	borrar_hijos(ui_vidas1)
+	borrar_hijos(ui_vidas2)
+	 
+	for i in range(vidas_1):
+		var v = ui_corazon.duplicate()
+		v.visible = true
+		ui_vidas1.add_child(v)
+	for i in range(vidas_2):
+		var v = ui_corazon.duplicate()
+		v.visible = true
+		ui_vidas2.add_child(v)
+
+func cambiar_vidas() -> void: 
 	if puente_juego1 == null or puente_juego2 == null:
 		return
  
-	match puente_juego1.tipo_interfaz:
+	match nivel_tipo_victoria:
 		0:
-			if puente_juego1.puntuacion >= puente_juego2.puntuacion:
-				puntuacion_1 += 1
-
-			if puente_juego2.puntuacion >= puente_juego1.puntuacion:
-				puntuacion_2 += 1
+			match puente_juego1.tipo_interfaz:
+				0:
+					if puente_juego1.puntuacion > puente_juego2.puntuacion:
+						vidas_2 -= 1
+					if puente_juego2.puntuacion > puente_juego1.puntuacion:
+						vidas_1 -= 1
+				1:
+					if puente_juego1.puntuacion1 > puente_juego1.puntuacion2:
+						vidas_2 -= 1
+					if puente_juego1.puntuacion2 > puente_juego1.puntuacion1:
+						vidas_1 -= 1
 		1:
-			if puente_juego1.puntuacion1 >= puente_juego2.puntuacion1:
-				puntuacion_1 += 1
+			if not puente_juego1.finished:
+				vidas_1 -= 1
+			if not puente_juego2.finished:
+				vidas_2 -= 1
 
-			if puente_juego1.puntuacion2 >= puente_juego1.puntuacion1:
-				puntuacion_2 += 1
-	
-	puente_juego1 = null
-	puente_juego2 = null 
+
+
 
 func cuantificar_puntos() -> void:
 	if puente_juego1 == null or puente_juego2 == null:
@@ -158,15 +188,10 @@ func cargar_nivel(nombre) -> void:
 		# Reestablecer puntuacion
 		puntos_juego1_actual = 0
 		puntos_juego2_actual = 0
-		  
-		if viewport_juego1.get_child_count() > 0:
-			viewport_juego1.remove_child(viewport_juego1.get_child(0))
-
-		if viewport_juego2.get_child_count() > 0:
-			viewport_juego2.remove_child(viewport_juego2.get_child(0))
-
-		if viewport_compartido.get_child_count() > 0:
-			viewport_compartido.remove_child(viewport_compartido.get_child(0))
+		   
+		borrar_hijos(viewport_juego1)
+		borrar_hijos(viewport_juego2)
+		borrar_hijos(viewport_compartido)
 
 		if puente_juego1.tipo_interfaz != 1:    
 			# Mostrar dos ventanas de juego
@@ -207,8 +232,7 @@ func seleccionar_nivel() -> String:
 		return seleccionar_nivel()
 
 	return random
-
-
+ 
 func _ready():
 	viewport_juego1.get_parent().set_stretch(true)
 	viewport_juego2.get_parent().set_stretch(true)
@@ -222,28 +246,28 @@ func _process(delta: float) -> void:
 			contador_juego -= 1 * delta   
 			ui_contador_juego.value = contador_juego / TIEMPO_JUEGO * 100
 			ui_contador_juego.visible = true
-		else:
+		else: 
+			cambiar_vidas()
 			ui_contador_juego.visible = false
 			empezado = false
 			contador_carga = TIEMPO_TRANSICION
 			nivel_actual = ""
 			nivel_seleccionado = "" 
-
-		match nivel_tipo_victoria:
-			0:
-				cuantificar_puntos()
-			1:
-				comparar_puntos()
-			 
+   
 		actualizar_controles(1) 
 		actualizar_controles(2)
 
 	else: 
 		contador_carga -= 1 * delta 
 		if contador_carga > 0:
+			actualizar_vidas()
+			ui_panel_juego.visible = false
+			ui_panel_vidas.visible = true
 			ui_contador_carga.visible = true
 			ui_contador_carga.text = str(round(contador_carga))
 		else:
+			ui_panel_juego.visible = true
+			ui_panel_vidas.visible = false
 			ui_contador_carga.visible = false
 			nivel_seleccionado = seleccionar_nivel()
 			cargar_nivel(nivel_seleccionado)
