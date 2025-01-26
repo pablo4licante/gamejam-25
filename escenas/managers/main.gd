@@ -383,6 +383,7 @@ func _process(delta: float) -> void:
 				
 			else: 
 				ui_resultado.text = "Empate!";
+				ui_final.play(0)
 				
 				
 			
