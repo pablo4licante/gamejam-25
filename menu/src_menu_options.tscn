@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://csajnuhojn4mp"]
+[gd_scene load_steps=9 format=3 uid="uid://csajnuhojn4mp"]
 
 [ext_resource type="VideoStream" path="res://menu/UI/interfaz_animada_sin_botones.ogv" id="1_gyifa"]
 [ext_resource type="Script" path="res://menu/script/button_atras.gd" id="1_hfhtf"]
 [ext_resource type="FontFile" uid="uid://qicc4vvx1k2c" path="res://menu/fonts/Wedges.ttf" id="2_ues3o"]
+[ext_resource type="Texture2D" uid="uid://3g88ljqye5i1" path="res://menu/UI/boton.png" id="3_3alv1"]
+[ext_resource type="Script" path="res://menu/script/Mute_Volum.gd" id="4_rfo1e"]
+[ext_resource type="Script" path="res://menu/script/h_slider_volume.gd" id="5_obx7p"]
+[ext_resource type="Script" path="res://menu/script/button_windous.gd" id="6_xld3q"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5rg2r"]
+light_mode = 1
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -24,6 +31,7 @@ anchor_bottom = 0.998
 offset_left = 10.0
 offset_right = 11.0
 offset_bottom = 10.1599
+scale = Vector2(1.02367, 1.01154)
 stream = ExtResource("1_gyifa")
 autoplay = true
 expand = true
@@ -44,22 +52,47 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Button_volume" type="Button" parent="VBoxContainer_botones"]
+self_modulate = Color(0.551183, 0.46923, 0.982659, 1)
 layout_mode = 2
 theme_override_constants/outline_size = 40
 theme_override_fonts/font = ExtResource("2_ues3o")
 theme_override_font_sizes/font_size = 100
 text = "VOLUME"
 flat = true
+script = ExtResource("4_rfo1e")
 
-[node name="Button_resolution" type="Button" parent="VBoxContainer_botones"]
+[node name="F_Buton" type="Sprite2D" parent="VBoxContainer_botones/Button_volume"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_5rg2r")
+position = Vector2(273, 76)
+scale = Vector2(1.0054, 0.760677)
+texture = ExtResource("3_3alv1")
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer_botones"]
+self_modulate = Color(0.513726, 0.254624, 0.806794, 1)
+layout_mode = 2
+step = 8.0
+script = ExtResource("5_obx7p")
+
+[node name="Button_Windous" type="Button" parent="VBoxContainer_botones"]
+self_modulate = Color(0.0659431, 0.848233, 0.658217, 1)
 layout_mode = 2
 theme_override_constants/outline_size = 40
 theme_override_fonts/font = ExtResource("2_ues3o")
 theme_override_font_sizes/font_size = 100
-text = "RESOLUTION"
+text = "WINDOUS"
 flat = true
+script = ExtResource("6_xld3q")
+
+[node name="F_Buton" type="Sprite2D" parent="VBoxContainer_botones/Button_Windous"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_5rg2r")
+position = Vector2(273, 76)
+scale = Vector2(1.0054, 0.760677)
+texture = ExtResource("3_3alv1")
 
 [node name="Button_atras" type="Button" parent="VBoxContainer_botones"]
+self_modulate = Color(1, 0.498039, 1, 1)
 layout_mode = 2
 theme_override_constants/outline_size = 40
 theme_override_fonts/font = ExtResource("2_ues3o")
@@ -69,5 +102,11 @@ text = "BACK
 flat = true
 script = ExtResource("1_hfhtf")
 
-[connection signal="pressed" from="VBoxContainer_botones/Button_resolution" to="VBoxContainer_botones/Button_resolution" method="_on_pressed"]
+[node name="F_Buton" type="Sprite2D" parent="VBoxContainer_botones/Button_atras"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_5rg2r")
+position = Vector2(273, 76)
+scale = Vector2(1.0054, 0.760677)
+texture = ExtResource("3_3alv1")
+
 [connection signal="pressed" from="VBoxContainer_botones/Button_atras" to="VBoxContainer_botones/Button_atras" method="_on_pressed"]
