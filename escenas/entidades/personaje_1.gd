@@ -2,7 +2,7 @@ extends CharacterBody2D
 @onready var area_2d: Area2D = $Area2D 
 @onready var bridge = $"../Bridge"
 
-const SPEED = 300.0
+const SPEED = 400.0
 var acceleration = 300.0
 var previous_direction = 0 
 
@@ -13,7 +13,8 @@ var time = 0
 func _ready():
 	# Guarda la posición inicial en Y
 	start_y = position.y
-	area_2d.body_entered.connect(reventar)
+	if bridge.in_game:
+		area_2d.body_entered.connect(reventar)
 	
 
 func _physics_process(_delta: float) -> void:
@@ -37,5 +38,6 @@ func _physics_process(_delta: float) -> void:
 
 
 func reventar(_a):
+	bridge.play_sound("explosion")
 	bridge.puntuacion = -100  
 	queue_free()

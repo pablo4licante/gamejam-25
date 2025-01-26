@@ -74,6 +74,18 @@ layout_mode = 2
 step = 8.0
 script = ExtResource("5_obx7p")
 
+[node name="Label" type="Label" parent="VBoxContainer_botones/HSlider"]
+self_modulate = Color(0.482353, 0.411765, 0.858824, 1)
+layout_mode = 0
+offset_left = 604.0
+offset_top = -30.0
+offset_right = 722.0
+offset_bottom = 48.0
+theme_override_constants/line_spacing = 40
+theme_override_fonts/font = ExtResource("2_ues3o")
+theme_override_font_sizes/font_size = 50
+text = "1"
+
 [node name="Button_Windous" type="Button" parent="VBoxContainer_botones"]
 self_modulate = Color(0.0659431, 0.848233, 0.658217, 1)
 layout_mode = 2

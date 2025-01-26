@@ -1,30 +1,23 @@
 extends Button
 
-# Variable para rastrear el estado del sonido
-var is_muted = false
-
-# Nodo del bus de audio (asumiendo que usamos el bus "Master")
+signal volume_changed(value: float)
 var master_bus = AudioServer.get_bus_index("Master")
 
 func _ready():
-	# Configuración inicial del texto del botón
 	_update_button_text()
-	# Conectar la señal pressed del botón a la función _on_button_pressed
 	pressed.connect(_on_button_pressed)
 
 func _on_button_pressed():
-	# Cambiar el estado de mute
-	is_muted = !is_muted
+	var current_volume = AudioServer.get_bus_volume_db(master_bus)
+	var new_volume = -30.0 if current_volume > -30 else 0.0
 	
-	# Aplicar el mute al bus de audio
-	AudioServer.set_bus_mute(master_bus, is_muted)
-	
-	# Actualizar el texto del botón
+	AudioServer.set_bus_volume_db(master_bus, new_volume)
+	volume_changed.emit(new_volume)
 	_update_button_text()
 
 func _update_button_text():
-	# Cambiar el texto según el estado
-	if is_muted:
-		text = "MUTE"
-	else:
-		text = "VOLUME"
+	var current_volume = AudioServer.get_bus_volume_db(master_bus)
+	text = "MUTE" if current_volume <= -30 else "VOLUME"
+
+func update_from_slider(volume):
+	_update_button_text()

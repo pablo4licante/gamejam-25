@@ -1,48 +1,53 @@
-[gd_scene load_steps=6 format=3 uid="uid://8k7jikydyfan"]
+[gd_scene load_steps=7 format=3 uid="uid://8k7jikydyfan"]
 
 [ext_resource type="PackedScene" uid="uid://ciqljjbjkqo2m" path="res://escenas/entidades/objetivo_burbuja.tscn" id="1_g6lxu"]
 [ext_resource type="Script" path="res://escenas/niveles/dispara_1.gd" id="1_ro2gb"]
 [ext_resource type="PackedScene" uid="uid://wls1xt3tgwv" path="res://escenas/managers/bridge.tscn" id="2_og4dl"]
 [ext_resource type="PackedScene" uid="uid://bgqybgesl5d4q" path="res://escenas/entidades/cursor_dispara.tscn" id="2_yigsh"]
 [ext_resource type="Texture2D" uid="uid://v3qwqt5xhgck" path="res://assets/fondos/fondo_explota_pompas.jpg" id="5_h3b8k"]
+[ext_resource type="Script" path="res://escenas/niveles/confetti.gd" id="6_xhb27"]
 
 [node name="Dispara1" type="Node"]
 script = ExtResource("1_ro2gb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(433, -10)
+position = Vector2(500, 103)
 scale = Vector2(2, 2)
 texture = ExtResource("5_h3b8k")
 
 [node name="Bridge" parent="." instance=ExtResource("2_og4dl")]
 
-[node name="Cursor_dispara" parent="." instance=ExtResource("2_yigsh")]
-position = Vector2(250, 469)
-
 [node name="Burbujas" type="Node2D" parent="."]
 
 [node name="ObjetivoBurbuja" parent="Burbujas" instance=ExtResource("1_g6lxu")]
-position = Vector2(60, 133)
+position = Vector2(97, 258)
 
 [node name="ObjetivoBurbuja2" parent="Burbujas" instance=ExtResource("1_g6lxu")]
-position = Vector2(144, 60)
+position = Vector2(115, 418)
+
+[node name="ObjetivoBurbuja6" parent="Burbujas" instance=ExtResource("1_g6lxu")]
+position = Vector2(254, 573)
 
 [node name="ObjetivoBurbuja3" parent="Burbujas" instance=ExtResource("1_g6lxu")]
-position = Vector2(262, 187)
+position = Vector2(270, 139)
 
 [node name="ObjetivoBurbuja4" parent="Burbujas" instance=ExtResource("1_g6lxu")]
-position = Vector2(453, 231)
+position = Vector2(457, 266)
 
 [node name="ObjetivoBurbuja5" parent="Burbujas" instance=ExtResource("1_g6lxu")]
-position = Vector2(401, 71)
+position = Vector2(484, 514)
 
-[node name="Label" type="Label" parent="."]
-offset_left = 112.0
-offset_top = 266.0
-offset_right = 402.0
-offset_bottom = 354.0
-theme_override_font_sizes/font_size = 64
+[node name="Cursor_dispara" parent="." instance=ExtResource("2_yigsh")]
+position = Vector2(313, 342)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(248, 232)
+position = Vector2(315, 345)
 zoom = Vector2(1.25, 1.25)
+
+[node name="Confetti" type="Node2D" parent="."]
+z_index = 5
+position = Vector2(314, 343)
+script = ExtResource("6_xhb27")
+visibility_rect = Rect2(0, 0, 0, 0)
+random_position = false
+one_shot = true

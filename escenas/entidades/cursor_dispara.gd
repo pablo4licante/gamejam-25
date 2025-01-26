@@ -16,6 +16,7 @@ var colliding_bodies : Array[Node2D] = []
 
 func _input(_ev):
 	if bridge.is_pressed("action"):
+		bridge.play_sound("disparo")
 		check_bubble()
 		
 func _ready():
@@ -45,4 +46,5 @@ func on_body_exited(body):
 func check_bubble():
 	if colliding_bodies.size() > 0:
 		colliding_bodies[0].queue_free()
+		bridge.play_sound("acierto")
 		burbuja_died.emit()

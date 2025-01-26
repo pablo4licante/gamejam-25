@@ -2,33 +2,62 @@ extends Node2D
 
 @export var viewport_juego1 : Viewport
 @export var viewport_juego2 : Viewport
-@export var viewport_compartido : Viewport
-@export var ui_contador_carga : Label
+@export var viewport_compartido : Viewport 
 @export var ui_contador_juego : Range
  
 @export var ui_panel_juego : Panel
 @export var ui_panel_vidas : Panel
 
 @export var ui_corazon : TextureRect
+@export var ui_corazon_destroy : TextureRect
+
 @export var ui_vidas1 : BoxContainer
 @export var ui_vidas2 : BoxContainer
 
 @export var ui_resultado : Label
-  
-var TIEMPO_JUEGO = 5.0
-var TIEMPO_TRANSICION = 3.0
+
+@export var ui_transicion : Node2D
+@export var ui_final : Node2D
+
+@export var music_player: AudioStreamPlayer2D
+
+@export var audio_player: AudioStreamPlayer2D
+
+@onready var win_music_player: AudioStreamPlayer2D = $WinMusicPlayer
+@export var sounds : Array[AudioStream]
+
+
+var sound_links = { 
+	"acierto": 0,
+	"boton": 1,
+	"chincheta": 2,
+	"morir": 3,
+	"disparo": 4,
+	"error": 5,
+	"explosion": 6,
+	"hinchar": 7,
+	"meta": 8,
+	"saltar": 9
+}
+
+var TIEMPO_JUEGO = 10.0
+var TIEMPO_TRANSICION = 6.0
+var TIEMPO_TRANSICION_O = 6.0
 
 var nivel_actual = "" 
 var nivel_seleccionado = ""
+var nivel_precalculado = ""
 var nivel_ultimo = ""
 
 var niveles = {			# Tipo Victoria
 	#"test2": [0],
 	#"test": [0],
-	"dispara_1": [1],
-	"game_pinchos": [2],
-	"game_chicle": [0],
-	"escena_plataformas_1": [1]
+	"dispara_1": [1, "dispara"],
+	"game_pinchos": [2, "esquiva"],
+	"game_chicle": [0, "hincha"],
+	"escena_plataformas_1": [1, "corre"],
+	#"escena_plataformas_2": [1, "corre"],
+	#"escena_plataformas_3": [1, "corre"],
 }
 var nivel_tipo_victoria = 0
 
@@ -111,6 +140,9 @@ func borrar_hijos(nodo) -> void:
 		for child in nodo.get_children():
 			nodo.remove_child(child)
 
+var vidas_1_old = 5
+var vidas_2_old = 5
+
 func actualizar_vidas() -> void:
 	borrar_hijos(ui_vidas1)
 	borrar_hijos(ui_vidas2)
@@ -119,17 +151,32 @@ func actualizar_vidas() -> void:
 		var v = ui_corazon.duplicate()
 		v.visible = true
 		ui_vidas1.add_child(v)
+ 
 	for i in range(vidas_2):
 		var v = ui_corazon.duplicate()
 		v.visible = true
 		ui_vidas2.add_child(v)
 
+	if vidas_1_old != vidas_1:
+		var v = ui_corazon_destroy.duplicate()
+		v.visible = true
+		ui_vidas1.add_child(v)
+  
+	if vidas_2_old != vidas_2:
+		var v = ui_corazon_destroy.duplicate()
+		v.visible = true
+		ui_vidas2.add_child(v)
+	 
+	vidas_2_old = vidas_2
+	vidas_1_old = vidas_1
+
 func cambiar_vidas() -> void: 
 	if puente_juego1 == null or puente_juego2 == null:
 		return
- 
+ 	
 	match nivel_tipo_victoria:
 		0: # Por puntos mas altos = victoria
+			print(puente_juego1.puntuacion, puente_juego2.puntuacion)
 			match puente_juego1.tipo_interfaz:
 				0:
 					if puente_juego1.puntuacion > puente_juego2.puntuacion:
@@ -185,7 +232,7 @@ func buscar_bridge(node) -> Node2D:
 func cargar_nivel(nombre) -> void: 
 	var path = "res://escenas/niveles/"+nombre+".tscn" 
 	var status = ResourceLoader.load_threaded_request(path) 
-	print("Cargando... " + error_string(status))  
+	print("Cargando... " + error_string(status)) 
 	if status == Error.OK: 
 		var scene = ResourceLoader.load_threaded_get(path)
 		var game_scene = scene.instantiate() 
@@ -218,6 +265,19 @@ func cargar_nivel(nombre) -> void:
 			var game_scene2 = scene.instantiate()
 			puente_juego2 = buscar_bridge(game_scene2)
 			puntos_juego2_actual = 0
+			
+			puente_juego1.audio_player = audio_player
+			puente_juego2.audio_player = audio_player
+			
+			puente_juego1.in_game = true
+			puente_juego2.in_game = true
+			
+			puente_juego1.sounds = sound_links
+			puente_juego2.sounds = sound_links
+			
+			
+			puente_juego1.tiempo_de_juego = TIEMPO_JUEGO
+			puente_juego2.tiempo_de_juego = TIEMPO_JUEGO
 
 			puente_juego1.jugador = 1
 			puente_juego2.jugador = 2
@@ -245,21 +305,33 @@ func cargar_nivel(nombre) -> void:
 
 func seleccionar_nivel() -> String:
 	var keys = niveles.keys()
-	var random = keys[randi() % keys.size()]
 
-	if random == nivel_ultimo:
-		return seleccionar_nivel()
-
+	music_player.pitch_scale += (0.1/TIEMPO_JUEGO)
+	if keys.size() > 1:  
+		keys.erase(nivel_ultimo)
+		
+	var random = keys[randi() % keys.size()] 
 	return random
+	
  
-func _ready():
+func _ready(): 
+	actualizar_vidas()
 	viewport_juego1.get_parent().set_stretch(true) 
 	viewport_juego2.get_parent().set_stretch(true)
 	viewport_compartido.get_parent().set_stretch(true)
 	contador_carga = TIEMPO_TRANSICION
+	music_player = $MusicStreamPlayer2D
+	music_player.play() 
+	ui_final.visible = false
+	for key in sound_links:
+		sound_links[key] = sounds[sound_links[key]]
+
+var loading_next = false
+var contador_buff = 0.5
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+					
 	if empezado:
 		if contador_juego > 0.0:
 			contador_juego -= 1 * delta   
@@ -267,16 +339,23 @@ func _process(delta: float) -> void:
 			ui_contador_juego.visible = true
 		else: 
 			cambiar_vidas()
+			actualizar_vidas()
 
 			# Reducir el tiempo
 			TIEMPO_JUEGO *= 0.9
-			TIEMPO_TRANSICION *= 0.9
+			TIEMPO_TRANSICION *= 0.965
 			 
 			ui_contador_juego.visible = false
 			empezado = false
 			contador_carga = TIEMPO_TRANSICION
+			contador_buff = 0.5
 			nivel_actual = ""
 			nivel_seleccionado = "" 
+			
+			if puente_juego1 != null or puente_juego2 != null:
+				if puente_juego1.tipo_interfaz == 0:
+					puente_juego1.in_game = false
+					puente_juego2.in_game = false
    
 		actualizar_controles(1) 
 		actualizar_controles(2)
@@ -285,35 +364,58 @@ func _process(delta: float) -> void:
 
 		if vidas_1 == 0 or vidas_2 == 0:
 			ui_resultado.visible = true
-
+			ui_final.visible = true
+			
 			if vidas_1 > vidas_2:
 				ui_resultado.text = "El jugador 1 ha ganado!";
+				ui_final.play(1)
+				
 			elif vidas_2 > vidas_1: 
 				ui_resultado.text = "El jugador 2 ha ganado!";
+				ui_final.play(2)
+				
 			else: 
 				ui_resultado.text = "Empate!";
-
+				
+				
+			
 		else: 
+			contador_buff -= 1 * delta 
 			contador_carga -= 1 * delta 
-			if contador_carga > 0:
-				actualizar_vidas()
+			 
+			if contador_buff <= 0 and contador_carga < 4:
+				if not loading_next: 
+					print(TIEMPO_TRANSICION_O/TIEMPO_TRANSICION)
+					
+					nivel_precalculado = seleccionar_nivel()
+					ui_transicion.change_text(nivel_precalculado)
+					ui_transicion.speed(TIEMPO_TRANSICION_O/TIEMPO_TRANSICION)
+					ui_transicion.play()
+					loading_next = true
+				 
+				if loading_next:
+					if ui_transicion.playing():
+						ui_panel_juego.visible = false
+						ui_panel_vidas.visible = true
+						ui_transicion.visible = true
+					else:
+						contador_carga = 0
+						loading_next = false 
+						ui_panel_juego.visible = true
+						ui_panel_vidas.visible = false
+						nivel_seleccionado = nivel_precalculado
+						nivel_ultimo = nivel_seleccionado
+						cargar_nivel(nivel_seleccionado)
+						print("Nuevo nivel seleccionado: ", nivel_seleccionado)
+			else:
 				ui_panel_juego.visible = false
 				ui_panel_vidas.visible = true
-				ui_contador_carga.visible = true
-				ui_contador_carga.text = str(round(contador_carga))
-			else:
-				ui_panel_juego.visible = true
-				ui_panel_vidas.visible = false
-				ui_contador_carga.visible = false
-				nivel_seleccionado = seleccionar_nivel()
-				cargar_nivel(nivel_seleccionado)
-				print("Nuevo nivel seleccionado: ", nivel_seleccionado)
+				ui_transicion.visible = false
  
 	if empezado or nivel_actual == nivel_seleccionado:
-		return
+		return 
 
 	cargar_nivel(nivel_seleccionado)
-	nivel_ultimo = nivel_seleccionado
 
 	
 	 

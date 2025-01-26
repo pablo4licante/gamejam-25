@@ -1,5 +1,406 @@
-[gd_scene format=3 uid="uid://cjyi62ngihfto"]
+[gd_scene load_steps=15 format=3 uid="uid://cjyi62ngihfto"]
+
+[ext_resource type="Script" path="res://escenas/ui/transicion_guapa.gd" id="1_1bxlk"]
+[ext_resource type="Texture2D" uid="uid://cef483c52ijxv" path="res://assets/ui/fondo_cambio_nivel_naranja.png" id="1_whx5k"]
+[ext_resource type="Texture2D" uid="uid://drt07q32d24js" path="res://assets/ui/fondo_cambio_nivel_naranja_mitad.png" id="2_24etx"]
+[ext_resource type="Texture2D" uid="uid://dkkgjnaumlckv" path="res://assets/ui/fondo_cambio_nivel_azul.png" id="3_arwja"]
+[ext_resource type="Texture2D" uid="uid://chi8kcpo5spyl" path="res://assets/ui/num_circulo.png" id="4_0soxr"]
+[ext_resource type="Texture2D" uid="uid://dbb3oanlhodh3" path="res://assets/ui/bocadilli_esplota.png" id="4_fsb6m"]
+[ext_resource type="Texture2D" uid="uid://djotw5barbleq" path="res://assets/ui/frase_busca.png" id="5_pohdb"]
+[ext_resource type="Texture2D" uid="uid://b1ht6hs7rexv7" path="res://assets/ui/num_tres.png" id="6_4mbdd"]
+[ext_resource type="Texture2D" uid="uid://bccf38n6sp0b" path="res://assets/ui/num_dos.png" id="7_0c0ic"]
+[ext_resource type="Texture2D" uid="uid://dpyprsw1267ig" path="res://assets/ui/num_uno.png" id="8_c6iqk"]
+
+[sub_resource type="Animation" id="Animation_uoh50"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FondoCambioNivelAzul2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-519, 449)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FondoCambioNivelAzul:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2437, 513)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BocadilliEsplota:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FondoCambioNivelNaranja:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1022, 551)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FondoCambioNivelNaranjaMitad:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(958, 522)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FondoCambioNivelNaranja:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("NumTres:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("NumDos:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("NumUno:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("NumCirculo:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("TEXTO:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_n2u7r"]
+resource_name = "count"
+length = 7.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FondoCambioNivelAzul2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 1, 2.5, 3, 3.7, 4.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-519, 449), Vector2(-2400, 449), Vector2(-2400, 449), Vector2(-2099, 443), Vector2(-2035, 420), Vector2(-2316, 453)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FondoCambioNivelAzul:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 1, 2.1, 2.8, 3.5, 4.4, 4.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2500, 513), Vector2(1000, 523), Vector2(-371, 539), Vector2(1200, 523), Vector2(1000, 523), Vector2(1000, 523), Vector2(-365, 523)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BocadilliEsplota:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3, 3.5, 4.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FondoCambioNivelNaranja:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1022, 551)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FondoCambioNivelNaranjaMitad:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3.5, 4.3, 4.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(958, 522), Vector2(958, 522), Vector2(2368, 509)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FondoCambioNivelNaranja:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 4.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("NumTres:scale")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.8, 0.8), Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("NumDos:scale")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1, 1.5, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.8, 0.8), Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("NumUno:scale")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("NumCirculo:scale")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5, 2.2, 3, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.6, 0.6), Vector2(0.8, 0.8), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("TEXTO:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(3.1, 3.6, 3.8, 4.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.8, 0.8), Vector2(0.85, 0.85), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4dh33"]
+resource_name = "player_1_wins"
+length = 7.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FondoCambioNivelAzul2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 1, 2.5, 3, 3.7, 4.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-519, 449), Vector2(-2400, 449), Vector2(-2400, 449), Vector2(-2099, 443), Vector2(-2035, 420), Vector2(-1618, 492)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FondoCambioNivelAzul:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 1, 2.1, 3.5, 4.6, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2500, 513), Vector2(1000, 523), Vector2(531, 552), Vector2(1000, 523), Vector2(1400, 540), Vector2(1300, 540)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FondoCambioNivelNaranja:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1022, 551)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FondoCambioNivelNaranja:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gfi6a"]
+_data = {
+"RESET": SubResource("Animation_uoh50"),
+"count": SubResource("Animation_n2u7r"),
+"player_1_wins": SubResource("Animation_4dh33")
+}
 
 [node name="TransicionGuapa" type="Node2D"]
+script = ExtResource("1_1bxlk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gfi6a")
+}
+
+[node name="FondoCambioNivelNaranjaMitad" type="Sprite2D" parent="."]
+position = Vector2(958, 522)
+scale = Vector2(1.05556, 1.05556)
+texture = ExtResource("2_24etx")
+
+[node name="FondoCambioNivelNaranja" type="Sprite2D" parent="."]
+position = Vector2(1022, 551)
+scale = Vector2(1.125, 1.1037)
+texture = ExtResource("1_whx5k")
+
+[node name="FondoCambioNivelAzul" type="Sprite2D" parent="."]
+position = Vector2(2437, 513)
+scale = Vector2(1.17613, 1.1)
+texture = ExtResource("3_arwja")
+
+[node name="FondoCambioNivelAzul2" type="Sprite2D" parent="."]
+position = Vector2(-519, 449)
+scale = Vector2(2.3969, 1.26667)
+texture = ExtResource("3_arwja")
+flip_h = true
+flip_v = true
+
+[node name="NumCirculo" type="Sprite2D" parent="."]
+position = Vector2(960, 548)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_0soxr")
+
+[node name="BocadilliEsplota" type="Sprite2D" parent="."]
+position = Vector2(920, 552)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_fsb6m")
+
+[node name="NumTres" type="Sprite2D" parent="."]
+position = Vector2(960, 548)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("6_4mbdd")
+
+[node name="NumDos" type="Sprite2D" parent="."]
+position = Vector2(960, 548)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("7_0c0ic")
+
+[node name="NumUno" type="Sprite2D" parent="."]
+position = Vector2(960, 548)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("8_c6iqk")
+
+[node name="TEXTO" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("5_pohdb")

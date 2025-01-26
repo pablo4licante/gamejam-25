@@ -1,33 +1,72 @@
-[gd_scene load_steps=8 format=3 uid="uid://ceh1gtstwdudh"]
+[gd_scene load_steps=34 format=3 uid="uid://ceh1gtstwdudh"]
 
 [ext_resource type="Script" path="res://escenas/managers/main.gd" id="1_byav3"]
 [ext_resource type="Texture2D" uid="uid://n77cfiy6jkvg" path="res://assets/sprites/corazon.png" id="2_2g6pr"]
+[ext_resource type="AudioStream" uid="uid://b8ak0pxxl5bmq" path="res://assets/sonidos/Acierto.wav" id="2_3ro0p"]
 [ext_resource type="Texture2D" uid="uid://bi5y7t11g8rqk" path="res://assets/ui/marco_juego_2.png" id="2_wm7y4"]
+[ext_resource type="AudioStream" uid="uid://cyrese82cb4pf" path="res://assets/sonidos/Button.wav" id="3_hj8pf"]
+[ext_resource type="AudioStream" uid="uid://bpdobnhnu251l" path="res://assets/sonidos/Chincheta.mp3" id="4_5pqir"]
+[ext_resource type="AudioStream" uid="uid://b31onl3pdpgqu" path="res://assets/sonidos/C_Murio.wav" id="5_0c4n4"]
+[ext_resource type="AudioStream" uid="uid://bi48g4bme4yq7" path="res://assets/sonidos/Disparo.mp3" id="6_fss5v"]
+[ext_resource type="AudioStream" uid="uid://ycnfpcj4deh4" path="res://assets/sonidos/Error.mp3" id="7_w6tfw"]
+[ext_resource type="AudioStream" uid="uid://usun0maamx66" path="res://assets/sonidos/Explosion.mp3" id="8_v6a23"]
+[ext_resource type="AudioStream" uid="uid://dxov2ev4fkauk" path="res://assets/sonidos/Hinchar.wav" id="9_wnqji"]
+[ext_resource type="AudioStream" uid="uid://bah8hx5jflnfc" path="res://assets/sonidos/LlegarMeta.wav" id="10_ftlh4"]
+[ext_resource type="AudioStream" uid="uid://daoeyn0wssl27" path="res://assets/sonidos/Salto.wav" id="11_mf8h3"]
+[ext_resource type="PackedScene" uid="uid://cjyi62ngihfto" path="res://escenas/ui/transicion_guapa.tscn" id="12_h8klh"]
+[ext_resource type="Script" path="res://escenas/managers/corazon_destruido.gd" id="14_2klu1"]
+[ext_resource type="AudioStream" uid="uid://crjmly23c10xw" path="res://assets/sonidos/120_cancion1.mp3" id="15_3vdnn"]
+[ext_resource type="Texture2D" uid="uid://cfcb2873wfsow" path="res://assets/sprites/animacion_perder_vida/corazon-1.png" id="15_bqr2m"]
+[ext_resource type="Texture2D" uid="uid://kcs2sq6g1sl8" path="res://assets/sprites/animacion_perder_vida/corazon-2.png" id="16_hlfjg"]
+[ext_resource type="Texture2D" uid="uid://bxadcb5iptmri" path="res://assets/sprites/animacion_perder_vida/corazon-3.png" id="17_ktg14"]
+[ext_resource type="Texture2D" uid="uid://3ft6283a0gnd" path="res://assets/sprites/animacion_perder_vida/corazon-4.png" id="18_uwny3"]
+[ext_resource type="Texture2D" uid="uid://cq0a28bkpe0yj" path="res://assets/sprites/animacion_perder_vida/corazon-5.png" id="19_q314w"]
+[ext_resource type="Texture2D" uid="uid://bkyay4rt8h5xp" path="res://assets/sprites/animacion_perder_vida/corazon-6.png" id="20_6pbu6"]
+[ext_resource type="Texture2D" uid="uid://dn71mihoh8w8v" path="res://assets/sprites/animacion_perder_vida/corazon-7.png" id="21_qgq57"]
+[ext_resource type="Texture2D" uid="uid://qdnvydefdwbu" path="res://assets/sprites/animacion_perder_vida/corazon-8.png" id="22_8qct6"]
+[ext_resource type="Texture2D" uid="uid://bfjvjl7qim2vw" path="res://assets/sprites/animacion_perder_vida/corazon-9.png" id="23_lre2r"]
+[ext_resource type="PackedScene" uid="uid://cvhxnysvvgnnl" path="res://escenas/ui/fin_de_juego.tscn" id="24_by3al"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2nuhl"]
+[ext_resource type="Texture2D" uid="uid://4j6s4ytv8mfq" path="res://assets/fondos/fondo_vidas_azul.png" id="24_pfopr"]
+[ext_resource type="Texture2D" uid="uid://hbfjd6vv20dk" path="res://assets/fondos/fondo_vidas_naranja.png" id="25_aqjo7"]
+[ext_resource type="AudioStream" uid="uid://b3qwadna6t4rx" path="res://assets/sonidos/Victory.wav" id="27_bjxc6"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nd4ce"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qx2s1"]
+texture = ExtResource("24_pfopr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hkvtk"]
+texture = ExtResource("25_aqjo7")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lwxc3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nr1ry"]
 bg_color = Color(1, 1, 1, 1)
 
-[node name="Node2D" type="Node2D" node_paths=PackedStringArray("viewport_juego1", "viewport_juego2", "viewport_compartido", "ui_contador_carga", "ui_contador_juego", "ui_panel_juego", "ui_panel_vidas", "ui_corazon", "ui_vidas1", "ui_vidas2", "ui_resultado")]
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_srt52"]
+polyphony = 100
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("viewport_juego1", "viewport_juego2", "viewport_compartido", "ui_contador_juego", "ui_panel_juego", "ui_panel_vidas", "ui_corazon", "ui_corazon_destroy", "ui_vidas1", "ui_vidas2", "ui_resultado", "ui_transicion", "ui_final", "music_player", "audio_player")]
+z_index = 1
 script = ExtResource("1_byav3")
 viewport_juego1 = NodePath("CanvasLayer/PanelJuego/ContenedorJuego1/SubViewport")
 viewport_juego2 = NodePath("CanvasLayer/PanelJuego/ContenedorJuego2/SubViewport")
 viewport_compartido = NodePath("CanvasLayer/PanelJuego/ContenedorCompartido/SubViewport")
-ui_contador_carga = NodePath("CanvasLayer/PanelHUD/ContadorTransicion")
 ui_contador_juego = NodePath("CanvasLayer/PanelHUD/ContadorJuego")
 ui_panel_juego = NodePath("CanvasLayer/PanelJuego")
 ui_panel_vidas = NodePath("CanvasLayer/PanelVidas")
 ui_corazon = NodePath("CanvasLayer/PanelVidas/Corazon")
+ui_corazon_destroy = NodePath("CanvasLayer/PanelVidas/CorazonDestruido")
 ui_vidas1 = NodePath("CanvasLayer/PanelVidas/Panel/Vidas1")
 ui_vidas2 = NodePath("CanvasLayer/PanelVidas/Panel2/Vidas2")
 ui_resultado = NodePath("CanvasLayer/PanelHUD/Resultado")
+ui_transicion = NodePath("TransicionGuapa")
+ui_final = NodePath("TransicionFinal")
+music_player = NodePath("MusicStreamPlayer2D")
+audio_player = NodePath("AudioStreamPlayer2D")
+sounds = Array[AudioStream]([ExtResource("2_3ro0p"), ExtResource("3_hj8pf"), ExtResource("4_5pqir"), ExtResource("5_0c4n4"), ExtResource("6_fss5v"), ExtResource("7_w6tfw"), ExtResource("8_v6a23"), ExtResource("9_wnqji"), ExtResource("10_ftlh4"), ExtResource("11_mf8h3")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
 
 [node name="PanelJuego" type="Panel" parent="CanvasLayer"]
 texture_filter = 2
@@ -83,15 +122,6 @@ handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelJuego"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_wm7y4")
-
 [node name="PanelVidas" type="Panel" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -101,6 +131,7 @@ grow_vertical = 2
 
 [node name="Corazon" type="TextureRect" parent="CanvasLayer/PanelVidas"]
 visible = false
+texture_filter = 4
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 offset_left = 268.0
@@ -110,26 +141,45 @@ offset_bottom = 344.0
 texture = ExtResource("2_2g6pr")
 expand_mode = 5
 
+[node name="CorazonDestruido" type="TextureRect" parent="CanvasLayer/PanelVidas"]
+visible = false
+texture_filter = 4
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+offset_left = 268.0
+offset_top = 304.0
+offset_right = 408.0
+offset_bottom = 344.0
+texture = ExtResource("2_2g6pr")
+expand_mode = 5
+script = ExtResource("14_2klu1")
+texturas = Array[Texture]([ExtResource("15_bqr2m"), ExtResource("16_hlfjg"), ExtResource("17_ktg14"), ExtResource("18_uwny3"), ExtResource("19_q314w"), ExtResource("20_6pbu6"), ExtResource("21_qgq57"), ExtResource("22_8qct6"), ExtResource("23_lre2r")])
+
 [node name="Panel" type="Panel" parent="CanvasLayer/PanelVidas"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 1.0
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_2nuhl")
+theme_override_styles/panel = SubResource("StyleBoxTexture_qx2s1")
 
 [node name="Label" type="Label" parent="CanvasLayer/PanelVidas/Panel"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
+anchor_top = 0.6
 anchor_right = 0.5
-offset_left = -82.0
-offset_top = 50.0
-offset_right = 82.0
-offset_bottom = 50.0
+anchor_bottom = 0.6
+offset_left = -160.0
+offset_top = -566.4
+offset_right = 160.0
+offset_bottom = -470.4
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 70
 text = "Jugador 1"
+horizontal_alignment = 1
 
 [node name="Vidas1" type="HBoxContainer" parent="CanvasLayer/PanelVidas/Panel"]
 layout_mode = 1
@@ -148,21 +198,25 @@ anchor_left = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_nd4ce")
+theme_override_styles/panel = SubResource("StyleBoxTexture_hkvtk")
 
 [node name="Label" type="Label" parent="CanvasLayer/PanelVidas/Panel2"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
+anchor_top = 0.6
 anchor_right = 0.5
-offset_left = -82.0
-offset_top = 50.0
-offset_right = 82.0
-offset_bottom = 50.0
+anchor_bottom = 0.6
+offset_left = -160.0
+offset_top = -566.4
+offset_right = 160.0
+offset_bottom = -470.4
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 70
-text = "Jugador 2
-"
+text = "Jugador 2"
+horizontal_alignment = 1
 
 [node name="Vidas2" type="HBoxContainer" parent="CanvasLayer/PanelVidas/Panel2"]
 layout_mode = 1
@@ -206,24 +260,6 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_nr1ry")
 value = 50.0
 show_percentage = false
 
-[node name="ContadorTransicion" type="Label" parent="CanvasLayer/PanelHUD"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -44.0
-offset_right = 20.0
-offset_bottom = 44.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 70
-text = "1"
-
 [node name="Resultado" type="Label" parent="CanvasLayer/PanelHUD"]
 visible = false
 layout_mode = 1
@@ -241,3 +277,32 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 70
 text = "Resultado"
 horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wm7y4")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamPolyphonic_srt52")
+max_polyphony = 100
+playback_type = 1
+
+[node name="TransicionFinal" parent="." instance=ExtResource("24_by3al")]
+visible = false
+
+[node name="TransicionGuapa" parent="." instance=ExtResource("12_h8klh")]
+visible = false
+z_index = 10
+
+[node name="MusicStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_3vdnn")
+parameters/looping = true
+
+[node name="WinMusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("27_bjxc6")
+volume_db = -16.0
+attenuation = 0.482968

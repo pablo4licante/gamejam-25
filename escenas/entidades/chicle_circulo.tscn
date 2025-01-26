@@ -9,7 +9,6 @@
 blend_mode = 1
 
 [node name="Circulo" type="Node2D"]
-position = Vector2(575, 375)
 script = ExtResource("1_dw425")
 
 [node name="SpriteBocaC" type="Sprite2D" parent="."]
