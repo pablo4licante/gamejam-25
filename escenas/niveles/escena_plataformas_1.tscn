@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0oqkkj608r8g"]
+[gd_scene load_steps=12 format=3 uid="uid://c0oqkkj608r8g"]
 
 [ext_resource type="PackedScene" uid="uid://r0fl5l5sychu" path="res://escenas/entidades/jugador_plataformas.tscn" id="1_xfa0f"]
 [ext_resource type="Script" path="res://escenas/niveles/escena_plataformas_1.gd" id="1_yrlp3"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://wls1xt3tgwv" path="res://escenas/managers/bridge.tscn" id="2_q6grq"]
 [ext_resource type="Texture2D" uid="uid://b7v1kiki3841u" path="res://assets/sprites/bandera.png" id="3_jej53"]
 [ext_resource type="Texture2D" uid="uid://cj8vkvghdexk2" path="res://assets/sprites/bloque_largo.png" id="4_wdmbl"]
+[ext_resource type="Script" path="res://escenas/niveles/confetti.gd" id="8_0rve5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ervy8"]
 
@@ -77,13 +78,13 @@ position = Vector2(321, 339)
 [node name="PlataformaBurbuja2" parent="." instance=ExtResource("2_d7bcf")]
 position = Vector2(227, 429)
 
-[node name="Label" type="Label" parent="."]
-offset_left = 104.0
-offset_top = 75.0
-offset_right = 394.0
-offset_bottom = 163.0
-theme_override_font_sizes/font_size = 64
-text = "¡Ganaste!"
+[node name="Confetti" type="Node2D" parent="."]
+z_index = 5
+position = Vector2(504, 76)
+script = ExtResource("8_0rve5")
+visibility_rect = Rect2(0, 0, 0, 0)
+random_position = false
+one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-95, -85)
