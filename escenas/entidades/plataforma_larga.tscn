@@ -6,7 +6,7 @@
 size = Vector2(417, 447.688)
 
 [node name="PlataformaLarga" type="StaticBody2D"]
-collision_layer = 7
+collision_layer = 4
 collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

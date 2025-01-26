@@ -1,0 +1,88 @@
+[gd_scene load_steps=11 format=3 uid="uid://cp5e6s7spgn8k"]
+
+[ext_resource type="Script" path="res://escenas/niveles/escena_plataformas_1.gd" id="1_lt4i5"]
+[ext_resource type="Texture2D" uid="uid://ni7yjftytsuk" path="res://assets/fondos/fondo_atrapa_bandera.jpg" id="2_bixsm"]
+[ext_resource type="PackedScene" path="res://escenas/managers/bridge.tscn" id="3_p8s2v"]
+[ext_resource type="Texture2D" uid="uid://b7v1kiki3841u" path="res://assets/sprites/bandera.png" id="4_8mqsy"]
+[ext_resource type="PackedScene" uid="uid://r0fl5l5sychu" path="res://escenas/entidades/jugador_plataformas.tscn" id="5_5kv3a"]
+[ext_resource type="PackedScene" uid="uid://c1nn4hj3wbvb" path="res://escenas/entidades/plataforma_burbuja.tscn" id="6_qibla"]
+[ext_resource type="PackedScene" uid="uid://bepv1i4s7pgar" path="res://escenas/entidades/plataforma_larga.tscn" id="7_1pn8c"]
+[ext_resource type="Script" path="res://escenas/niveles/confetti.gd" id="8_n825r"]
+[ext_resource type="PackedScene" uid="uid://c1l8kcqyq7x5g" path="res://escenas/entidades/plataforma_corta.tscn" id="9_s1t0v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ervy8"]
+
+[node name="EscenaPlataformas3" type="Node"]
+script = ExtResource("1_lt4i5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 1, 1, 1)
+offset_left = -358.0
+offset_top = -56.0
+offset_right = 945.0
+offset_bottom = 1329.0
+scale = Vector2(1.40913, 1.30813)
+texture = ExtResource("2_bixsm")
+
+[node name="Bridge" parent="." instance=ExtResource("3_p8s2v")]
+position = Vector2(-155, 458)
+
+[node name="Destiny" type="Node2D" parent="."]
+position = Vector2(-153, 168)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Destiny"]
+texture_filter = 1
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_8mqsy")
+
+[node name="Area2D" type="Area2D" parent="Destiny"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Destiny/Area2D"]
+scale = Vector2(4.06419, 6.73675)
+shape = SubResource("RectangleShape2D_ervy8")
+
+[node name="JugadorPlataformas" parent="." instance=ExtResource("5_5kv3a")]
+position = Vector2(54, 857)
+
+[node name="PlataformaBurbuja" parent="." instance=ExtResource("6_qibla")]
+position = Vector2(468, 657)
+
+[node name="PlataformaBurbuja4" parent="." instance=ExtResource("6_qibla")]
+position = Vector2(475, 261)
+
+[node name="PlataformaBurbuja5" parent="." instance=ExtResource("6_qibla")]
+position = Vector2(310, 130)
+
+[node name="PlataformaBurbuja2" parent="." instance=ExtResource("6_qibla")]
+position = Vector2(307, 843)
+
+[node name="PlataformaBurbuja3" parent="." instance=ExtResource("6_qibla")]
+position = Vector2(313, 453)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 38.0
+offset_top = 68.0
+offset_right = 328.0
+offset_bottom = 156.0
+theme_override_font_sizes/font_size = 64
+text = "¡Ganaste!"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-323, -37)
+anchor_mode = 0
+zoom = Vector2(1.25, 1.25)
+
+[node name="PlataformaLarga" parent="." instance=ExtResource("7_1pn8c")]
+position = Vector2(-103, 268)
+
+[node name="Confetti" type="Node2D" parent="."]
+z_index = 5
+position = Vector2(504, 76)
+script = ExtResource("8_n825r")
+visibility_rect = Rect2(0, 0, 0, 0)
+random_position = false
+one_shot = true
+
+[node name="PlataformaLarga3" parent="." instance=ExtResource("9_s1t0v")]
+position = Vector2(45, 941)

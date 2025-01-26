@@ -256,6 +256,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_lwxc3")
 
 [node name="ContadorJuego" type="ProgressBar" parent="CanvasLayer/PanelHUD"]
+visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = -1

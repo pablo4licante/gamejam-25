@@ -1,125 +1,79 @@
-[gd_scene load_steps=10 format=3 uid="uid://dbesg3xjduas7"]
+[gd_scene load_steps=11 format=3 uid="uid://dx7i1uncdgkh3"]
 
 [ext_resource type="Script" path="res://escenas/niveles/escena_plataformas_1.gd" id="1_8uool"]
 [ext_resource type="Texture2D" uid="uid://ni7yjftytsuk" path="res://assets/fondos/fondo_atrapa_bandera.jpg" id="2_e7acr"]
-[ext_resource type="PackedScene" uid="uid://wls1xt3tgwv" path="res://escenas/managers/bridge.tscn" id="2_vyskl"]
-[ext_resource type="Texture2D" uid="uid://cyhdqtfg0xq7d" path="res://assets/sprites/tile_0009.png" id="3_5176p"]
+[ext_resource type="PackedScene" path="res://escenas/managers/bridge.tscn" id="2_vyskl"]
+[ext_resource type="Texture2D" uid="uid://b7v1kiki3841u" path="res://assets/sprites/bandera.png" id="4_6xu2p"]
 [ext_resource type="PackedScene" uid="uid://r0fl5l5sychu" path="res://escenas/entidades/jugador_plataformas.tscn" id="4_xgfom"]
 [ext_resource type="PackedScene" uid="uid://c1nn4hj3wbvb" path="res://escenas/entidades/plataforma_burbuja.tscn" id="5_ea4my"]
+[ext_resource type="PackedScene" uid="uid://bepv1i4s7pgar" path="res://escenas/entidades/plataforma_larga.tscn" id="7_tuabf"]
+[ext_resource type="Script" path="res://escenas/niveles/confetti.gd" id="8_0j6uq"]
+[ext_resource type="PackedScene" uid="uid://c1l8kcqyq7x5g" path="res://escenas/entidades/plataforma_corta.tscn" id="9_kf64x"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ervy8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hg5j4"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_65nee"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fh77o"]
-size = Vector2(417, 221)
-
-[node name="EscenaPlataformas3" type="Node"]
+[node name="EscenaPlataformas2" type="Node"]
 script = ExtResource("1_8uool")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0, 1, 1, 1)
-offset_left = -358.0
-offset_top = -56.0
-offset_right = 945.0
-offset_bottom = 1329.0
+offset_left = -287.0
+offset_top = -284.0
+offset_right = 935.0
+offset_bottom = 1037.0
 texture = ExtResource("2_e7acr")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-282, -275)
+scale = Vector2(-1.67065, -9.07751)
+anchor_mode = 0
+
 [node name="Bridge" parent="." instance=ExtResource("2_vyskl")]
-position = Vector2(-185, 599)
+position = Vector2(-125, 273)
 
 [node name="Destiny" type="Node2D" parent="."]
-position = Vector2(-183, 309)
+position = Vector2(-123, -17)
 
 [node name="Sprite2D" type="Sprite2D" parent="Destiny"]
 texture_filter = 1
-scale = Vector2(5.06071, 8.42428)
-texture = ExtResource("3_5176p")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_6xu2p")
 
 [node name="Area2D" type="Area2D" parent="Destiny"]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Destiny/Area2D"]
 scale = Vector2(4.06419, 6.73675)
-shape = SubResource("RectangleShape2D_ervy8")
-
-[node name="Node2D" type="StaticBody2D" parent="."]
-position = Vector2(-120, 1158)
-collision_layer = 7
-physics_material_override = SubResource("PhysicsMaterial_65nee")
-
-[node name="ColorRect" type="ColorRect" parent="Node2D"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -208.0
-offset_top = -110.0
-offset_right = 208.0
-offset_bottom = 109.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.453164, 0.905678, 0.490577, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
-shape = SubResource("RectangleShape2D_fh77o")
-
-[node name="Node2D2" type="StaticBody2D" parent="."]
-position = Vector2(-100, 487)
-collision_layer = 7
-physics_material_override = SubResource("PhysicsMaterial_65nee")
-
-[node name="ColorRect" type="ColorRect" parent="Node2D2"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -208.0
-offset_top = -110.0
-offset_right = 208.0
-offset_bottom = 109.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.453164, 0.905678, 0.490577, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2"]
-shape = SubResource("RectangleShape2D_fh77o")
+shape = SubResource("RectangleShape2D_hg5j4")
 
 [node name="JugadorPlataformas" parent="." instance=ExtResource("4_xgfom")]
-position = Vector2(24, 998)
+position = Vector2(84, 672)
 
 [node name="PlataformaBurbuja" parent="." instance=ExtResource("5_ea4my")]
-position = Vector2(438, 798)
+position = Vector2(498, 472)
 
 [node name="PlataformaBurbuja4" parent="." instance=ExtResource("5_ea4my")]
-position = Vector2(445, 402)
+position = Vector2(505, 76)
 
 [node name="PlataformaBurbuja5" parent="." instance=ExtResource("5_ea4my")]
-position = Vector2(280, 271)
+position = Vector2(340, -55)
 
 [node name="PlataformaBurbuja2" parent="." instance=ExtResource("5_ea4my")]
-position = Vector2(277, 984)
+position = Vector2(337, 658)
 
 [node name="PlataformaBurbuja3" parent="." instance=ExtResource("5_ea4my")]
-position = Vector2(283, 594)
+position = Vector2(343, 268)
 
-[node name="Label" type="Label" parent="."]
-offset_left = 38.0
-offset_top = 68.0
-offset_right = 328.0
-offset_bottom = 156.0
-theme_override_font_sizes/font_size = 64
-text = "¡Ganaste!"
+[node name="PlataformaLarga" parent="." instance=ExtResource("7_tuabf")]
+position = Vector2(-73, 83)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-323, -37)
-anchor_mode = 0
-zoom = Vector2(0.5, 0.5)
+[node name="Confetti" type="Node2D" parent="."]
+z_index = 5
+position = Vector2(534, -109)
+script = ExtResource("8_0j6uq")
+visibility_rect = Rect2(0, 0, 0, 0)
+random_position = false
+one_shot = true
+
+[node name="PlataformaLarga3" parent="." instance=ExtResource("9_kf64x")]
+position = Vector2(75, 756)
