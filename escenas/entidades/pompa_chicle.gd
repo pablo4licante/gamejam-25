@@ -10,7 +10,7 @@ var min_scale: float = 1.0  # Tamaño mínimo (cuando está completamente desinf
 var times_pressed: int = 0  # Veces que se ha inflado
 var delay: float = 0.0  # Tiempo acumulado para manejar la desinflación
 var desinflation_rate: float = 20.0  # Velocidad de desinflación por frame
-var puntuation: int = 0
+var puntuation: int = 0	
 
 # Llamado cada frame
 func _process(delta: float) -> void:
@@ -30,14 +30,14 @@ func _process(delta: float) -> void:
 
 	# Acción al soltar el botón
 	if bridge.just_released("action"):
-		puntuation = 1000 - (times_pressed * 10)  # Puntuación decrece según las pulsaciones
-		puntuation = max(0, puntuation)  # No permitir puntuaciones negativas
+		puntuation += 1
 		bridge.play_sound("hinchar")
 		bridge.puntuacion = puntuation
 
 	# Desinflar gradualmente si no se interactúa
 	if delay > 0.5 and scale_factor > min_scale:  # Espera un tiempo antes de empezar a desinflar
 		scale_factor -= desinflation_rate * delta  # Desinflado proporcional al tiempo
+		puntuation -= 1
 		scale_factor = max(min_scale, scale_factor)  # Evitar que sea menor a min_scale
 
 	# Explosión si la escala supera el límite

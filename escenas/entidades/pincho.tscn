@@ -25,6 +25,4 @@ texture = ExtResource("2_hfax8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.714286, -2.14286)
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_4biil")
-
