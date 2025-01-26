@@ -48,12 +48,12 @@ var nivel_ultimo = ""
 var niveles = {			# Tipo Victoria
 	#"test2": [0],
 	#"test": [0],
-	"dispara_1": [1],
-	"game_pinchos": [2],
+	#"dispara_1": [1],
+	#"game_pinchos": [2],
 	"game_chicle": [0],
-	"escena_plataformas_1": [1],
-	"escena_plataformas_2": [1],
-	"escena_plataformas_3": [1],
+	#"escena_plataformas_1": [1],
+	#"escena_plataformas_2": [1],
+	#"escena_plataformas_3": [1],
 }
 var nivel_tipo_victoria = 0
 
@@ -172,6 +172,7 @@ func cambiar_vidas() -> void:
  	
 	match nivel_tipo_victoria:
 		0: # Por puntos mas altos = victoria
+			print(puente_juego1.puntuacion, puente_juego2.puntuacion)
 			match puente_juego1.tipo_interfaz:
 				0:
 					if puente_juego1.puntuacion > puente_juego2.puntuacion:
