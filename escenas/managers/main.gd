@@ -322,6 +322,7 @@ func _ready():
 	viewport_juego2.get_parent().set_stretch(true)
 	viewport_compartido.get_parent().set_stretch(true)
 	contador_carga = TIEMPO_TRANSICION
+	ui_contador_juego.visible = false
 	music_player = $MusicStreamPlayer2D
 	music_player.play() 
 	ui_final.visible = false
