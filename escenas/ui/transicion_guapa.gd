@@ -24,6 +24,8 @@ func change_text(mensaje) -> void:
 			texto.texture = frase_esquiva
 		"escena_plataformas_1":
 			texto.texture = frase_corre
+		"escena_plataformas_2":
+			texto.texture = frase_corre
 		"dispara_1":
 			texto.texture = frase_dispara
 			

@@ -52,12 +52,11 @@ var nivel_ultimo = ""
 var niveles = {			# Tipo Victoria
 	#"test2": [0],
 	#"test": [0],
-	#"dispara_1": [1, "dispara"],
-	#"game_pinchos": [2, "esquiva"],
-	#"game_chicle": [0, "hincha"],
-	#"escena_plataformas_1": [1, "corre"],
+	"dispara_1": [1, "dispara"],
+	"game_pinchos": [2, "esquiva"],
+	"game_chicle": [0, "hincha"],
+	"escena_plataformas_1": [1, "corre"],
 	"escena_plataformas_2": [1, "corre"],
-	"escena_plataformas_3": [1, "corre"],
 }
 var nivel_tipo_victoria = 0
 
