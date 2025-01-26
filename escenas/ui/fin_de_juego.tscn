@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cvhxnysvvgnnl"]
+[gd_scene load_steps=23 format=3 uid="uid://cvhxnysvvgnnl"]
 
 [ext_resource type="Script" path="res://escenas/ui/fin_de_juego.gd" id="1_c8svl"]
 [ext_resource type="Texture2D" uid="uid://drt07q32d24js" path="res://assets/ui/fondo_cambio_nivel_naranja_mitad.png" id="2_cy35y"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://dm73uattuft3i" path="res://assets/sprites/personaje_estatico_naranja.png" id="9_efwb2"]
 [ext_resource type="Texture2D" uid="uid://c3ga2oajcjb4t" path="res://assets/sprites/personaje_salto_azul.png" id="10_e35kw"]
 [ext_resource type="Texture2D" uid="uid://c1ysekbm5llfu" path="res://assets/sprites/empate.png" id="11_vf2gm"]
+[ext_resource type="FontFile" uid="uid://qicc4vvx1k2c" path="res://menu/fonts/Wedges.ttf" id="12_f8ei2"]
+[ext_resource type="Script" path="res://menu/script/button_exit.gd" id="13_upj1m"]
+[ext_resource type="Texture2D" uid="uid://3g88ljqye5i1" path="res://menu/UI/boton.png" id="14_heahn"]
 
 [sub_resource type="Animation" id="Animation_uoh50"]
 length = 0.001
@@ -1000,6 +1003,9 @@ _data = {
 "player_2_wins": SubResource("Animation_p2kwk")
 }
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tqos6"]
+light_mode = 1
+
 [node name="TransicionGuapa" type="Node2D"]
 script = ExtResource("1_c8svl")
 
@@ -1067,3 +1073,25 @@ flip_h = true
 position = Vector2(960, 450)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("11_vf2gm")
+
+[node name="Button_exit" type="Button" parent="."]
+self_modulate = Color(1, 0.498039, 1, 1)
+offset_left = 778.0
+offset_top = 917.0
+offset_right = 1322.0
+offset_bottom = 1081.0
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("12_f8ei2")
+theme_override_font_sizes/font_size = 100
+text = "EXIT"
+flat = true
+script = ExtResource("13_upj1m")
+
+[node name="F_Buton" type="Sprite2D" parent="Button_exit"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_tqos6")
+position = Vector2(273, 76)
+scale = Vector2(1.0054, 0.760677)
+texture = ExtResource("14_heahn")
+
+[connection signal="pressed" from="Button_exit" to="Button_exit" method="_on_pressed"]
