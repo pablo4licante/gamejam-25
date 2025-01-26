@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://8k7jikydyfan"]
+[gd_scene load_steps=10 format=3 uid="uid://8k7jikydyfan"]
 
 [ext_resource type="PackedScene" uid="uid://ciqljjbjkqo2m" path="res://escenas/entidades/objetivo_burbuja.tscn" id="1_g6lxu"]
 [ext_resource type="Script" path="res://escenas/niveles/dispara_1.gd" id="1_ro2gb"]
@@ -6,6 +6,22 @@
 [ext_resource type="PackedScene" uid="uid://bgqybgesl5d4q" path="res://escenas/entidades/cursor_dispara.tscn" id="2_yigsh"]
 [ext_resource type="Texture2D" uid="uid://v3qwqt5xhgck" path="res://assets/fondos/fondo_explota_pompas.jpg" id="5_h3b8k"]
 [ext_resource type="Script" path="res://escenas/niveles/confetti.gd" id="6_xhb27"]
+[ext_resource type="Texture2D" uid="uid://b4d4tu6y3iuag" path="res://assets/sprites/explota_pompas_1.png" id="7_iwd51"]
+[ext_resource type="Texture2D" uid="uid://c0pkonpjgs4db" path="res://assets/sprites/explota_pompas_2.png" id="8_mfc45"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uho8t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_iwd51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mfc45")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Dispara1" type="Node"]
 script = ExtResource("1_ro2gb")
@@ -51,3 +67,9 @@ script = ExtResource("6_xhb27")
 visibility_rect = Rect2(0, 0, 0, 0)
 random_position = false
 one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(316, 530)
+scale = Vector2(0.44537, 0.44537)
+sprite_frames = SubResource("SpriteFrames_uho8t")
+frame_progress = 0.877443

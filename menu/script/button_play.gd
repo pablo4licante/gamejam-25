@@ -4,6 +4,8 @@ var tween: Tween
 var original_position: Vector2
 var is_hovering: bool = false
 
+@onready var musica = $"../../AudioStreamPlayer"
+
 func _ready() -> void:
 	# Conecta la señal del botón
 	pressed.connect(_on_button_pressed)
@@ -54,5 +56,6 @@ func animate_loop() -> void:
 		if not is_hovering:
 			break
 func _on_button_pressed() -> void:
+	musica.stop()
 	# Llamar a la función change_screen del nodo de transición
 	Trans.change_screen("res://escenas/managers/main.tscn")
