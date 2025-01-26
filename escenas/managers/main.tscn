@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ceh1gtstwdudh"]
+[gd_scene load_steps=34 format=3 uid="uid://ceh1gtstwdudh"]
 
 [ext_resource type="Script" path="res://escenas/managers/main.gd" id="1_byav3"]
 [ext_resource type="Texture2D" uid="uid://n77cfiy6jkvg" path="res://assets/sprites/corazon.png" id="2_2g6pr"]
@@ -26,10 +26,14 @@
 [ext_resource type="Texture2D" uid="uid://qdnvydefdwbu" path="res://assets/sprites/animacion_perder_vida/corazon-8.png" id="22_8qct6"]
 [ext_resource type="Texture2D" uid="uid://bfjvjl7qim2vw" path="res://assets/sprites/animacion_perder_vida/corazon-9.png" id="23_lre2r"]
 [ext_resource type="PackedScene" uid="uid://cvhxnysvvgnnl" path="res://escenas/ui/fin_de_juego.tscn" id="24_by3al"]
+[ext_resource type="Texture2D" uid="uid://4j6s4ytv8mfq" path="res://assets/fondos/fondo_vidas_azul.png" id="24_pfopr"]
+[ext_resource type="Texture2D" uid="uid://hbfjd6vv20dk" path="res://assets/fondos/fondo_vidas_naranja.png" id="25_aqjo7"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2nuhl"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qx2s1"]
+texture = ExtResource("24_pfopr")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nd4ce"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hkvtk"]
+texture = ExtResource("25_aqjo7")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lwxc3"]
 
@@ -116,15 +120,6 @@ handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelJuego"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_wm7y4")
-
 [node name="PanelVidas" type="Panel" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -134,6 +129,7 @@ grow_vertical = 2
 
 [node name="Corazon" type="TextureRect" parent="CanvasLayer/PanelVidas"]
 visible = false
+texture_filter = 4
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 offset_left = 268.0
@@ -145,6 +141,7 @@ expand_mode = 5
 
 [node name="CorazonDestruido" type="TextureRect" parent="CanvasLayer/PanelVidas"]
 visible = false
+texture_filter = 4
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 offset_left = 268.0
@@ -162,20 +159,25 @@ anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 1.0
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_2nuhl")
+theme_override_styles/panel = SubResource("StyleBoxTexture_qx2s1")
 
 [node name="Label" type="Label" parent="CanvasLayer/PanelVidas/Panel"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
+anchor_top = 0.6
 anchor_right = 0.5
-offset_left = -82.0
-offset_top = 50.0
-offset_right = 82.0
-offset_bottom = 50.0
+anchor_bottom = 0.6
+offset_left = -160.0
+offset_top = -566.4
+offset_right = 160.0
+offset_bottom = -470.4
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 70
 text = "Jugador 1"
+horizontal_alignment = 1
 
 [node name="Vidas1" type="HBoxContainer" parent="CanvasLayer/PanelVidas/Panel"]
 layout_mode = 1
@@ -194,21 +196,25 @@ anchor_left = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_nd4ce")
+theme_override_styles/panel = SubResource("StyleBoxTexture_hkvtk")
 
 [node name="Label" type="Label" parent="CanvasLayer/PanelVidas/Panel2"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
+anchor_top = 0.6
 anchor_right = 0.5
-offset_left = -82.0
-offset_top = 50.0
-offset_right = 82.0
-offset_bottom = 50.0
+anchor_bottom = 0.6
+offset_left = -160.0
+offset_top = -566.4
+offset_right = 160.0
+offset_bottom = -470.4
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 70
-text = "Jugador 2
-"
+text = "Jugador 2"
+horizontal_alignment = 1
 
 [node name="Vidas2" type="HBoxContainer" parent="CanvasLayer/PanelVidas/Panel2"]
 layout_mode = 1
@@ -270,14 +276,24 @@ theme_override_font_sizes/font_size = 70
 text = "Resultado"
 horizontal_alignment = 1
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wm7y4")
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamPolyphonic_srt52")
 max_polyphony = 100
 playback_type = 1
 
 [node name="TransicionFinal" parent="." instance=ExtResource("24_by3al")]
+visible = false
 
 [node name="TransicionGuapa" parent="." instance=ExtResource("12_h8klh")]
+visible = false
 z_index = 10
 
 [node name="MusicStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
