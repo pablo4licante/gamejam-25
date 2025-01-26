@@ -364,7 +364,7 @@ func _process(delta: float) -> void:
 
 	else: 
 
-		if vidas_1 == 4 or vidas_2 == 0:
+		if vidas_1 == 0 or vidas_2 == 0:
 			music_player.stop()
 			win_music_player = $WinMusicPlayer
 			if(!win_music_player.playing and !ha_sonado):

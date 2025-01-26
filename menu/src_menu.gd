@@ -10,4 +10,3 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if modo_ventana != DisplayServer.window_get_mode():
 		DisplayServer.window_set_mode(modo_ventana)
-

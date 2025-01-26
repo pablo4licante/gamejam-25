@@ -38,22 +38,6 @@ texture = ExtResource("25_aqjo7")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lwxc3"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ray8a"]
-bg_color = Color(0.299547, 0.299547, 0.299547, 1)
-border_width_left = 24
-border_width_top = 24
-border_width_right = 24
-border_width_bottom = 24
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-expand_margin_left = 24.0
-expand_margin_top = 24.0
-expand_margin_right = 24.0
-expand_margin_bottom = 26.0
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nr1ry"]
 bg_color = Color(1, 1, 1, 1)
 
@@ -256,6 +240,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_lwxc3")
 
 [node name="ContadorJuego" type="ProgressBar" parent="CanvasLayer/PanelHUD"]
+visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = -1
@@ -263,14 +248,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -325.0
-offset_top = -127.0
-offset_right = 325.0
-offset_bottom = -63.0
+offset_left = -200.0
+offset_top = -60.0
+offset_right = 200.0
+offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_styles/background = SubResource("StyleBoxFlat_ray8a")
 theme_override_styles/fill = SubResource("StyleBoxFlat_nr1ry")
 value = 50.0
 show_percentage = false
