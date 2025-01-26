@@ -355,22 +355,22 @@ libraries = {
 
 [node name="FondoCambioNivelNaranjaMitad" type="Sprite2D" parent="."]
 position = Vector2(958, 522)
-scale = Vector2(1.05556, 1.05556)
+scale = Vector2(1.05556, 1.93556)
 texture = ExtResource("2_24etx")
 
 [node name="FondoCambioNivelNaranja" type="Sprite2D" parent="."]
 position = Vector2(1022, 551)
-scale = Vector2(1.125, 1.1037)
+scale = Vector2(1.39758, 1.369)
 texture = ExtResource("1_whx5k")
 
 [node name="FondoCambioNivelAzul" type="Sprite2D" parent="."]
 position = Vector2(2437, 513)
-scale = Vector2(1.17613, 1.1)
+scale = Vector2(1.17613, 1.82)
 texture = ExtResource("3_arwja")
 
 [node name="FondoCambioNivelAzul2" type="Sprite2D" parent="."]
 position = Vector2(-519, 449)
-scale = Vector2(2.3969, 1.26667)
+scale = Vector2(2.40034, 1.65952)
 texture = ExtResource("3_arwja")
 flip_h = true
 flip_v = true
