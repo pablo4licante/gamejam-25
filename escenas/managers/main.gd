@@ -17,6 +17,7 @@ extends Node2D
 @export var ui_resultado : Label
 
 @export var ui_transicion : Node2D
+@export var ui_final : Node2D
 
 @export var music_player: AudioStreamPlayer2D
 
@@ -315,7 +316,8 @@ func _ready():
 	viewport_compartido.get_parent().set_stretch(true)
 	contador_carga = TIEMPO_TRANSICION
 	music_player = $MusicStreamPlayer2D
-	music_player.play()
+	music_player.play() 
+	ui_final.visible = false
 	for key in sound_links:
 		sound_links[key] = sounds[sound_links[key]]
 
@@ -357,10 +359,14 @@ func _process(delta: float) -> void:
 
 		if vidas_1 == 0 or vidas_2 == 0:
 			ui_resultado.visible = true
+			ui_final.visible = true
+			
 			if vidas_1 > vidas_2:
 				ui_resultado.text = "El jugador 1 ha ganado!";
+				ui_final.play(1)
 			elif vidas_2 > vidas_1: 
 				ui_resultado.text = "El jugador 2 ha ganado!";
+				ui_final.play(2)
 			else: 
 				ui_resultado.text = "Empate!";
 
