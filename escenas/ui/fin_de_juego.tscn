@@ -715,10 +715,10 @@ tracks/1/path = NodePath("FondoCambioNivelAzul:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.4, 1, 2.1, 2.8, 3.9, 5.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.4, 1, 1.54546, 2.1, 2.8, 3.9, 5.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(2500, 513), Vector2(1000, 523), Vector2(531, 552), Vector2(1000, 523), Vector2(1400, 540), Vector2(1300, 540)]
+"values": [Vector2(2500, 513), Vector2(1000, 523), Vector2(490, 534), Vector2(531, 552), Vector2(1000, 523), Vector2(1400, 540), Vector2(1300, 540)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1017,17 +1017,17 @@ texture = ExtResource("2_cy35y")
 
 [node name="FondoCambioNivelNaranja" type="Sprite2D" parent="."]
 position = Vector2(1022, 551)
-scale = Vector2(1.125, 1.1037)
+scale = Vector2(1.504, 1.503)
 texture = ExtResource("3_kpy4c")
 
 [node name="FondoCambioNivelAzul" type="Sprite2D" parent="."]
 position = Vector2(2437, 513)
-scale = Vector2(1.17613, 1.1)
+scale = Vector2(1.16709, 1.60776)
 texture = ExtResource("4_2mum7")
 
 [node name="FondoCambioNivelAzul2" type="Sprite2D" parent="."]
 position = Vector2(-519, 449)
-scale = Vector2(2.3969, 1.26667)
+scale = Vector2(2.39267, 1.82667)
 texture = ExtResource("4_2mum7")
 flip_h = true
 flip_v = true
