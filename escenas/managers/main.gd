@@ -322,6 +322,7 @@ func _ready():
 	viewport_juego2.get_parent().set_stretch(true)
 	viewport_compartido.get_parent().set_stretch(true)
 	contador_carga = TIEMPO_TRANSICION
+	ui_contador_juego.visible = false
 	music_player = $MusicStreamPlayer2D
 	music_player.play() 
 	ui_final.visible = false
@@ -364,7 +365,7 @@ func _process(delta: float) -> void:
 
 	else: 
 
-		if vidas_1 == 4 or vidas_2 == 0:
+		if vidas_1 == 0 or vidas_2 == 0:
 			music_player.stop()
 			win_music_player = $WinMusicPlayer
 			if(!win_music_player.playing and !ha_sonado):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b13n4xvr2ka2r"]
+[gd_scene load_steps=12 format=3 uid="uid://b13n4xvr2ka2r"]
 
 [ext_resource type="Script" path="res://menu/script/button_play.gd" id="1_5mvi7"]
 [ext_resource type="FontFile" uid="uid://qicc4vvx1k2c" path="res://menu/fonts/Wedges.ttf" id="1_haafw"]
