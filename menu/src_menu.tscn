@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://b13n4xvr2ka2r"]
+[gd_scene load_steps=13 format=3 uid="uid://b13n4xvr2ka2r"]
 
 [ext_resource type="Script" path="res://menu/script/button_play.gd" id="1_5mvi7"]
+[ext_resource type="Script" path="res://menu/ajskdfjaksdjafksldjflka.gd" id="1_ddjf2"]
 [ext_resource type="FontFile" uid="uid://qicc4vvx1k2c" path="res://menu/fonts/Wedges.ttf" id="1_haafw"]
 [ext_resource type="VideoStream" path="res://menu/UI/interfaz_animada_sin_botones.ogv" id="1_kfrcb"]
 [ext_resource type="Script" path="res://menu/script/button_exit.gd" id="2_s6cea"]
@@ -82,6 +83,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ddjf2")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 layout_mode = 1
