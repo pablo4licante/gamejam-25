@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ceh1gtstwdudh"]
+[gd_scene load_steps=33 format=3 uid="uid://ceh1gtstwdudh"]
 
 [ext_resource type="Script" path="res://escenas/managers/main.gd" id="1_byav3"]
 [ext_resource type="Texture2D" uid="uid://n77cfiy6jkvg" path="res://assets/sprites/corazon.png" id="2_2g6pr"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://qdnvydefdwbu" path="res://assets/sprites/animacion_perder_vida/corazon-8.png" id="22_8qct6"]
 [ext_resource type="Texture2D" uid="uid://bfjvjl7qim2vw" path="res://assets/sprites/animacion_perder_vida/corazon-9.png" id="23_lre2r"]
 [ext_resource type="PackedScene" uid="uid://cvhxnysvvgnnl" path="res://escenas/ui/fin_de_juego.tscn" id="24_by3al"]
+[ext_resource type="AudioStream" uid="uid://b3qwadna6t4rx" path="res://assets/sonidos/Victory.wav" id="27_bjxc6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2nuhl"]
 
@@ -283,3 +284,8 @@ z_index = 10
 [node name="MusicStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_3vdnn")
 parameters/looping = true
+
+[node name="WinMusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("27_bjxc6")
+volume_db = -16.0
+attenuation = 0.482968

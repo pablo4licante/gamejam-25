@@ -22,7 +22,10 @@ extends Node2D
 @export var music_player: AudioStreamPlayer2D
 
 @export var audio_player: AudioStreamPlayer2D
+
+@onready var win_music_player: AudioStreamPlayer2D = $WinMusicPlayer
 @export var sounds : Array[AudioStream]
+
 
 var sound_links = { 
 	"acierto": 0,
@@ -43,17 +46,18 @@ var TIEMPO_TRANSICION_O = 6.0
 
 var nivel_actual = "" 
 var nivel_seleccionado = ""
+var nivel_precalculado = ""
 var nivel_ultimo = ""
 
 var niveles = {			# Tipo Victoria
 	#"test2": [0],
 	#"test": [0],
-	#"dispara_1": [1],
-	#"game_pinchos": [2],
-	"game_chicle": [0],
-	#"escena_plataformas_1": [1],
-	#"escena_plataformas_2": [1],
-	#"escena_plataformas_3": [1],
+	"dispara_1": [1, "dispara"],
+	"game_pinchos": [2, "esquiva"],
+	"game_chicle": [0, "hincha"],
+	"escena_plataformas_1": [1, "corre"],
+	#"escena_plataformas_2": [1, "corre"],
+	#"escena_plataformas_3": [1, "corre"],
 }
 var nivel_tipo_victoria = 0
 
@@ -365,12 +369,16 @@ func _process(delta: float) -> void:
 			if vidas_1 > vidas_2:
 				ui_resultado.text = "El jugador 1 ha ganado!";
 				ui_final.play(1)
+				
 			elif vidas_2 > vidas_1: 
 				ui_resultado.text = "El jugador 2 ha ganado!";
 				ui_final.play(2)
+				
 			else: 
 				ui_resultado.text = "Empate!";
-
+				
+				
+			
 		else: 
 			contador_buff -= 1 * delta 
 			contador_carga -= 1 * delta 
@@ -378,6 +386,9 @@ func _process(delta: float) -> void:
 			if contador_buff <= 0 and contador_carga < 4:
 				if not loading_next: 
 					print(TIEMPO_TRANSICION_O/TIEMPO_TRANSICION)
+					
+					nivel_precalculado = seleccionar_nivel()
+					ui_transicion.change_text(nivel_precalculado)
 					ui_transicion.speed(TIEMPO_TRANSICION_O/TIEMPO_TRANSICION)
 					ui_transicion.play()
 					loading_next = true
@@ -392,7 +403,7 @@ func _process(delta: float) -> void:
 						loading_next = false 
 						ui_panel_juego.visible = true
 						ui_panel_vidas.visible = false
-						nivel_seleccionado = seleccionar_nivel()
+						nivel_seleccionado = nivel_precalculado
 						nivel_ultimo = nivel_seleccionado
 						cargar_nivel(nivel_seleccionado)
 						print("Nuevo nivel seleccionado: ", nivel_seleccionado)
