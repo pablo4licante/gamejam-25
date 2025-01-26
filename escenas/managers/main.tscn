@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://ceh1gtstwdudh"]
+[gd_scene load_steps=35 format=3 uid="uid://ceh1gtstwdudh"]
 
 [ext_resource type="Script" path="res://escenas/managers/main.gd" id="1_byav3"]
 [ext_resource type="Texture2D" uid="uid://n77cfiy6jkvg" path="res://assets/sprites/corazon.png" id="2_2g6pr"]
