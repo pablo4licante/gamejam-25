@@ -1,12 +1,12 @@
 [gd_scene load_steps=12 format=3 uid="uid://b13n4xvr2ka2r"]
 
-[ext_resource type="Script" path="res://menu/src_menu.gd" id="1_4cere"]
 [ext_resource type="Script" path="res://menu/script/button_play.gd" id="1_5mvi7"]
 [ext_resource type="FontFile" uid="uid://qicc4vvx1k2c" path="res://menu/fonts/Wedges.ttf" id="1_haafw"]
 [ext_resource type="VideoStream" path="res://menu/UI/interfaz_animada_sin_botones.ogv" id="1_kfrcb"]
 [ext_resource type="Script" path="res://menu/script/button_exit.gd" id="2_s6cea"]
 [ext_resource type="Texture2D" uid="uid://3g88ljqye5i1" path="res://menu/UI/boton.png" id="3_pmu4n"]
 [ext_resource type="Script" path="res://menu/script/button_options.gd" id="3_xjdjr"]
+[ext_resource type="AudioStream" uid="uid://db68s6xwu8b2x" path="res://assets/sonidos/adventure-theme-intro.wav" id="8_jlesm"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_or572"]
 resource_name = "blanco_butt"
@@ -82,7 +82,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_4cere")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 layout_mode = 1
@@ -188,6 +187,10 @@ material = SubResource("CanvasItemMaterial_nip5o")
 position = Vector2(273, 76)
 scale = Vector2(1.0054, 0.760677)
 texture = ExtResource("3_pmu4n")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_jlesm")
+volume_db = -10.0
 
 [connection signal="pressed" from="VBoxContainer_botones/Button_options" to="VBoxContainer_botones/Button_options" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer_botones/Button_exit" to="VBoxContainer_botones/Button_exit" method="_on_pressed"]

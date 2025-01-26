@@ -22,8 +22,8 @@ extends Node2D
 @export var music_player: AudioStreamPlayer2D
 
 @export var audio_player: AudioStreamPlayer2D
+@export var win_music_player: AudioStreamPlayer
 
-@onready var win_music_player: AudioStreamPlayer2D = $WinMusicPlayer
 @export var sounds : Array[AudioStream]
 
 
@@ -76,6 +76,8 @@ var puente_juego2 : Node2D
 
 var puntos_juego1_actual = 0
 var puntos_juego2_actual = 0
+
+var ha_sonado = false
 
 func actualizar_controles(jugador) -> void:
 	var puente : Node2D = null
@@ -363,6 +365,11 @@ func _process(delta: float) -> void:
 	else: 
 
 		if vidas_1 == 0 or vidas_2 == 0:
+			music_player.stop()
+			win_music_player = $WinMusicPlayer
+			if(!win_music_player.playing and !ha_sonado):
+				ha_sonado = true
+				win_music_player.play()
 			ui_resultado.visible = true
 			ui_final.visible = true
 			
@@ -376,6 +383,7 @@ func _process(delta: float) -> void:
 				
 			else: 
 				ui_resultado.text = "Empate!";
+				ui_final.play(0)
 				
 				
 			

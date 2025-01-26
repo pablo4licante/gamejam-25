@@ -15,8 +15,10 @@ func _on_button_pressed():
 	
 	# Usar if normal en lugar del operador ternario
 	if is_fullscreen:
+		SrcMenu.modo_ventana = DisplayServer.WINDOW_MODE_FULLSCREEN 
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
+		SrcMenu.modo_ventana = DisplayServer.WINDOW_MODE_WINDOWED
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	
 	# Actualizar el texto del botón
@@ -25,6 +27,6 @@ func _on_button_pressed():
 func _update_button_text():
 	# Cambiar el texto según el estado
 	if is_fullscreen:
-		text = "VENTANA"
-	else:
 		text = "FULL"
+	else:
+		text = "VENTANA"
